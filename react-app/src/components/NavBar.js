@@ -1,12 +1,17 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
 const NavBar = ({ setAuthenticated }) => {
+  let location = useLocation();
+  const currentPage = location.pathname;
+  console.log(currentPage);
   return (
     <nav>
+    {currentPage !== '/login' ? 
+      <>
           <NavLink to="/" exact={true} activeClassName="active">
-            Home
+        Home
           </NavLink>
           <NavLink to="/login" exact={true} activeClassName="active">
             Login
@@ -15,7 +20,10 @@ const NavBar = ({ setAuthenticated }) => {
             Sign Up
           </NavLink>
           <LogoutButton setAuthenticated={setAuthenticated} />
-    </nav>
+        </>
+      : ''}
+    </nav >
+
   );
 }
 

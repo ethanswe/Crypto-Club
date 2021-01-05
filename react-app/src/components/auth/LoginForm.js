@@ -13,6 +13,12 @@ grid-template-columns: 480px 480px 480px 480px; */
 display: flex;
 justify-content: space-between;
 `
+const Wrapper = styled.div`
+background-image: url(${LoginBackground});
+width: 100%;
+height: 100%;
+background-position: center;
+`
 
 const ImgContainer = styled.div`
 width: 60vw;
@@ -30,10 +36,26 @@ background-size: cover;
 
 `
 
-const StyledLoginForm = styled.form`
-/* background-color: black; */
-width: 1000px;
-height: 1000px;
+const Input = styled.input`
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 10px;
+margin-bottom: 10px;
+`
+
+
+const Form = styled.form`
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+
+const Header = styled.h1`
+font-size: 25px;
+margin-bottom: 30px;
 `
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -64,11 +86,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <HomePageContainer>
-      <ImgContainer>
-        <LoginBackgroundImg />
-      </ImgContainer>
-    <StyledLoginForm onSubmit={onLogin}>
+    <>
+
+      <Form onSubmit={onLogin}>
+        <Header>Welcome to Crypto Club</Header>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
@@ -76,7 +97,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       </div>
       <div>
         <label htmlFor="email">Email</label>
-        <input
+        <Input
           name="email"
           type="text"
           placeholder="Email"
@@ -86,7 +107,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       </div>
       <div>
         <label htmlFor="password">Password</label>
-        <input
+        <Input
           name="password"
           type="password"
           placeholder="Password"
@@ -95,8 +116,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         />
         <button type="submit">Login</button>
       </div>
-      </StyledLoginForm>
-    </HomePageContainer>
+      </Form>
+      </>
   );
 };
 

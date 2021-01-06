@@ -30,12 +30,19 @@ background-color: blue;
 width: 100vw;
 height: 500px;
 `
+
+const IntroText = styled.h2`
+
+`
+
+
 const MainDiv = () => {
     return (
         <>
         <MainContainer>
             <TextDiv>
-                <Header>Finiancial Freedom Is Measured In Binary Code: Bitcoin</Header>    
+                    <Header>Finiancial Freedom Is Measured In Binary Code: Bitcoin.</Header>    
+                    <IntroText>We believe that the future history of financial instutions will include Blockchain technology and Bitcoin. What are you waiting for? Be a part of history. Trade now.</IntroText>
             </TextDiv>
         </MainContainer>
         <BottomDiv />    

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
+import SignUpForm from "./components/SignupPage/SignupPage";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -10,7 +10,6 @@ import { authenticate } from "./services/auth";
 import LoginPage from './components/LoginPage/LoginPage';
 import WalletPage from './components/Wallet/WalletPage';
 import HomePage from './components/HomePage/HomePage';
-
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
-import LoginBackground from '../../public/homePage.jpg';
+import LoginBackground from '../../imgs/homePage.jpg';
 import styled from 'styled-components'
 
 const HomePageContainer = styled.div`

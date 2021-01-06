@@ -6,8 +6,10 @@ def seed_users():
 
     demo = User(firstName='Demo', lastName='User', email='demo@aa.io',
                 password='password')
+    
+    ethan = User(firstName='Ethan', lastName='Alexander', email='ethan@ethan.com',  pasword='password')
 
-    db.session.add(demo)
+    db.session.add(demo, ethan)
 
     db.session.commit()
 

@@ -5,7 +5,7 @@ class List(db.Model):
   __tablename__ = 'lists'
 
   id = db.Column(db.Integer, primary_key=True)
-  coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullabe=False)
+  coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
   coin = db.relationship('Coin', back_populates='lists')

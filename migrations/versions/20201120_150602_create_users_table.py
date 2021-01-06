@@ -59,6 +59,16 @@ def upgrade():
     sa.ForeignKeyConstraint(['wallet_id'], ['wallets.id']),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('wallets',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(40), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('balance', sa.Integer(), nullable=False),
+    sa.Column('transaction_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id']),
+    sa.ForeignKeyConstraint(['transaction_id'], ['transactions.id']),
+    sa.PrimaryKeyConstraint('id')
+    )
     # ### end Alembic commands ###qqqqqqqqq
 
 

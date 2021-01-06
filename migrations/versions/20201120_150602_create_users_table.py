@@ -29,6 +29,36 @@ def upgrade():
     sa.UniqueConstraint('firstName'),
     sa.UniqueConstraint('lastName'),
     )
+    op.create_table('coins',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=40), nullable=False),
+    sa.Column('symbol', sa.String(length=20), nullable=False),
+    sa.Column('list_id', sa.Integer()),
+    sa.Column('transaction_id', sa.Integer()),
+    sa.ForeignKeyConstraint(['list_id'], ['lists.id'],),
+    sa.ForeignKeyConstraint(['transaction_id'], ['transactions.id'],),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('lists',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('coin_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['coin_id'], ['coins.id']),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id']),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('transactions',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('type', sa.Integer(), nullable=False),
+    sa.Column('coin_id', sa.Integer(), nullable=False),
+    sa.Column('price', sa.Integer(), nullable=False),
+    sa.Column('quantity', sa.Integer(), nullable=False),
+    sa.Column('wallet_id', sa.Integer(), nullable=False),
+    sa.Column('date', sa.DateTime(), nullable=False),
+    sa.ForeignKeyConstraint(['coin_id'], ['coins.id']),
+    sa.ForeignKeyConstraint(['wallet_id'], ['wallets.id']),
+    sa.PrimaryKeyConstraint('id')
+    )
     # ### end Alembic commands ###qqqqqqqqq
 
 

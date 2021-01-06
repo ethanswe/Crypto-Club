@@ -8,9 +8,13 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key = True)
   firstName = db.Column(db.String(40), nullable = False, unique = True)
   lastName = db.Column(db.String(40), nullable = False, unique = True)
-  email = db.Column(db.String(255), nullable = False, unique = True)
+  email = db.Column(db.String(255), nullable=False, unique=True)
+  wallet_id = db.Column(db.Integer, db.ForeignKey('wallets.id'))
+  list_id = db.Column(db.Integer, db.ForeignKey('lists.id'))
   hashed_password = db.Column(db.String(255), nullable = False)
 
+  wallet = db.relationship('Wallet', back_populates='users')
+  list = db.relationship('List', back_populates='users')
 
   @property
   def password(self):

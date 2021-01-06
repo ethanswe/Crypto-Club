@@ -9,7 +9,7 @@ import User from "./components/User";
 import { authenticate } from "./services/auth";
 import LoginPage from './components/LoginPage/LoginPage';
 import WalletPage from './components/Wallet/WalletPage';
-
+import HomePage from './components/HomePage/HomePage';
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
         <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
       <Route path='/' exact={true}>
-
+        <HomePage />
       </Route>
       <ProtectedRoute path="/wallet" exact={true} authenticated={authenticated}>
         <WalletPage/>

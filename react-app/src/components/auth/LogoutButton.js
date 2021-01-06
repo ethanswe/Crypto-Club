@@ -6,10 +6,9 @@ const LogoutButton = ({authenticated, setAuthenticated}) => {
     await logout();
     setAuthenticated(false);
   };
-
   return (
     <>
-      {authenticated ?
+      { authenticated ?
         <button onClick={onLogout}>Logout</button>
       : "" }
     </>

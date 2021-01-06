@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-
+import SignUpButton from './SignupButton';
 const MainContainer = styled.div`
 background-color: red;
 width: 100vw;
@@ -43,7 +43,8 @@ const MainDiv = () => {
             <TextDiv>
                     <Header>Finiancial Freedom Is Measured In Binary Code: Bitcoin.</Header>    
                     <IntroText>We believe that the future history of financial instutions will include Blockchain technology and Bitcoin. What are you waiting for? Be a part of history. Trade now.</IntroText>
-            </TextDiv>
+                <SignUpButton />
+                </TextDiv>
         </MainContainer>
         <BottomDiv />    
         </>

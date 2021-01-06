@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import LoginForm from '../auth/LoginForm';
+import { login } from "../../services/auth";
 
 const Container = styled.div`
 min-width: 960px;
@@ -14,7 +15,7 @@ align-items: center;
 
 `
 
-const SideInput = () => {
+const SideInput = ({ authenticated, setAuthenticated }) => {
     return (
         <Container>
             <LoginForm />

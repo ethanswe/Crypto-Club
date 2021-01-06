@@ -8,7 +8,7 @@ const NavBar = ({ setAuthenticated }) => {
   console.log(currentPage);
   return (
     <nav>
-    {currentPage !== '/login' ? 
+    {currentPage === "/" ? 
       <>
           <NavLink to="/" exact={true} activeClassName="active">
         Home

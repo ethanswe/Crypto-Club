@@ -8,6 +8,10 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import LoginPage from './components/LoginPage/LoginPage';
+import WalletPage from './components/Wallet/WalletPage';
+
+
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -28,8 +32,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
-      <Route path="/login" exact={true}>
+      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
+      <Route path="/login" exact={true} >
         <LoginPage
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
@@ -38,8 +42,11 @@ function App() {
       <Route path="/sign-up" exact={true}>
         <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
-      <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-        <h1>My Home Page</h1>
+      <Route path='/' exact={true}>
+
+      </Route>
+      <ProtectedRoute path="/wallet" exact={true} authenticated={authenticated}>
+        <WalletPage/>
       </ProtectedRoute>
     </BrowserRouter>
   );

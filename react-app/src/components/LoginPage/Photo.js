@@ -12,7 +12,7 @@ align-items: center;
 }
 `
 
-const Photo = () => {
+const Photo = ({ authenticated, setAuthenticated }) => {
     return (
         <Container>
             
@@ -20,4 +20,4 @@ const Photo = () => {
     )
 }
 
-export default Photo
+export default Photo;

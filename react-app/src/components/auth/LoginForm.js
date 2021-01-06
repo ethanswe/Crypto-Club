@@ -5,11 +5,6 @@ import LoginBackground from '../../public/homePage.jpg';
 import styled from 'styled-components'
 
 const HomePageContainer = styled.div`
-/* grid-template-areas:
-'b b a a '
-'b b a a';
-grid-template-rows: 540px 540px;
-grid-template-columns: 480px 480px 480px 480px; */
 display: flex;
 justify-content: space-between;
 `
@@ -24,17 +19,9 @@ const ImgContainer = styled.div`
 width: 60vw;
 height: 50vw;
 grid-area: b;
-/* left: 0; */
 
 `
 
-const LoginBackgroundImg = styled.img`
-background-image: url(${LoginBackground});
-width: 100%;
-height: 100%;
-background-size: cover;
-
-`
 
 const Input = styled.input`
 width: 100%;
@@ -43,8 +30,13 @@ flex-direction: column;
 align-items: center;
 margin-top: 10px;
 margin-bottom: 10px;
-`
+width: 380px;
+height: 34px;
+font-size: 16px;
+:focus{
 
+}
+`
 
 const Form = styled.form`
 width: 100%;
@@ -56,6 +48,10 @@ align-items: center;
 const Header = styled.h1`
 font-size: 25px;
 margin-bottom: 30px;
+`
+
+const Button = styled.button`
+font-size: 15px;
 `
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -82,7 +78,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/wallet" />;
   }
 
   return (
@@ -114,7 +110,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <Button type="submit">Log In</Button>
       </div>
       </Form>
       </>

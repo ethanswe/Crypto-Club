@@ -9,12 +9,11 @@ class User(db.Model, UserMixin):
   firstName = db.Column(db.String(40), nullable = False, unique = True)
   lastName = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable=False, unique=True)
-  wallet_id = db.Column(db.Integer, db.ForeignKey('wallets.id'))
-  list_id = db.Column(db.Integer, db.ForeignKey('lists.id'))
   hashed_password = db.Column(db.String(255), nullable = False)
 
-  wallet = db.relationship('Wallet', back_populates='users')
-  list = db.relationship('List', back_populates='users')
+  wallets = db.relationship('Wallet', lazy=True)  # DONE
+  list = db.relationship('List', uselist=False,
+                         back_populates='users', lazy=True)  # DONE
 
   @property
   def password(self):
@@ -35,5 +34,6 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "firstName": self.firstName,
       "lastName": self.lastName,
-      "email": self.email
+      "email": self.email,
+      "list_id": self.list_id
     }

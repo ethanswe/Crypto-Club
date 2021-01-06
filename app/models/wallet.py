@@ -7,12 +7,10 @@ class Wallet(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(40), nullable=False)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   balance = db.Column(db.Integer, nullable=False)
-  transaction_id = db.Column(db.Integer, db.ForeignKey('transactions.id'))
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-  user = db.relationship('User', back_populates='wallets')
-  transaction = db.relationship('Transaction', back_populates='wallets')
+  transactions = db.relationship('Transaction', lazy=True)  # DONE
 
   def to_dict(self):
     return {

@@ -6,15 +6,13 @@ class Transaction(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   type = db.Column(db.Integer, nullable=False)
-  coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False)
   price = db.Column(db.Integer, nullable=False)
   quantity = db.Column(db.Integer, nullable=False)
-  wallet_id = db.Column(db.Integer, db.ForeignKey('wallets.id'), nullable=False)
   date = db.Column(db.DateTime, default=datetime.utcnow)
+  coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False)
+  wallet_id = db.Column(db.Integer, db.ForeignKey('wallets.id'), nullable=False)
 
-  coin = db.relationship('Coin', back_populates='transactions')
-  wallet = db.relationship('Wallet', back_populates='transactions')
-
+  coin = db.relationship("Coin", back_populates="transactions") # DONE
 
   def to_dict(self):
     return {

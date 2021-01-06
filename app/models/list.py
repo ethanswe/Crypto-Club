@@ -1,5 +1,9 @@
 from .db import db
 
+association_table = db.Table('association', db.Base.metadata,
+    db.Column('list_id', db.Integer, db.ForeignKey('list.id')),
+    db.Column('coin_id', db.Integer, db.ForeignKey('coin.id'))
+)
 
 class List(db.Model):
   __tablename__ = 'lists'
@@ -8,8 +12,8 @@ class List(db.Model):
   coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-  coin = db.relationship('Coin', back_populates='lists')
-  user = db.relationship('User', back_populates='lists')
+  coins = db.relationship('Coin', secondary=association_table) # DONE
+  user = db.relationship('User', back_populates='lists') #DONE
 
   def to_dict(self):
     return {
@@ -17,3 +21,19 @@ class List(db.Model):
         "coin_id": self.coin_id,
         "user_id": self.user_id,
     }
+
+
+
+# List
+#  Alvin - id: 20, 
+#  Ethan - id: 30, 
+
+# List-Coin
+# - id: 300, list_id: 20 , coin_id: 100
+# - id: 301, list_id: 20 , coin_id: 101
+# - id :  302, list_id 30, coin_id: 101
+
+# Coin
+# - id: 100, sym: eth,
+# - id: 101, sym: btc,
+

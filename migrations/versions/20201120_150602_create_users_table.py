@@ -33,10 +33,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=40), nullable=False),
     sa.Column('symbol', sa.String(length=20), nullable=False),
-    sa.Column('list_id', sa.Integer()),
-    sa.Column('transaction_id', sa.Integer()),
-    sa.ForeignKeyConstraint(['list_id'], ['lists.id'],),
-    sa.ForeignKeyConstraint(['transaction_id'], ['transactions.id'],),
+    # sa.ForeignKeyConstraint(['list_id'], ['lists.id'],),
+    # sa.ForeignKeyConstraint(['transaction_id'], ['transactions.id'],),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('lists',

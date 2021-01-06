@@ -1,6 +1,6 @@
-from .db import db
+from .db import db, metadata
 
-association_table = db.Table('association', db.Base.metadata,
+association_table = db.Table('association', metadata,
     db.Column('list_id', db.Integer, db.ForeignKey('list.id')),
     db.Column('coin_id', db.Integer, db.ForeignKey('coin.id'))
 )
@@ -12,8 +12,8 @@ class List(db.Model):
   coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-  coins = db.relationship('Coin', secondary=association_table) # DONE
-  user = db.relationship('User', back_populates='lists') #DONE
+  coins = db.relationship('Coin', secondary=association_table, lazy=True) # DONE
+  user = db.relationship('User', back_populates='lists', lazy=True)  # DONE
 
   def to_dict(self):
     return {

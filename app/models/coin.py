@@ -7,7 +7,8 @@ class Coin(db.Model):
   name = db.Column(db.String(40), nullable=False, unique=True)
   symbol = db.Column(db.String(20), nullable=False, unique=True)
 
-  transaction = db.relationship('Transaction', uselist=False, back_populates="transactions") # DONE
+  transaction = db.relationship(
+      'Transaction', uselist=False, back_populates="transactions", lazy=True)  # DONE
 
   def to_dict(self):
     return {

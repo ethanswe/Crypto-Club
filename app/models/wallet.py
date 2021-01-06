@@ -9,9 +9,8 @@ class Wallet(db.Model):
   name = db.Column(db.String(40), nullable=False)
   balance = db.Column(db.Integer, nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-  transaction_id = db.Column(db.Integer, db.ForeignKey('transactions.id'))
 
-  transactions = db.relationship('Transaction') # DONE
+  transactions = db.relationship('Transaction', lazy=True)  # DONE
 
   def to_dict(self):
     return {

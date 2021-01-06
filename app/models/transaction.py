@@ -12,7 +12,8 @@ class Transaction(db.Model):
   coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False)
   wallet_id = db.Column(db.Integer, db.ForeignKey('wallets.id'), nullable=False)
 
-  coin = db.relationship("Coin", back_populates="transactions") # DONE
+  coin = db.relationship(
+      "Coin", back_populates="transactions", lazy=True)  # DONE
 
   def to_dict(self):
     return {

@@ -6,7 +6,7 @@ class Transaction(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   type = db.Column(db.Integer, nullable=False)
-  coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullabe=False)
+  coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False)
   price = db.Column(db.Integer, nullable=False)
   quantity = db.Column(db.Integer, nullable=False)
   wallet_id = db.Column(db.Integer, db.ForeignKey('wallets.id'), nullable=False)

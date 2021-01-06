@@ -11,10 +11,17 @@ class Transaction(db.Model):
   wallet_id = db.Column(db.Integer, db.ForeignKey('wallets.id'), nullable=False)
   date = db.Column(db.DateTime, nulable=False, default=datetime.utcnow)
 
+  coin = db.relationship('Coin', back_populates='transactions')
+  wallet = db.relationship('Wallet', back_populates='transactions')
+
+  
   def to_dict(self):
     return {
         "id": self.id,
-        "name": self.name,
-        "symbol": self.symbol,
+        "coin_id": self.coin_id,
+        "price": self.price,
+        "quantity": self.quantity,
+        "wallet_id": self.wallet_id,
+        "date": self.date,
     }
 

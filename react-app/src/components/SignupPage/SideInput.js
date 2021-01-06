@@ -16,7 +16,7 @@ align-items: center;
 const SideInput = ({ authenticated, setAuthenticated }) => {
     return (
         <Container>
-            <SignUpForm />
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Container>
     )
 }

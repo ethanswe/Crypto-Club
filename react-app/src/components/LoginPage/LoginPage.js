@@ -58,7 +58,7 @@ const LoginPage = ({ authenticated, setAuthenticated }) => {
         <Container>
             <Wrapper>
                 <Photo />
-                <SideInput />
+                <SideInput authenticated={authenticated} setAuthenticated={setAuthenticated} />
             </Wrapper>
         </Container>
     )

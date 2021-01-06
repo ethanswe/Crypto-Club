@@ -3,11 +3,11 @@ import SignupBackground from '../../imgs/signupPage.jpg';
 import styled from 'styled-components';
 import Photo from './Photo';
 import SideInput from './SideInput';
-const SignupPage = () => {
+const SignupPage = ({ authenticated, setAuthenticated}) => {
     return (
         <Container>
             <Wrapper>
-                <SideInput />
+                <SideInput authenticated={authenticated} setAuthenticated={setAuthenticated} />
                 <Photo />
             </Wrapper>
         </Container>

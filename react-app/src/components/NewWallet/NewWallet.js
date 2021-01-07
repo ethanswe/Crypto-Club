@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styled from 'styled-components'
-import WalletInput from './WalletInput';
+import React from 'react'
+import WalletInput from './NewWalletInput';
+import styled from 'styled-components';
 
 const Container = styled.div`
 height: 800px;
@@ -11,7 +11,7 @@ margin: 0 auto;
 margin-top: 50px;
 `
 
-const WalletPage = () => {
+const NewWallet = () => {
     return (
         <Container>
             <WalletInput />
@@ -19,4 +19,4 @@ const WalletPage = () => {
     )
 }
 
-export default WalletPage;
+export default NewWallet

@@ -1,6 +1,7 @@
 import React from 'react'
+import { useHistory } from "react-router-dom";
 import styled from 'styled-components';
-import PlusIcon from '../../imgs/plusIcon.png';
+import PlusIcon from '../../imgs/plus.png';
 const Container = styled.div`
 width: 1200px;
 height: 700px;
@@ -11,11 +12,18 @@ background-color: #191c28;
 
 
 const WalletInput = () => {
-    return (
+    const history = useHistory();
+
+    const onClick = () => {
+        console.log('Im working')
+        history.push('/new-wallet')
+    }
+
+     return (
         <Container>
             <Header>
                 Please Choose Your Wallet:
-            <Icon />
+            <Icon onClick={onClick} />
             </Header>
         </Container>
     )
@@ -41,7 +49,6 @@ width: 30px;
 height: 30px;
 background-size: cover;
 /* background-color: white; */
-
 `
 
 

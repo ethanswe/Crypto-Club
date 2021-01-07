@@ -7,6 +7,7 @@ import Bitcoin from '../../imgs/bitcoin.png'
 import Ethereum from '../../imgs/ethereum.png'
 import Litecoin from '../../imgs/litecoin.png'
 import SVG from '../../imgs/bitcoin-coin.svg'
+import newWallet from '../../services/wallet';
 
 const Container = styled.div`
 width: 1200px;
@@ -18,13 +19,12 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin-top: 150px;
-background-image: url(${SVG});
 `
 
 const NewWalletInput = () => {
   const [walletName, setWalletName] = useState("");
   const [balance, setBalance] = useState('')
-
+	const history = useHistory();
 //   const onSignUp = async (e) => {
 //     e.preventDefault();
 //     if (password === repeatPassword) {
@@ -34,9 +34,13 @@ const NewWalletInput = () => {
 //       }
 //     }
 //   };
-
-    const onNewWallet = async (e) => {
-        console.log('working');
+const onNewWallet = async (e) => {
+	e.preventDefault();
+	// eslint-disable-next-line no-restricted-globals
+		const wallet = await newWallet(walletName, balance);
+		if (!wallet.errors) {
+			history.push('/wallet')
+		}
     }
   const updateWalletName = (e) => {
     setWalletName(e.target.value);
@@ -70,7 +74,6 @@ const NewWalletInput = () => {
 	        "shape": {
 	            "type": [
 	                "image",
-	                "circle"
 	            ],
 	            "image": [
 	                {
@@ -83,6 +86,11 @@ const NewWalletInput = () => {
 	                    "height": 20,
 	                    "width": 20
 	                },
+	                {
+	                    "src": Litecoin,
+	                    "height": 20,
+	                    "width": 20
+	                }
 	            ]
 	        },
 	        "color": {

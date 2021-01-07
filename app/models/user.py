@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
 
   wallets = db.relationship('Wallet', lazy=True)  # DONE
   list = db.relationship('List', uselist=False,
-                         back_populates='users', lazy=True)  # DONE
+                         back_populates='user', lazy=True)  # DONE
 
   @property
   def password(self):
@@ -35,5 +35,5 @@ class User(db.Model, UserMixin):
       "firstName": self.firstName,
       "lastName": self.lastName,
       "email": self.email,
-      "list_id": self.list_id
+      "list_id": self.list.id if self.list else None
     }

@@ -14,7 +14,7 @@ width: 380px;
 height: 34px;
 font-size: 16px;
 :focus{
-
+  border-color: black;
 }
 `
 
@@ -28,10 +28,6 @@ align-items: center;
 const Header = styled.h1`
 font-size: 25px;
 margin-bottom: 30px;
-`
-
-const Button = styled.button`
-font-size: 15px;
 `
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
@@ -128,3 +124,36 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 };
 
 export default SignUpForm;
+
+
+const Button = styled.button`
+  border-color: black;
+  background-color: white;
+  border-radius: 25px;
+  color: black;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms ease-in-out;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+  }
+  
+  &:hover {
+    color: #fff;
+    &:after {
+      width: 110%;
+    }
+  }
+`

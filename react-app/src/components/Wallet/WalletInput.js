@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from "react-router-dom";
 import styled from 'styled-components';
 import PlusIcon from '../../imgs/plus.png';
+import { getWallets } from '../../services/wallet';
+
+
 const Container = styled.div`
 width: 1200px;
 height: 700px;
@@ -10,22 +13,49 @@ border-radius: 20px;
 background-color: #191c28;
 `
 
+const Div = styled.div`
+background-color: white;
+`
 
-const WalletInput = () => {
+const WalletInput = ({ user }) => {
     const history = useHistory();
+    const [wallets, setWallets] = useState([]);
 
     const onClick = () => {
         // console.log('Im working')
         history.push('/new-wallet')
-    }
+    };
 
-     return (
+
+    const fetchWallets = async () => {
+        const data = await getWallets({ user_id: user.id });
+        setWallets(data.wallets);
+    };
+
+    useEffect(() => {
+        fetchWallets();
+    }, []);
+
+    const walletItems = wallets.map((wallet) => {
+        return <div key={wallet.id}>
+                {wallet.name}
+            </div>
+        
+    });
+
+    console.log(walletItems);
+
+    return (        
+    <>
         <Container>
             <Header>
                 Please Choose Your Wallet:
-            <Icon onClick={onClick} />
+                <Icon onClick={onClick} />
             </Header>
+            {walletItems}
         </Container>
+
+            </>
     )
 }
 

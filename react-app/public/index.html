@@ -4,8 +4,18 @@
   <link rel="manifest" href="/site.webmanifest">
     <meta charset="utf-8" />
     <title>Crypto Club</title>
-    </head>
+    <script>
+        window.onload = function() 
+        {
+            //display loader on page load 
+            $('.loader').fadeOut();
+        }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
+    <div class="loader" >
+      <img src="{{asset('/Users/lokey/Dropbox/App Academy/Capstone/Crypto Club/react-app/public/spinner.gif')}}">
+    </div>
   </body>
 </html>

@@ -11,11 +11,9 @@ margin: 0 auto;
 margin-top: 50px;
 `
 
-
 const Test = () => {
     return (
         <Container>
-            <h1>Please Select Your Wallet:</h1>
             <WalletInput />
         </Container>
     )

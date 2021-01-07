@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components';
-
+import PlusIcon from '../../imgs/plusIcon.png';
 const Container = styled.div`
 width: 1200px;
 height: 700px;
 margin: 0 auto;
 border-radius: 20px;
-background-color: #F9F9F3;
+background-color: #191c28;
 `
 
 
@@ -15,6 +15,7 @@ const WalletInput = () => {
         <Container>
             <Header>
                 Please Choose Your Wallet:
+            <Icon />
             </Header>
         </Container>
     )
@@ -24,8 +25,23 @@ export default WalletInput
 
 
 const Header = styled.h2`
-margin: 0 auto;
+/* margin: 0 auto; */
 border-bottom: solid 1px #f0f0f5;
 display: flex;
-justify-content: center;
+justify-content: space-between;
+align-items: center;
+flex-direction: row;
+color: white;
+margin: 5px;
 `
+
+const Icon = styled.div`
+background-image: url(${PlusIcon});
+width: 30px;
+height: 30px;
+background-size: cover;
+/* background-color: white; */
+
+`
+
+

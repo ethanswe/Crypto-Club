@@ -2,7 +2,7 @@ import React from "react";
 import { logout } from "../../services/auth";
 
 const LogoutButton = ({authenticated, setAuthenticated}) => {
-  console.log(authenticated);
+  // console.log(authenticated);
   const onLogout = async (e) => {
     await logout();
     setAuthenticated(false);

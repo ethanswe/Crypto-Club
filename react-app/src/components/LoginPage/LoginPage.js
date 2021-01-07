@@ -25,7 +25,7 @@ bottom: 0;
 right: 0;
 `
 
-const LoginPage = ({ authenticated, setAuthenticated }) => {
+const LoginPage = ({ authenticated, setAuthenticated, setUser, user }) => {
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -58,7 +58,7 @@ const LoginPage = ({ authenticated, setAuthenticated }) => {
         <Container>
             <Wrapper>
                 <Photo />
-                <SideInput authenticated={authenticated} setAuthenticated={setAuthenticated} />
+                <SideInput authenticated={authenticated} setAuthenticated={setAuthenticated} user={user} setUser={setUser}/>
             </Wrapper>
         </Container>
     )

@@ -5,3 +5,22 @@ body {
     margin: 0;
 
 }
+
+/* #loading {
+    background: url('./imgs/spinner.gif') no-repeat center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+} */
+
+.particles {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}

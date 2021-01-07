@@ -10,11 +10,13 @@ import { authenticate } from "./services/auth";
 import LoginPage from './components/LoginPage/LoginPage';
 import WalletPage from './components/Wallet/WalletPage';
 import HomePage from './components/HomePage/HomePage';
+import NewWallet from './components/NewWallet/NewWallet';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
+  
   useEffect(() => {
     (async() => {
       const user = await authenticate();
@@ -46,6 +48,9 @@ function App() {
       </Route>
       <ProtectedRoute path="/wallet" exact={true} authenticated={authenticated}>
         <WalletPage/>
+      </ProtectedRoute>
+      <ProtectedRoute path="/new-wallet" exact={true} authenticated={authenticated}>
+        <NewWallet/>
       </ProtectedRoute>
     </BrowserRouter>
   );

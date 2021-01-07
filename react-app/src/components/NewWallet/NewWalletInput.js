@@ -43,11 +43,11 @@ const onNewWallet = async (e) => {
 		}
   }
   const updateWalletName = (e) => {
-    setWalletName(e.target.value);
+	setWalletName(e.target.value);
   };
     
     const updateBalance = (e) => {
-        setBalance(e.target.value);
+	setBalance(e.target.value);
   }
 
 

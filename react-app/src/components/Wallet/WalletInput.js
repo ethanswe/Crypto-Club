@@ -37,7 +37,8 @@ const WalletInput = ({ user }) => {
     }, []);
 
     const walletItems = wallets.map((wallet) => {
-        return <div key={wallet.id}>
+        const handleClick = () => history.push(`/wallet/${wallet.id}`)
+        return <div key={wallet.id} onClick={handleClick}>
                 {wallet.name}
             </div>
         

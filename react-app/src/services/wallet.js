@@ -1,4 +1,4 @@
-export const newWallet = async (name, balance) => {
+export const newWallet = async ({name, balance, user_id}) => {
   const response = await fetch("/api/wallet/create", {
     method: "POST",
     headers: {
@@ -7,6 +7,7 @@ export const newWallet = async (name, balance) => {
     body: JSON.stringify({
       name,
       balance,
+      user_id,
     }),
   });
   return await response.json();

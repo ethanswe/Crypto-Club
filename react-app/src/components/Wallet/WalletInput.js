@@ -15,7 +15,7 @@ const WalletInput = () => {
     const history = useHistory();
 
     const onClick = () => {
-        console.log('Im working')
+        // console.log('Im working')
         history.push('/new-wallet')
     }
 

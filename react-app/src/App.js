@@ -15,13 +15,17 @@ import NewWallet from './components/NewWallet/NewWallet';
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-
+  const [user, setUser] = useState(null);
   
+  console.log(authenticated);
+  console.log(user);
+
   useEffect(() => {
     (async() => {
-      const user = await authenticate();
-      if (!user.errors) {
+      const authUser = await authenticate();
+      if (!authUser.errors) {
         setAuthenticated(true);
+        setUser(authUser);
       }
       setLoaded(true);
     })();
@@ -38,19 +42,21 @@ function App() {
         <LoginPage
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
+          user={user}
+          setUser={setUser}
         />
       </Route>
       <Route path="/sign-up" exact={true}>
-        <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated}  user={user} setUser={setUser}/>
       </Route>
       <Route path='/' exact={true}>
         <HomePage />
       </Route>
       <ProtectedRoute path="/wallet" exact={true} authenticated={authenticated}>
-        <WalletPage/>
+        <WalletPage user={user} setUser={setUser}/>
       </ProtectedRoute>
       <ProtectedRoute path="/new-wallet" exact={true} authenticated={authenticated}>
-        <NewWallet/>
+        <NewWallet user={user} setUser={setUser}/>
       </ProtectedRoute>
     </BrowserRouter>
   );

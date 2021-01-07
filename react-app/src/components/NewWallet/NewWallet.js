@@ -11,10 +11,10 @@ margin: 0 auto;
 margin-top: 50px;
 `
 
-const NewWallet = () => {
+const NewWallet = ({user}) => {
     return (
         <Container>
-            <WalletInput />
+            <WalletInput user={user}/>
         </Container>
     )
 }

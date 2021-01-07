@@ -21,10 +21,10 @@ justify-content: center;
 margin-top: 150px;
 `
 
-const NewWalletInput = () => {
+const NewWalletInput = ({user}) => {
   const [walletName, setWalletName] = useState("");
-  const [balance, setBalance] = useState('')
-	const history = useHistory();
+  const [balance, setBalance] = useState('');
+  const history = useHistory();
 //   const onSignUp = async (e) => {
 //     e.preventDefault();
 //     if (password === repeatPassword) {
@@ -37,11 +37,11 @@ const NewWalletInput = () => {
 const onNewWallet = async (e) => {
 	e.preventDefault();
 	// eslint-disable-next-line no-restricted-globals
-		const wallet = await newWallet(walletName, balance);
+		const wallet = await newWallet({name: walletName, balance, user_id: user.id});
 		if (!wallet.errors) {
 			history.push('/wallet')
 		}
-    }
+  }
   const updateWalletName = (e) => {
     setWalletName(e.target.value);
   };

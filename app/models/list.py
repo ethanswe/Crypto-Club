@@ -1,8 +1,8 @@
-from .db import db, metadata
+from .db import db
 
-association_table = db.Table('association', metadata,
-    db.Column('list_id', db.Integer, db.ForeignKey('list.id')),
-    db.Column('coin_id', db.Integer, db.ForeignKey('coin.id'))
+association_table = db.Table('association', db.Model.metadata,
+    db.Column('list_id', db.Integer, db.ForeignKey('lists.id')),
+    db.Column('coin_id', db.Integer, db.ForeignKey('coins.id'))
 )
 
 class List(db.Model):
@@ -13,7 +13,7 @@ class List(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
   coins = db.relationship('Coin', secondary=association_table, lazy=True) # DONE
-  user = db.relationship('User', back_populates='lists', lazy=True)  # DONE
+  user = db.relationship('User', back_populates='list', lazy=True)  # DONE
 
   def to_dict(self):
     return {

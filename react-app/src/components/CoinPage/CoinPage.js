@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { getCoins } from '../../services/coin';
+import CoinItem  from './CoinItem';
 
 const CoinPage = () => {
-    const [btc, setBtc] = useState(null)
-    const [eth, setEth] = useState(null)
-    const [bch, setBch] = useState(null)
-    const [link, setLink] = useState(null)
-    const [ltc, setLtc] = useState(null)
-    const [xmr, setXmr] = useState(null)
-    const [grt, setGrt] = useState(null)
-    const [waves, setWaves] = useState(null)
+    const [coins, setCoins] = useState({});
 
-    const fetchCoins = async (str) => {
-        const data = await getCoins(str);
-        console.log(data);
-    }
+    const fetchCoins = async () => {
+        const data = await getCoins(['eth', 'bch', 'link', 'btc', 'ltc', 'xmr', 'grt', 'waves']);
+
+        setCoins(data);
+    };
+    
     useEffect(() => {
-        fetchCoins('btc');
-        fetchCoins('eth');
-        fetchCoins('bch');
-    }, [])
+        fetchCoins();
+    }, []);
+
+    let coinItems = Object.values(coins).map((coin, idx) => {
+        return (
+            <CoinItem coin={coin} />
+        );
+    });
+    
     return (
         <div>
-            
+            {coinItems}
         </div>
     )
-}
+};
+
 
 export default CoinPage

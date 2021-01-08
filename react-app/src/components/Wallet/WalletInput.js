@@ -54,8 +54,6 @@ const WalletInput = ({ user }) => {
         
     });
 
-    console.log(walletItems);
-
     return (        
     <>
         <Container>
@@ -63,7 +61,7 @@ const WalletInput = ({ user }) => {
                 Please Choose Your Wallet:
                 <Icon onClick={onClick} />
             </Header>
-            {walletItems}
+                {walletItems}
         </Container>
 
             </>
@@ -90,6 +88,9 @@ width: 30px;
 height: 30px;
 background-size: cover;
 /* background-color: white; */
+:hover{
+    opacity: 0.5;
+}
 `
 
 

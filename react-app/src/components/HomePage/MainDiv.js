@@ -28,7 +28,7 @@ export default MainDiv;
 
 // Styling
 const MainContainer = styled.div`
-background-color: red;
+background-color: #141414;
 width: 100vw;
 left: 0;
 height: 650px;
@@ -36,6 +36,7 @@ height: 650px;
 
 const Header = styled.h1`
 font-size: 40px;
+color: white;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -47,6 +48,7 @@ font-family: 'Cinzel', serif;
 const TextDiv = styled.div`
 /* background-color: black; */
 width: 600px;
+color: white;
 height: 450px;
 padding: 100px;
 margin-left: 150px;

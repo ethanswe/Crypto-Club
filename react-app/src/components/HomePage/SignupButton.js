@@ -23,12 +23,12 @@ const Button = styled.button`
   transition: color 150ms ease-in-out;
   text-decoration: none;
   background: #222;
-  height: 28px;
+  height: 40px;
   min-width: 80px;
   border: none;
   border-radius: 10px;
   color: #eee;
-  font-size: 15px;
+  font-size: 20px;
   position: relative;
   transition: 1s;
   -webkit-tap-highlight-color: transparent;

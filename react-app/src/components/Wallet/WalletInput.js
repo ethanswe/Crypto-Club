@@ -19,6 +19,12 @@ font-size: 20px;
 color: white;
 margin-left: 5px;
 margin-bottom: 25px;
+width: 400px;
+opacity:0.65;
+:hover{
+        opacity:1;
+        text-decoration: underline;
+}
 `
 
 const WalletInput = ({ user }) => {

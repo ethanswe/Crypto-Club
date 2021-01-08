@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getWallet } from '../../services/wallet'
 import { useParams } from 'react-router-dom';
+import { PortfolioNavigation } from '../PortfolioNavigation/PortfolioNavigation';
 
 const PortfolioPage = () => {
     const { wallet_id } = useParams();
@@ -18,6 +19,7 @@ const PortfolioPage = () => {
     
     return (
         <div>
+        <PortfolioNavigation />
             {/* {wallet.name} */}
             <h1>Portfolio</h1>
         </div>

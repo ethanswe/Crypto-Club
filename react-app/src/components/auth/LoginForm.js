@@ -52,14 +52,22 @@ margin-bottom: 30px;
 
 const Button = styled.button`
   border-color: black;
-  background-color: white;
-  border-radius: 25px;
-  color: black;
+  background-color: black;
   position: relative;
   overflow: hidden;
   z-index: 1;
   transition: color 150ms ease-in-out;
-  
+  text-decoration: none;
+  background: #222;
+  height: 28px;
+  min-width: 80px;
+  border: none;
+  border-radius: 10px;
+  color: #eee;
+  font-size: 15px;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
   &:after {
     content: '';
     position: absolute;

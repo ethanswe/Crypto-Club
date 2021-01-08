@@ -10,15 +10,16 @@ const CoinPage = () => {
     const [xmr, setXmr] = useState(null)
     const [grt, setGrt] = useState(null)
     const [waves, setWaves] = useState(null)
-
     const fetchCoins = async (str) => {
         const data = await getCoins(str);
         console.log(data);
     }
     useEffect(() => {
-        fetchCoins('btc');
+
         fetchCoins('eth');
         fetchCoins('bch');
+        setBtc(fetchCoins('btc'));
+        console.log(btc)
     }, [])
     return (
         <div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, useHistory } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/SignupPage/SignupPage";
 import NavBar from "./components/NavBar";
@@ -18,9 +18,12 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState(null);
+  const history = useHistory();
   
   console.log(authenticated);
   console.log(user);
+
+
 
   useEffect(() => {
     (async() => {
@@ -37,6 +40,7 @@ function App() {
     return null;
   }
 
+  
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>

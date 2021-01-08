@@ -3,6 +3,7 @@ import SignupBackground from '../../imgs/signupPage.jpg';
 import styled from 'styled-components';
 import Photo from './Photo';
 import SideInput from './SideInput';
+
 const SignupPage = ({ authenticated, setAuthenticated}) => {
     return (
         <Container>

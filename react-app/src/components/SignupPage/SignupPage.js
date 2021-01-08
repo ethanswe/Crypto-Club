@@ -21,13 +21,14 @@ export default SignupPage;
 
 const Wrapper = styled.div`
 background-image: url(${SignupBackground});
-width: 100%;
-height: 100%;
+width: 100vw;
+height: 100vh;
 background-position: center;
 background-size: cover;
 background-repeat: none;
 display: flex;
-margin-right: 200px;
+justify-content: center;
+align-items: center;
 `
 
 const Container = styled.div`

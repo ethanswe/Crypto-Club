@@ -1,5 +1,5 @@
 import React from 'react'
-import SignupBackground from '../../imgs/signupPage.jpg';
+import SignupBackground from '../../imgs/signupPage.jpeg';
 import styled from 'styled-components';
 import Photo from './Photo';
 import SideInput from './SideInput';
@@ -24,6 +24,7 @@ const Wrapper = styled.div`
 background-image: url(${SignupBackground});
 width: 100vw;
 height: 100vh;
+margin-left: 50px;
 background-position: center;
 background-size: cover;
 background-repeat: none;

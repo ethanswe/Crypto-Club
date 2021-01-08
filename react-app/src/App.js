@@ -12,7 +12,7 @@ import WalletPage from './components/Wallet/WalletPage';
 import HomePage from './components/HomePage/HomePage';
 import NewWallet from './components/NewWallet/NewWallet';
 import PortfolioPage from './components/PortfolioPage/PortfolioPage';
-
+import CoinPage from './components/CoinPage/CoinPage';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -59,6 +59,9 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute path="/new-wallet" exact={true} authenticated={authenticated}>
         <NewWallet user={user} setUser={setUser}/>
+      </ProtectedRoute>
+      <ProtectedRoute path="/coins" exact={true} authenticated={authenticated}>
+        <CoinPage user={user} setUser={setUser}/>
       </ProtectedRoute>
       <ProtectedRoute  exact={true} authenticated={authenticated} path="/wallet/:wallet_id">
         <PortfolioPage user={user}/>

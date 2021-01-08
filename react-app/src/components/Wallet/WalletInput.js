@@ -14,7 +14,11 @@ background-color: #191c28;
 `
 
 const Div = styled.div`
-background-color: white;
+/* background-color: white; */
+font-size: 20px;
+color: white;
+margin-left: 5px;
+margin-bottom: 25px;
 `
 
 const WalletInput = ({ user }) => {
@@ -38,9 +42,9 @@ const WalletInput = ({ user }) => {
 
     const walletItems = wallets.map((wallet) => {
         const handleClick = () => history.push(`/wallet/${wallet.id}`)
-        return <div key={wallet.id} onClick={handleClick}>
+        return <Div key={wallet.id} onClick={handleClick}>
                 {wallet.name}
-            </div>
+            </Div>
         
     });
 

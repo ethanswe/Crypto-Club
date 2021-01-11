@@ -5,7 +5,7 @@ import { PortfolioNavigation } from '../PortfolioNavigation/PortfolioNavigation'
 import  PortfolioGraph  from './PortfolioGraph';
 import WatchList from '../WatchList/WatchList';
 
-const PortfolioPage = ({ authenticated, setAuthenticated }) => {
+const PortfolioPage = ({ authenticated, setAuthenticated, user }) => {
     const { wallet_id } = useParams();
     const [ wallet, setWallet ] = useState(null)
     
@@ -17,11 +17,10 @@ const PortfolioPage = ({ authenticated, setAuthenticated }) => {
     useEffect(() => {
         fetchWallet();
     }, []);
-    console.log(wallet)
     
     return (
         <div>
-        <PortfolioNavigation authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+        <PortfolioNavigation user={user} authenticated={authenticated} setAuthenticated={setAuthenticated} wallet={wallet}/>
             {/* {wallet.name} */}
             <PortfolioGraph />
             <WatchList />

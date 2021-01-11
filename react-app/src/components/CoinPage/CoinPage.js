@@ -4,7 +4,7 @@ import CoinItem  from './CoinItem';
 
 const CoinPage = () => {
     const [coins, setCoins] = useState({});
-
+    console.log(coins)
     const fetchCoins = async () => {
         const data = await getCoins(['eth', 'bch', 'link', 'btc', 'ltc', 'xmr', 'grt', 'waves']);
 

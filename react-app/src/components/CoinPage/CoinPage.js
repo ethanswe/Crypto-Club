@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getCoins } from '../../services/coin';
 import CoinItem  from './CoinItem';
 
-const CoinPage = () => {
+const CoinPage = ({ user}) => {
     const [coins, setCoins] = useState({});
     console.log(coins)
     const fetchCoins = async () => {
@@ -17,7 +17,7 @@ const CoinPage = () => {
 
     let coinItems = Object.values(coins).map((coin, idx) => {
         return (
-            <CoinItem coin={coin} />
+            <CoinItem coin={coin} user={user}/>
         );
     });
     

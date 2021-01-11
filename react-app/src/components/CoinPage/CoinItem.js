@@ -1,30 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PlusIconImg from '../../imgs/plus.png';
 import MinusIconImg from '../../imgs/minus.png';
+import { getWallet } from '../../services/wallet'
 
-const CoinItem = ({ coin }) => {
+const CoinItem = ({ coin, user}) => {
+    const [balance, setBalance] = useState(null);
     const {bid, ask, volume, high, low, pairs} = coin;
+    const plusOnClick = async (e) => {
+
+    }
+    const { wallet_id } = useParams();
+
+    const fetchWallet = async () => {
+        const data = await getWallet({ wallet_id })
+    }
+    
     return (
     <MainContainer>
         <Container>
             <Text>
-                    Bid: {bid}
+                    Bid: ${bid}
             </Text>
             <Text>
-                    Ask: {ask}
+                    Ask: ${ask}
             </Text>
             <Text>
                     24H Volume: {volume}
             </Text>
             <Text>
-                    24H High: {high}
+                    24H High: ${high}
             </Text>
             <Text>
-                    24H Low: {low}
+                    24H Low: ${low}
+                </Text>
+            <Text>
+                Your Available Cash Balance: 
             </Text>
             <Text>
-                    <PlusIcon />
+                Your Current Coin Balance: 
+            </Text>
+            <Text>
+                    <PlusIcon onClick={plusOnClick}/>
                     <MinusIcon />
             </Text>
         </Container>

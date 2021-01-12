@@ -1,5 +1,5 @@
-export const makePurchase = async ({type, price, quantity, coin_id, wallet_id}) => {
-  const response = await fetch("/api/wallet/create", {
+export const makePurchase = async ({type, price, quantity, symbol, wallet_id}) => {
+  const response = await fetch("/api/transaction/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -8,7 +8,7 @@ export const makePurchase = async ({type, price, quantity, coin_id, wallet_id}) 
       type,
       price,
       quantity,
-      coin_id,
+      symbol,
       wallet_id,
     }),
   });

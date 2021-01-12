@@ -29,6 +29,7 @@ const CoinPage = ({ user, wallet }) => {
     console.log(amount);
     const fetchCoins = async () => {
         const data = await getCoins(CRYPTO_SYMBOLS);
+        console.log(data)
         setCoins(data.coins);
     };
     
@@ -40,7 +41,7 @@ const CoinPage = ({ user, wallet }) => {
         let symbol = CRYPTO_SYMBOLS[idx];
 
         return (
-            <CoinItem symbol={symbol} coin={coin} user={user} amount={amount[symbol.toUpperCase()]}/>
+            <CoinItem key={idx} wallet={wallet} symbol={symbol} coin={coin} user={user} amount={amount[symbol.toUpperCase()]}/>
         );
     });
     

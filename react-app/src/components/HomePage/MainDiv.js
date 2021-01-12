@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import SignUpButton from './SignupButton';
-
+import Video from './Video';
 
 const MainDiv = () => {
     return (
@@ -12,6 +12,7 @@ const MainDiv = () => {
                     <IntroText>We believe that the future history of financial instutions will include Blockchain technology and Bitcoin. What are you waiting for? Be a part of history. Trade now.</IntroText>
                 <SignUpButton />
                 </TextDiv>
+                <Video />
         </MainContainer>
         <BottomDiv />    
         </>

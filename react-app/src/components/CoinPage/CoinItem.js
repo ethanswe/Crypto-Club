@@ -21,10 +21,10 @@ const CoinItem = ({ coin, user}) => {
     <MainContainer>
         <Container>
             <Text>
-                    Bid: ${bid}
+                    Ask: ${ask}
             </Text>
             <Text>
-                    Ask: ${ask}
+                    Bid: ${bid}
             </Text>
             <Text>
                     24H Volume: {volume}

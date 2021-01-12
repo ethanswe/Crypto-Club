@@ -27,12 +27,22 @@ const cryptoIcons = {
 
 const CoinItem = ({ coin, user, symbol, amount }) => {
     const [balance, setBalance] = useState(null);
+    const [buyForm, setBuyForm] = useState(false);
     const {bid, ask, volume, high, low, pairs} = coin;
-    const plusOnClick = async (e) => {
-
+    const buyFormFunc = () => {
+        setBuyForm(true)
+        console.log(buyForm)
+        if (buyForm === true) {
+            return (
+                <div>
+                    <form>
+                        <label>Buy?</label>
+                    </form>
+                </div>
+            )
+        }
     }
     const { wallet_id } = useParams();
-    console.log(amount)
     const fetchWallet = async () => {
         const data = await getWallet({ wallet_id })
     }
@@ -40,7 +50,7 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
     <MainContainer>
             <Container>
                 <Text>
-                    {symbol}
+                    {symbol.toUpperCase()}
                     <TestIcon image={cryptoIcons[symbol]}/>
                 </Text>
             <Text>
@@ -59,13 +69,10 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
                     24H Low: ${low}
                 </Text>
             <Text>
-                Your Available Cash Balance: 
+                Your Current Coin Balance: {amount ? amount : 0}
             </Text>
             <Text>
-                Your Current Coin Balance: {amount}
-            </Text>
-            <Text>
-                    <PlusIcon onClick={plusOnClick}/>
+                    <PlusIcon onClick={buyFormFunc}/>
                     <MinusIcon />
             </Text>
         </Container>
@@ -79,7 +86,7 @@ export default CoinItem;
 const Container = styled.div`
 width: 350px;
 height: 250px;
-background-color: #141414;
+background-color: gray;
 color: white;
 border-radius: 25px;
 margin: 5px;
@@ -123,8 +130,8 @@ background-size: cover;
 
 const TestIcon = styled.div`
 background-image: url(${props => props.image});
-width: 30px;
-height: 30px;
+width: 70px;
+height: 50px;
 background-size: cover;
 /* background-color: white; */
 :hover{

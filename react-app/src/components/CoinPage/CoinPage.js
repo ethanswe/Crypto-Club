@@ -8,6 +8,9 @@ const CoinPage = ({ user, wallet }) => {
     const [coins, setCoins] = useState([]);
     const amount = {};
     wallet.transactions.forEach(tx => {
+        if (wallet.transactions === undefined) {
+            amount[tx.symbol] = 0;
+        }
         if (!(tx.symbol in amount)) {
             amount[tx.symbol] = 0;
         }

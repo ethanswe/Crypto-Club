@@ -29,23 +29,25 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
     const [balance, setBalance] = useState(null);
     const [buyForm, setBuyForm] = useState(false);
     const {bid, ask, volume, high, low, pairs} = coin;
-    const buyFormFunc = () => {
-        setBuyForm(true)
-        console.log(buyForm)
-        if (buyForm === true) {
-            return (
-                <div>
-                    <form>
-                        <label>Buy?</label>
-                    </form>
-                </div>
-            )
+
+    const buyState = () => {
+        if (buyForm === false) {
+            setBuyForm(true)
+        } else {
+            setBuyForm(false)
         }
     }
     const { wallet_id } = useParams();
     const fetchWallet = async () => {
         const data = await getWallet({ wallet_id })
     }
+
+    const onBuySubmit = (e) => {
+        e.preventDefault();
+        setBuyForm(false);
+        return alert('Your Order Has Been Submitted')
+    }
+
     return (
     <MainContainer>
             <Container>
@@ -72,9 +74,21 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
                 Your Current Coin Balance: {amount ? amount : 0}
             </Text>
             <Text>
-                    <PlusIcon onClick={buyFormFunc}/>
+                    <PlusIcon onClick={buyState}/>
                     <MinusIcon />
-            </Text>
+                </Text>
+                <Text>
+                    {buyForm ? 
+                    <div>
+                        <form onSubmit={onBuySubmit}>
+                                <label>Buy {symbol.toUpperCase()}? </label>
+                                <input placeholder={'Amount to  Purchase'}></input>
+                                <input placeholder={'Purchase Price?'}></input>
+                                <button>Purchase</button>
+                        </form>
+                    </div>
+                    : null}
+                </Text>
         </Container>
     </MainContainer>
     )

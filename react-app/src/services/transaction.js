@@ -5,9 +5,11 @@ export const makePurchase = async ({type, price, quantity, coin_id, wallet_id}) 
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name,
-      balance,
-      user_id,
+      type,
+      price,
+      quantity,
+      coin_id,
+      wallet_id,
     }),
   });
   return await response.json();

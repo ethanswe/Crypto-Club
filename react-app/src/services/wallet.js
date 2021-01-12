@@ -28,7 +28,9 @@ export default newWallet;
 
 
 export const getWallet = async ({ wallet_id }) => {
-  // console.log('get',`api/wallet/${wallet_id}`);
+  if (wallet_id === undefined) {
+    wallet_id = '';
+  }
   const response = await fetch(`/api/wallet/${wallet_id}`, {
     method: "GET",
     headers: {

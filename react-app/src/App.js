@@ -19,7 +19,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState(null);
   const history = useHistory();
-  
+  const [ wallet, setWallet ] = useState(null)
   console.log(authenticated);
   console.log(user);
 
@@ -65,10 +65,10 @@ function App() {
         <NewWallet user={user} setUser={setUser}/>
       </ProtectedRoute>
       <ProtectedRoute path="/coins" exact={true} authenticated={authenticated}>
-        <CoinPage user={user} setUser={setUser}/>
+        <CoinPage user={user} setUser={setUser} wallet={wallet} />
       </ProtectedRoute>
       <ProtectedRoute  exact={true} authenticated={authenticated} path="/wallet/:wallet_id">
-        <PortfolioPage user={user}/>
+        <PortfolioPage user={user} wallet={wallet} setWallet={setWallet}/>
       </ProtectedRoute>
     </BrowserRouter>
   );

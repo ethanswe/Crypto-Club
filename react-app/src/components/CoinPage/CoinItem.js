@@ -3,23 +3,47 @@ import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PlusIconImg from '../../imgs/plus.png';
 import MinusIconImg from '../../imgs/minus.png';
+import Ethereum from '../../imgs/ethereum.png';
+import Bitcoin from '../../imgs/bitcoin.png';
+import Chainlink from '../../imgs/chainlink.png';
+import BitcoinCash from '../../imgs/bitcoinCash.png';
+import Graph from '../../imgs/graph.png';
+import Litecoin from '../../imgs/litecoin.png';
+import Monero from '../../imgs/monero.png';
+import Waves from '../../imgs/waves.png';
 import { getWallet } from '../../services/wallet'
 
-const CoinItem = ({ coin, user}) => {
+const cryptoIcons = {
+    'eth': Ethereum,
+    'grt': Graph,
+    'link': Chainlink,
+    'waves': Waves,
+    'ltc': Litecoin,
+    'btc': Bitcoin,
+    'xmr': Monero,
+    'bch': BitcoinCash
+};
+
+
+const CoinItem = ({ coin, user, symbol, amount }) => {
     const [balance, setBalance] = useState(null);
     const {bid, ask, volume, high, low, pairs} = coin;
     const plusOnClick = async (e) => {
 
     }
     const { wallet_id } = useParams();
-
+    console.log(coin)
     const fetchWallet = async () => {
         const data = await getWallet({ wallet_id })
     }
     
     return (
     <MainContainer>
-        <Container>
+            <Container>
+                <Text>
+                    {symbol}
+                    <TestIcon image={cryptoIcons[symbol]}/>
+                </Text>
             <Text>
                     Ask: ${ask}
             </Text>
@@ -39,7 +63,7 @@ const CoinItem = ({ coin, user}) => {
                 Your Available Cash Balance: 
             </Text>
             <Text>
-                Your Current Coin Balance: 
+                Your Current Coin Balance: {amount}
             </Text>
             <Text>
                     <PlusIcon onClick={plusOnClick}/>
@@ -76,6 +100,7 @@ width: 1000px;
 `
 
 
+
 const PlusIcon = styled.div`
 background-image: url(${PlusIconImg});
 width: 30px;
@@ -90,6 +115,17 @@ const MinusIcon = styled.div`
 background-image: url(${MinusIconImg});
 width: 25px;
 height: 25px;
+background-size: cover;
+/* background-color: white; */
+:hover{
+    opacity: 0.5;
+}
+`
+
+const TestIcon = styled.div`
+background-image: url(${props => props.image});
+width: 30px;
+height: 30px;
 background-size: cover;
 /* background-color: white; */
 :hover{

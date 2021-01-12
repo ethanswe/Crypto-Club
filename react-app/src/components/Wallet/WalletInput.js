@@ -30,7 +30,7 @@ opacity:0.65;
 const WalletInput = ({ user }) => {
     const history = useHistory();
     const [wallets, setWallets] = useState([]);
-
+    console.log(wallets)
     const onClick = () => {
         // console.log('Im working')
         history.push('/new-wallet')

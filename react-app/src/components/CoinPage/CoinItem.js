@@ -12,7 +12,7 @@ import Litecoin from '../../imgs/litecoin.png';
 import Monero from '../../imgs/monero.png';
 import Waves from '../../imgs/waves.png';
 import { getWallet } from '../../services/wallet'
-
+import { makePurchase } from '../../services/transaction';
 const cryptoIcons = {
     'eth': Ethereum,
     'grt': Graph,
@@ -26,9 +26,10 @@ const cryptoIcons = {
 
 
 const CoinItem = ({ coin, user, symbol, amount }) => {
-    const [balance, setBalance] = useState(null);
     const [buyForm, setBuyForm] = useState(false);
-    const {bid, ask, volume, high, low, pairs} = coin;
+    const {bid, ask, volume, high, low} = coin;
+    const [quantity, setQuantity] = useState(null);
+    const [price, setPrice] = useState(null);
 
     const buyState = () => {
         if (buyForm === false) {
@@ -44,10 +45,28 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
 
     const onBuySubmit = (e) => {
         e.preventDefault();
-        setBuyForm(false);
-        return alert('Your Order Has Been Submitted')
+        let type = (purchaseAmount * purchasePrice)
+        const purchase = makePurchase(type, price, quantity, coin_id, wallet_id)
+        if (!purchase.error) {
+            setBuyForm(false);
+            return alert('Your Order Has Been Submitted')
+            setPrice(null);
+            setQuantity(null);
+        }
+
     }
 
+    const updatePurchasePrice = (e) => {
+        setPrice(e.target.value)
+    }
+    const updatePurchaseAmount = (e) => {
+        setQuantity(e.target.value)
+    }
+
+
+    const submitPurchase = (e) => {
+
+    }
     return (
     <MainContainer>
             <Container>
@@ -81,9 +100,19 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
                     {buyForm ? 
                     <div>
                         <form onSubmit={onBuySubmit}>
-                                <label>Buy {symbol.toUpperCase()}? </label>
-                                <input placeholder={'Amount to  Purchase'}></input>
-                                <input placeholder={'Purchase Price?'}></input>
+                                <label>
+                                    Buy {symbol.toUpperCase()}?
+                                </label>
+                                <input
+                                    onChange={updatePurchaseAmount}
+                                    value="quantity"
+                                    placeholder={'Amount to  Purchase'}
+                                />
+                                <input
+                                    onChange={updatePurchasePrice}
+                                    value="price"
+                                    placeholder={'Purchase Price?'}
+                                />
                                 <button>Purchase</button>
                         </form>
                     </div>

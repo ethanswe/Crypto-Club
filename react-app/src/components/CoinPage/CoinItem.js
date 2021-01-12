@@ -67,6 +67,18 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
         }
 
     }
+    const onSellSubmit = async (e) => {
+        e.preventDefault();
+        let type = (quantity * price);
+        const sell = await makeSale({type, price, quantity, symbol, wallet_id})
+        console.log(sell);
+        if (!sell.error) {
+            setSellForm(false);
+            setQuantity(0);
+            return alert('Your Order Has Been Submitted')
+        }
+
+    }
 
     const updateAmount = (e) => {
         setQuantity(e.target.value)
@@ -124,7 +136,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                 <Text>
                     {sellForm ? 
                         <div>
-                            <form>
+                            <form onSubmit={onSellSubmit}>
                                 <label>
                                     Sell {symbol.toUpperCase()}?
                                 </label>

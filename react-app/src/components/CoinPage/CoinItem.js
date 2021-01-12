@@ -25,11 +25,13 @@ const cryptoIcons = {
 };
 
 
-const CoinItem = ({ coin, user, symbol, amount }) => {
+const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const [buyForm, setBuyForm] = useState(false);
     const {bid, ask, volume, high, low} = coin;
-    const [quantity, setQuantity] = useState(null);
-    const [price, setPrice] = useState(null);
+    const [quantity, setQuantity] = useState(0);
+    console.log(coin)
+    const wallet_id = wallet.id;
+    const price = coin.ask;
 
     const buyState = () => {
         if (buyForm === false) {
@@ -38,35 +40,28 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
             setBuyForm(false)
         }
     }
-    const { wallet_id } = useParams();
     const fetchWallet = async () => {
         const data = await getWallet({ wallet_id })
     }
 
-    const onBuySubmit = (e) => {
+    const onBuySubmit = async (e) => {
         e.preventDefault();
-        let type = (purchaseAmount * purchasePrice)
-        const purchase = makePurchase(type, price, quantity, coin_id, wallet_id)
+        let type = (quantity * price) * -1;
+        const purchase = await makePurchase({type, price, quantity, symbol, wallet_id})
+        console.log(purchase);
         if (!purchase.error) {
             setBuyForm(false);
             return alert('Your Order Has Been Submitted')
-            setPrice(null);
             setQuantity(null);
         }
 
     }
 
-    const updatePurchasePrice = (e) => {
-        setPrice(e.target.value)
-    }
     const updatePurchaseAmount = (e) => {
         setQuantity(e.target.value)
     }
 
 
-    const submitPurchase = (e) => {
-
-    }
     return (
     <MainContainer>
             <Container>
@@ -105,14 +100,11 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
                                 </label>
                                 <input
                                     onChange={updatePurchaseAmount}
-                                    value="quantity"
+                                    value={quantity}
+                                    type="number"
                                     placeholder={'Amount to  Purchase'}
                                 />
-                                <input
-                                    onChange={updatePurchasePrice}
-                                    value="price"
-                                    placeholder={'Purchase Price?'}
-                                />
+
                                 <button>Purchase</button>
                         </form>
                     </div>

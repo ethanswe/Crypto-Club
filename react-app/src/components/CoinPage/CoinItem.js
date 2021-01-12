@@ -12,7 +12,8 @@ import Litecoin from '../../imgs/litecoin.png';
 import Monero from '../../imgs/monero.png';
 import Waves from '../../imgs/waves.png';
 import { getWallet } from '../../services/wallet'
-import { makePurchase } from '../../services/transaction';
+import { makePurchase, makeSale } from '../../services/transaction';
+
 const cryptoIcons = {
     'eth': Ethereum,
     'grt': Graph,
@@ -27,6 +28,7 @@ const cryptoIcons = {
 
 const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const [buyForm, setBuyForm] = useState(false);
+    const [sellForm, setSellForm] = useState(false);
     const {bid, ask, volume, high, low} = coin;
     const [quantity, setQuantity] = useState(0);
     console.log(coin)
@@ -40,6 +42,15 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
             setBuyForm(false)
         }
     }
+
+    const sellState = () => {
+        if (sellForm === false) {
+            setSellForm(true);
+        } else {
+            setSellForm(false);
+        }
+    }
+
     const fetchWallet = async () => {
         const data = await getWallet({ wallet_id })
     }
@@ -51,13 +62,13 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
         console.log(purchase);
         if (!purchase.error) {
             setBuyForm(false);
+            setQuantity(0);
             return alert('Your Order Has Been Submitted')
-            setQuantity(null);
         }
 
     }
 
-    const updatePurchaseAmount = (e) => {
+    const updateAmount = (e) => {
         setQuantity(e.target.value)
     }
 
@@ -89,7 +100,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
             </Text>
             <Text>
                     <PlusIcon onClick={buyState}/>
-                    <MinusIcon />
+                    <MinusIcon onClick={sellState}/>
                 </Text>
                 <Text>
                     {buyForm ? 
@@ -99,16 +110,34 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                                     Buy {symbol.toUpperCase()}?
                                 </label>
                                 <input
-                                    onChange={updatePurchaseAmount}
+                                    onChange={updateAmount}
                                     value={quantity}
                                     type="number"
-                                    placeholder={'Amount to  Purchase'}
+                                    placeholder={'Purchase Amount'}
                                 />
 
                                 <button>Purchase</button>
                         </form>
                     </div>
                     : null}
+                </Text>
+                <Text>
+                    {sellForm ? 
+                        <div>
+                            <form>
+                                <label>
+                                    Sell {symbol.toUpperCase()}?
+                                </label>
+                                <input
+                                    onChange={updateAmount}
+                                    value={quantity}
+                                    type="number"
+                                    placeholder={'Sale Amount'}
+                                />
+                                <button>Sell</button>
+                            </form>
+                    </div>
+                : null }
                 </Text>
         </Container>
     </MainContainer>

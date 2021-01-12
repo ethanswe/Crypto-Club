@@ -20,6 +20,7 @@ class Transaction(db.Model):
         "id": self.id,
         "type": self.type,
         "coin_id": self.coin_id,
+        "symbol": self.coin.symbol,
         "price": self.price,
         "quantity": self.quantity,
         "wallet_id": self.wallet_id,

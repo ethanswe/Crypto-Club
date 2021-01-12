@@ -15,7 +15,14 @@ def seed_coins():
     graph = Coin(name='The Graph', symbol='GRT')
     waves = Coin(name='Waves', symbol='WAVES')
     
-    db.session.add(bitcoin, ethereum, bitcoincash, chainlink, litecoin, monero, graph, waves)
+    db.session.add(bitcoin)
+    db.session.add(ethereum)
+    db.session.add(bitcoincash)
+    db.session.add(chainlink)
+    db.session.add(litecoin)
+    db.session.add(monero)
+    db.session.add(graph)
+    db.session.add(waves)
 
     db.session.commit()
 

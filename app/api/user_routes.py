@@ -17,3 +17,12 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:user_id>/wallets', methods=['GET'])
+@login_required
+def get_wallets(user_id):
+    # get from the db the user with the is user id
+    user = User.query.get(user_id)
+    return { "wallets": [ w.to_dict() for w in user.wallets ] }
+

@@ -13,17 +13,22 @@ import HomePage from './components/HomePage/HomePage';
 import NewWallet from './components/NewWallet/NewWallet';
 import PortfolioPage from './components/PortfolioPage/PortfolioPage';
 import CoinPage from './components/CoinPage/CoinPage';
+import { getWallet } from '../src/services/wallet';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState(null);
   const history = useHistory();
-  
+  const [ wallet, setWallet ] = useState(null)
   console.log(authenticated);
   console.log(user);
 
 
+    const fetchWallet = async () => {
+        const data = await getWallet({});
+        setWallet(data);
+    };
 
   useEffect(() => {
     (async() => {
@@ -31,6 +36,7 @@ function App() {
       if (!authUser.errors) {
         setAuthenticated(true);
         setUser(authUser);
+        await fetchWallet()
       }
       setLoaded(true);
     })();
@@ -65,10 +71,10 @@ function App() {
         <NewWallet user={user} setUser={setUser}/>
       </ProtectedRoute>
       <ProtectedRoute path="/coins" exact={true} authenticated={authenticated}>
-        <CoinPage user={user} setUser={setUser}/>
+        {wallet ? <CoinPage user={user} setUser={setUser} wallet={wallet} /> : "Loading" }
       </ProtectedRoute>
       <ProtectedRoute  exact={true} authenticated={authenticated} path="/wallet/:wallet_id">
-        <PortfolioPage user={user}/>
+        <PortfolioPage user={user} wallet={wallet} setWallet={setWallet}/>
       </ProtectedRoute>
     </BrowserRouter>
   );

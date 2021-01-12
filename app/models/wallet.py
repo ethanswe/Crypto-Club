@@ -17,4 +17,9 @@ class Wallet(db.Model):
         "id": self.id,
         "user_id": self.user_id,
         "balance": self.balance,
+        "name": self.name,
+        "transactions": [ tx.to_dict() for tx in self.transactions ],
     }
+
+  def __repr__(self):
+        return '<Wallet %r>' % self.name

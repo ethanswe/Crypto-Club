@@ -1,10 +1,15 @@
 import React from 'react'
 import styled from 'styled-components';
+// import CanvasJS from 'canvasjs';
+// import CanvasJSReact from "./canvasjs.react";
+// var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const PortfolioGraph = () => {
+
     return (
         <PortfolioGraphDiv>
-            
+
+
         </PortfolioGraphDiv>
     )
 }

@@ -13,6 +13,8 @@ import Monero from '../../imgs/monero.png';
 import Waves from '../../imgs/waves.png';
 import { getWallet } from '../../services/wallet'
 import { makePurchase, makeSale } from '../../services/transaction';
+import AddToList from '../../imgs/addToList.png';
+
 
 const cryptoIcons = {
     'eth': Ethereum,
@@ -84,13 +86,16 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
         setQuantity(e.target.value)
     }
 
-
+    const addCryptoToList = (e) => {
+        console.log('working')
+    }
     return (
     <MainContainer>
             <Container>
                 <Text>
                     {symbol.toUpperCase()}
-                    <TestIcon image={cryptoIcons[symbol]}/>
+                    <TestIcon image={cryptoIcons[symbol]} />
+                    <ListIcon onClick={addCryptoToList}/>
                 </Text>
             <Text>
                     Ask: ${ask}
@@ -210,6 +215,16 @@ width: 70px;
 height: 50px;
 background-size: cover;
 /* background-color: white; */
+:hover{
+    opacity: 0.5;
+}
+`
+
+const ListIcon = styled.div`
+background-image: url(${AddToList});
+width: 30px;
+height: 30px;
+background-size: cover;
 :hover{
     opacity: 0.5;
 }

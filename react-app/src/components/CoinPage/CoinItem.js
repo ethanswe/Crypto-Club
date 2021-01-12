@@ -32,11 +32,10 @@ const CoinItem = ({ coin, user, symbol, amount }) => {
 
     }
     const { wallet_id } = useParams();
-    console.log(coin)
+    console.log(amount)
     const fetchWallet = async () => {
         const data = await getWallet({ wallet_id })
     }
-    
     return (
     <MainContainer>
             <Container>

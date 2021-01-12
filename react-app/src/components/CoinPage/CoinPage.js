@@ -12,6 +12,10 @@ const CoinPage = ({ user, wallet }) => {
             amount[tx.symbol] = 0;
         }
 
+        if (amount[tx.symbol] === undefined) {
+            amount[tx.symbol] = 0;
+        }
+
         if (tx.type < 0) {
             amount[tx.symbol] += tx.quantity
             
@@ -22,7 +26,6 @@ const CoinPage = ({ user, wallet }) => {
     console.log(amount);
     const fetchCoins = async () => {
         const data = await getCoins(CRYPTO_SYMBOLS);
-        console.log(data)
         setCoins(data.coins);
     };
     

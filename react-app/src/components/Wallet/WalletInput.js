@@ -10,7 +10,7 @@ import Litecoin from '../../imgs/litecoin.png'
 import SVG from '../../imgs/bitcoin-coin.svg'
 const Container = styled.div`
 width: 1200px;
-height: 700px;
+height: 400px;
 margin: 0 auto;
 border-radius: 20px;
 background-color: #191c28;

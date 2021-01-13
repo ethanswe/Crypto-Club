@@ -8,9 +8,9 @@ export const PortfolioNavigation = ({ authenticated, setAuthenticated }) => {
     return (
         <NavBar>
             <LogoutButton authenticated={authenticated} setAuthenticated={setAuthenticated} />
-            <NavLink to="/wallet/:wallet_id" exact={true} activeClassName="active">
+            <NavLink to="/wallet" exact={true} activeClassName="active">
                 <Buttons>
-                    Portfolio
+                    Wallets
                 </Buttons>
             </NavLink>
             <NavLink to='/coins' exact={true} activeClassName="active">

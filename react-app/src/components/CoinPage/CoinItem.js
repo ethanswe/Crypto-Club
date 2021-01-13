@@ -140,7 +140,21 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                         24H Low: ${low}
                 </Text>
                 <Text>
-                        24H Change: ${change}
+                            {(change > 0) ? 
+                                <>
+                                        24H Change: 
+                                    <PositiveDailyChange>
+                                        ${change}
+                                    </PositiveDailyChange>
+                                </>
+                                : 
+                                <>
+                                    24H Change: 
+                                    <NegativeDailyChange>
+                                        ${change}
+                                    </NegativeDailyChange>
+                                </>
+                        }
                 </Text>
                 <Text>
                     Your Current Coin Balance: {amount ? amount : 0}
@@ -271,7 +285,7 @@ background-size: cover;
 
 
 const PositiveDailyChange = styled.div`
-color: green;
+color: #90ee90;
 `
 
 const NegativeDailyChange = styled.div`

@@ -1,11 +1,12 @@
 import React, { useState } from "react"; 
 import ReactPlayer from "react-player";
-import HomepageVideo from '../../video/homepageVid.mp4';
+import HomepageVideo from '../../video/mainHomepageVid.mp4';
 import styled from 'styled-components';
-
+import HomeText from './HomeText';
 const Video = () => {
 
     return (
+        <>
         <VideoDiv className='player-wrapper'>
             <ReactPlayer
             className='react-player fixed-bottom'
@@ -17,6 +18,8 @@ const Video = () => {
 
             />
         </VideoDiv>
+        <HomeText />
+        </>
     )
 }
 
@@ -24,6 +27,9 @@ export default Video;
 
 
 const VideoDiv = styled.div`
-max-width: 800px;
-max-height: 450px;
+max-width: 1920px;
+max-height: 1050px;
+position: relative;
+background-image: cover;
+z-index: -10;
 `

@@ -5,7 +5,7 @@ import SignUpButton from './SignupButton';
 const HomeText = () => {
     return (
         <Container>
-            <h1>Finiancial Freedom Is Measured In Binary Code: Bitcoin.</h1>    
+            <Header>Finiancial Freedom Is Measured In Binary Code: Bitcoin.</Header>    
             <h2>We believe that the future history of financial instutions will include Blockchain technology and Bitcoin. What are you waiting for? Be a part of history: Trade now.</h2>
             <SignUpButton />
         </Container>
@@ -33,6 +33,7 @@ const IntroText = styled.h2`
 `
 
 const Container = styled.div`
+z-index: 10;
 padding: 1rem;
 padding-right: 100px;
 h1{

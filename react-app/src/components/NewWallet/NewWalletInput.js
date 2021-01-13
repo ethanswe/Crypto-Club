@@ -132,7 +132,7 @@ const onNewWallet = async (e) => {
           value={balance}
         ></Input>
       </div>
-      <button type="submit">Create New Wallet</button>
+      <Button type="submit">Create New Wallet</Button>
     </Form>
     </Container>
     </>
@@ -163,7 +163,7 @@ width: 380px;
 height: 34px;
 font-size: 16px;
 :focus{
-  border-color: black;
+  border-color: red;
 }
 `
 
@@ -175,4 +175,46 @@ flex-direction: column;
 align-items: center;
 color: white;
 margin: 0 auto;
+`
+
+const Button = styled.button`
+  border-color: black;
+  margin: 2px;
+  margin-right: 2px;
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms ease-in-out;
+  text-decoration: none;
+  background: white;
+  color: black;
+  height: 28px;
+  min-width: 80px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+  }
+  
+  &:hover {
+    color: #fff;
+    &:after {
+      width: 110%;
+    }
+  }
 `

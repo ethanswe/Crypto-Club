@@ -14,7 +14,7 @@ import Waves from '../../imgs/waves.png';
 import { getWallet } from '../../services/wallet'
 import { makePurchase, makeSale } from '../../services/transaction';
 import AddToList from '../../imgs/addToList.png';
-
+import { makeList } from '../../services/list';
 
 const cryptoIcons = {
     'eth': Ethereum,
@@ -36,7 +36,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     console.log(coin)
     const wallet_id = wallet.id;
     const price = coin.ask;
-
+    const user_id = user.id;
     // This is to show the daily change, if it's positive, the daily change will have green text, if it's negative it will have red text
     // const change = () => {
     //     let dailyChange = ((bid + ask) / 2) - open;
@@ -68,6 +68,15 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
             setSellForm(true);
         } else {
             setSellForm(false);
+        }
+    }
+
+    const addToList = async (e) => {
+        e.preventDefault();
+        const addedCrypto = await makeList({ symbol, user_id })
+        console.log(addedCrypto);
+        if (!addedCrypto.error) {
+            return alert('Successfully added to your list! ')
         }
     }
 
@@ -104,16 +113,14 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
         setQuantity(e.target.value)
     }
 
-    const addCryptoToList = (e) => {
-        console.log('working')
-    }
+
     return (
     <MainContainer>
             <Container>
                 <Text>
                     {symbol.toUpperCase()}
                     <TestIcon image={cryptoIcons[symbol]} />
-                    <ListIcon onClick={addCryptoToList}/>
+                    <ListIcon onClick={addToList}/>
                 </Text>
             <Text>
                     Ask: ${ask}

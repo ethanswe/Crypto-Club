@@ -11,8 +11,9 @@ list_routes = Blueprint('lists', __name__)
 def post_list():
     data = request.json
     coin = Coin.query.filter_by(symbol=data['symbol'].upper()).one()
+    coin_id = coin
     list = List(
-        coin_id=coin,
+        coin_id=coin_id,
         user_id=data['user_id'])
     # db.session.add(list)
     # db.session.commit()

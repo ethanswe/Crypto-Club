@@ -115,7 +115,7 @@ const onNewWallet = async (e) => {
             </Header>
              <Form onSubmit={onNewWallet}>
       <div>
-        <label>Wallet Name</label>
+        <label>Wallet Name:</label>
         <Input
           type="text"
           name="name"
@@ -124,7 +124,7 @@ const onNewWallet = async (e) => {
         ></Input>
       </div>
       <div>
-        <label>Balance</label>
+        <label>Balance:</label>
         <Input
           type="text"
           name="lastName"

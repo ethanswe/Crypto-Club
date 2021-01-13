@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from 'styled-components';
 import PlusIcon from '../../imgs/plus.png';
 import { getWallets } from '../../services/wallet';
-
+import  Card  from './DeleteWallet';
 
 const Container = styled.div`
 width: 1200px;
@@ -18,9 +18,15 @@ const Div = styled.div`
 font-size: 20px;
 color: white;
 margin-left: 5px;
-margin-bottom: 25px;
-width: 400px;
+/* margin-bottom: 25px; */
+/* width: 400px; */
 opacity:0.65;
+display: flex;
+align-items: center;
+justify-content: space-between;
+`
+
+const WalletNameDiv = styled.div`
 :hover{
         opacity:1;
         text-decoration: underline;
@@ -48,10 +54,16 @@ const WalletInput = ({ user }) => {
 
     const walletItems = wallets.map((wallet) => {
         const handleClick = () => history.push(`/wallet/${wallet.id}`)
-        return <Div key={wallet.id} onClick={handleClick}>
-                {wallet.name}
-            </Div>
-        
+        return (
+            <>
+                <Div key={wallet.id} >
+                    <WalletNameDiv onClick={handleClick}>
+                        {wallet.name}
+                    </WalletNameDiv>    
+                    <Card />
+                </Div>
+            </>
+        )
     });
 
     return (        

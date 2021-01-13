@@ -2,24 +2,11 @@ import React from 'react'
 import styled from 'styled-components';
 
 import Video from './Video';
-import HomeText from './HomeText';
+
 const MainDiv = () => {
     return (
         <>
-            <MainContainer>
-                <Wrapper>
-                    <InnerWrapper>
-                        <LeftSide>
-                            <HomeText />
-                        </LeftSide>
-                        <VideoWrapper>
-                            <Video />
-                        </VideoWrapper>
-
-                </InnerWrapper>
-            </Wrapper>
-        </MainContainer>
-        <BottomDiv />    
+            <Video />
         </>
     )
 }
@@ -84,3 +71,28 @@ background-color: blue;
 width: 100vw;
 height: 500px;
 `
+
+
+
+
+
+    // return (
+    //     <>
+    //         <Video>
+                
+    //                     </Video>
+    //         <MainContainer>
+    //             <Wrapper>
+    //                 <InnerWrapper>
+    //                     <LeftSide>
+    //                         <HomeText />
+    //                     </LeftSide>
+    //                     <VideoWrapper>
+    //                     </VideoWrapper>
+
+    //             </InnerWrapper>
+    //         </Wrapper>
+    //     </MainContainer>
+    //     <BottomDiv />    
+    //     </>
+    // )

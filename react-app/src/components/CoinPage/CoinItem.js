@@ -31,11 +31,29 @@ const cryptoIcons = {
 const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const [buyForm, setBuyForm] = useState(false);
     const [sellForm, setSellForm] = useState(false);
-    const {bid, ask, volume, high, low} = coin;
+    const {bid, ask, volume, high, low, open} = coin;
     const [quantity, setQuantity] = useState(0);
     console.log(coin)
     const wallet_id = wallet.id;
     const price = coin.ask;
+
+    // This is to show the daily change, if it's positive, the daily change will have green text, if it's negative it will have red text
+    // const change = () => {
+    //     let dailyChange = ((bid + ask) / 2) - open;
+    //     if (dailyChange > 0) {
+    //         return (
+    //             <PositiveDailyChange>
+    //                 {dailyChange}
+    //             </PositiveDailyChange>
+    //         )
+    //     } else {
+    //         return (
+    //             <NegativeDailyChange>
+    //                 {dailyChange}
+    //             </NegativeDailyChange>
+    //         )
+    //     }
+    // }
 
     const buyState = () => {
         if (buyForm === false) {
@@ -111,7 +129,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
             </Text>
             <Text>
                     24H Low: ${low}
-                </Text>
+            </Text>
             <Text>
                 Your Current Coin Balance: {amount ? amount : 0}
             </Text>
@@ -228,4 +246,13 @@ background-size: cover;
 :hover{
     opacity: 0.5;
 }
+`
+
+
+const PositiveDailyChange = styled.div`
+color: green;
+`
+
+const NegativeDailyChange = styled.div`
+color: red;
 `

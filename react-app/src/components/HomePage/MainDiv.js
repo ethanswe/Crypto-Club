@@ -1,18 +1,23 @@
 import React from 'react'
 import styled from 'styled-components';
-import SignUpButton from './SignupButton';
-import Video from './Video';
 
+import Video from './Video';
+import HomeText from './HomeText';
 const MainDiv = () => {
     return (
         <>
-        <MainContainer>
-            <TextDiv>
-                    <Header>Finiancial Freedom Is Measured In Binary Code: Bitcoin.</Header>    
-                    <IntroText>We believe that the future history of financial instutions will include Blockchain technology and Bitcoin. What are you waiting for? Be a part of history. Trade now.</IntroText>
-                <SignUpButton />
-                </TextDiv>
-                <Video />
+            <MainContainer>
+                <Wrapper>
+                    <InnerWrapper>
+                        <LeftSide>
+                            <HomeText />
+                        </LeftSide>
+                        <VideoWrapper>
+                            <Video />
+                        </VideoWrapper>
+
+                </InnerWrapper>
+            </Wrapper>
         </MainContainer>
         <BottomDiv />    
         </>
@@ -22,29 +27,47 @@ const MainDiv = () => {
 export default MainDiv;
 
 
+const LeftSide = styled.div`
+width: 40%;
+`
 
+const Wrapper = styled.div`
+height: 100vh;
+width: 100vw;
 
+`
 
+const VideoWrapper = styled.div`
+/* margin-right: 250px;
+display: flex 1 0 auto;
+flex-direction:column; */
+width: 60%;
+`
 
+const InnerWrapper = styled.div`
+max-width: 1000px;
+height: 100%;
+margin: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+`
 
 // Styling
 const MainContainer = styled.div`
-background-color: #141414;
+background-color: #3d065f;
+/* background-color: #141414; */
 width: 100vw;
+height: 100wh;
+display: flex;
+justify-content: center;
+align-items: center;
 left: 0;
 height: 650px;
 `
 
-const Header = styled.h1`
-font-size: 40px;
-color: white;
-display: flex;
-justify-content: center;
-align-items: center;
-/* background-color: black; */
-max-width: 300px;
-font-family: 'Cinzel', serif;
-`
+
 
 const TextDiv = styled.div`
 /* background-color: black; */
@@ -60,8 +83,4 @@ const BottomDiv = styled.div`
 background-color: blue;
 width: 100vw;
 height: 500px;
-`
-
-const IntroText = styled.h2`
-
 `

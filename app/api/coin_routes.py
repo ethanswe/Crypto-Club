@@ -30,7 +30,8 @@ def derive_coins(data, symbols):
         high = float(data['result'][coin_key]['h'][0])
         low = float(data['result'][coin_key]['l'][0])
         volume = float(data['result'][coin_key]['v'][0])
-        coin_data = {"price": price, "ask": ask, "bid": bid, "high": high, "low": low, "volume": volume}
+        open = float(data['result'][coin_key]['o'])
+        coin_data = {"price": price, "ask": ask, "bid": bid, "high": high, "low": low, "volume": volume, "open": open}
         coins.append(coin_data)
     return coins
 

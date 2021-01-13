@@ -71,6 +71,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
+    <>
+    <WelcomeDiv>Welcome to Crypto Club</WelcomeDiv>
     <form onSubmit={onSignUp}>
       <div>
         <label>First Name</label>
@@ -119,7 +121,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></Input>
       </div>
       <Button type="submit">Sign Up</Button>
-    </form>
+      </form>
+    </>
   );
 };
 
@@ -164,4 +167,10 @@ const Button = styled.button`
       width: 110%;
     }
   }
+`
+
+const WelcomeDiv = styled.div`
+position: absolute;
+margin-top: -500px;
+font-size: 25px;
 `

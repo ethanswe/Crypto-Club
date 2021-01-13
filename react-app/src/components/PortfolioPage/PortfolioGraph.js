@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // import CanvasJSReact from "./canvasjs.react";
 // var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-const PortfolioGraph = () => {
+const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
 
     return (
         <PortfolioGraphDiv>

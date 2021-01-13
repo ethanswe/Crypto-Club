@@ -142,7 +142,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                 <Text>
                             {(change > 0) ? 
                                 <>
-                                        24H Change: 
+                                    24H Change: 
                                     <PositiveDailyChange>
                                         ${change}
                                     </PositiveDailyChange>

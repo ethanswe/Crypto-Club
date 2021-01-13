@@ -138,6 +138,9 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                     24H Low: ${low}
             </Text>
             <Text>
+                    24H Change: ${(ask - open).toFixed(2)}
+            </Text>
+            <Text>
                 Your Current Coin Balance: {amount ? amount : 0}
             </Text>
             <Text>

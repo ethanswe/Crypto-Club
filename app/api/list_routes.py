@@ -12,7 +12,7 @@ def post_list():
     data = request.json
     coin = Coin.query.filter_by(symbol=data['symbol'].upper()).one()
     list = List(
-        coin=coin,
+        coin_id=coin,
         user_id=data['user_id'])
     # db.session.add(list)
     # db.session.commit()

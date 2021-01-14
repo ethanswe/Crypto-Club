@@ -35,7 +35,9 @@ const IntroText = styled.h2`
 const Container = styled.div`
 z-index: 10;
 padding: 1rem;
-padding-right: 100px;
+padding-left: 250px;
+padding-top: 150px;
+width: 500px;
 h1{
     color: white;
     font-size: 1.5rem;

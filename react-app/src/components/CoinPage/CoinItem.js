@@ -6,15 +6,19 @@ import MinusIconImg from '../../imgs/minus.png';
 import Ethereum from '../../imgs/ethereum.png';
 import Bitcoin from '../../imgs/bitcoin.png';
 import Chainlink from '../../imgs/chainlink.png';
-import BitcoinCash from '../../imgs/bitcoinCash.png';
+import BitcoinCash from '../../imgs/bitcoinCashGreen.png';
 import Graph from '../../imgs/graph.png';
 import Litecoin from '../../imgs/litecoin.png';
 import Monero from '../../imgs/monero.png';
 import Waves from '../../imgs/waves.png';
 import { getWallet } from '../../services/wallet'
 import { makePurchase, makeSale } from '../../services/transaction';
-import AddToList from '../../imgs/addToList.png';
+import AddToList from '../../imgs/whiteList.png';
 import { makeList } from '../../services/list';
+import PositiveArrow from '../../imgs/greenUpArrow.png';
+import NegativeArrow from '../../imgs/redDownArrow.png';
+
+
 
 const cryptoIcons = {
     'eth': Ethereum,
@@ -119,88 +123,94 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
             <CoinWrapper>
                 <Container>
                     <TextDiv>
-                    <Text>
-                        {symbol.toUpperCase()}
-                        <TestIcon image={cryptoIcons[symbol]} />
-                        <ListIcon onClick={addToList}/>
-                    </Text>
-                <Text>
-                        Ask: ${ask}
-                </Text>
-                <Text>
-                        Bid: ${bid}
-                </Text>
-                <Text>
-                        24H Volume: {volume}
-                </Text>
-                <Text>
-                        24H High: ${high}
-                </Text>
-                <Text>
-                        24H Low: ${low}
-                </Text>
-                <Text>
-                            {(change > 0) ? 
-                                <>
-                                    24H Change: 
-                                    <PositiveDailyChange>
-                                        ${change}
-                                    </PositiveDailyChange>
-                                </>
-                                : 
-                                <>
-                                    24H Change: 
-                                    <NegativeDailyChange>
-                                        ${change}
-                                    </NegativeDailyChange>
-                                </>
-                        }
-                </Text>
-                <Text>
-                    Your Current Coin Balance: {amount ? amount : 0}
-                </Text>
-                <Text>
-                        <PlusIcon onClick={buyState}/>
-                        <MinusIcon onClick={sellState}/>
-                    </Text>
-                    <Text>
-                        {buyForm ? 
-                        <div>
-                            <form onSubmit={onBuySubmit}>
-                                    <label>
-                                        Buy {symbol.toUpperCase()}?
-                                    </label>
-                                    <input
-                                        onChange={updateAmount}
-                                        value={quantity}
-                                        type="number"
-                                        placeholder={'Purchase Amount'}
-                                    />
-
-                                    <button>Purchase</button>
-                            </form>
-                        </div>
-                        : null}
-                    </Text>
-                    <Text>
-                        {sellForm ? 
-                            <div>
-                                <form onSubmit={onSellSubmit}>
-                                    <label>
-                                        Sell {symbol.toUpperCase()}?
-                                    </label>
-                                    <input
-                                        onChange={updateAmount}
-                                        value={quantity}
-                                        type="number"
-                                        placeholder={'Sale Amount'}
-                                    />
-                                    <button>Sell</button>
-                                </form>
-                        </div>
-                    : null }
+                        <Text>
+                            <TestIcon image={cryptoIcons[symbol]} />
                         </Text>
-                    </TextDiv>  
+                        <Text>
+                            {symbol.toUpperCase()}
+                        </Text>
+                        <Text>
+                                Ask: ${ask}
+                        </Text>
+                        <Text>
+                                Bid: ${bid}
+                        </Text>
+                        <Text>
+                                24H Volume: {volume}
+                        </Text>
+                        <Text>
+                                24H High: ${high}
+                        </Text>
+                        <Text>
+                                24H Low: ${low}
+                        </Text>
+                        <Text>
+                                    {(change > 0) ? 
+                                        <>
+                                            24H Change:
+                                            <PositiveDailyChange>
+                                                ${change}
+                                            </PositiveDailyChange>
+                                            <PositiveArrowImg />
+                                        </>
+                                        : 
+                                        <>
+                                            24H Change:
+                                            <NegativeDailyChange>
+                                                ${change}
+                                            </NegativeDailyChange>
+                                            <NegativeArrowImg /> 
+                                        </>
+                                }
+                        </Text>
+                        <Text>
+                            Your Current Coin Balance: {amount ? amount : 0}
+                        </Text>
+                        <Text>
+                            <PlusIcon onClick={buyState}/>
+                            <MinusIcon onClick={sellState} />
+                            <StyledListDiv>
+                                <ListIcon onClick={addToList}/>
+                            </StyledListDiv>
+                            </Text>
+                            <Text>
+                                {buyForm ? 
+                                <div>
+                                    <form onSubmit={onBuySubmit}>
+                                            <label>
+                                                Buy {symbol.toUpperCase()}?
+                                            </label>
+                                            <input
+                                                onChange={updateAmount}
+                                                value={quantity}
+                                                type="number"
+                                                placeholder={'Purchase Amount'}
+                                            />
+
+                                            <button>Purchase</button>
+                                    </form>
+                                </div>
+                                : null}
+                            </Text>
+                            <Text>
+                                {sellForm ? 
+                                    <div>
+                                        <form onSubmit={onSellSubmit}>
+                                            <label>
+                                                Sell {symbol.toUpperCase()}?
+                                            </label>
+                                            <input
+                                                onChange={updateAmount}
+                                                value={quantity}
+                                                type="number"
+                                                placeholder={'Sale Amount'}
+                                            />
+                                            <button>Sell</button>
+                                        </form>
+                                </div>
+                            : null }
+                            </Text>
+                        </TextDiv>  
                 </Container>
             </CoinWrapper>
     </MainContainer>
@@ -212,13 +222,14 @@ export default CoinItem;
 
 const Container = styled.div`
 width: 350px;
-height: 250px;
+height: 275px;
 background-color: gray;
 color: white;
 border-radius: 25px;
 margin: 5px;
 margin: 0 auto;
 max-width: 800px;
+margin-top: 10px;
 `
 
 const Text = styled.div`
@@ -264,7 +275,7 @@ background-size: cover;
 
 const TestIcon = styled.div`
 background-image: url(${props => props.image});
-width: 70px;
+width: 50px;
 height: 50px;
 background-size: cover;
 /* background-color: white; */
@@ -275,8 +286,8 @@ background-size: cover;
 
 const ListIcon = styled.div`
 background-image: url(${AddToList});
-width: 30px;
-height: 30px;
+width: 25px;
+height: 25px;
 background-size: cover;
 :hover{
     opacity: 0.5;
@@ -299,4 +310,23 @@ const CoinWrapper = styled.div`
 const TextDiv = styled.div`
 position: relative;
 
+`
+
+const NegativeArrowImg = styled.div`
+background-image: url(${NegativeArrow});
+width: 15px;
+height: 15px;
+background-size: cover;
+`
+
+const PositiveArrowImg = styled.div`
+background-image: url(${PositiveArrow});
+width: 15px;
+height: 15px;
+background-size: cover;
+`
+
+const StyledListDiv = styled.div`
+/* display: flex; */
+margin-left: 5px;
 `

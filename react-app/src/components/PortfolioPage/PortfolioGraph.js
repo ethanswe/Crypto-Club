@@ -8,8 +8,13 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
 
     return (
         <PortfolioGraphDiv>
+            <TotalValueContainer>
 
+            </TotalValueContainer>
 
+            <AssetsHeldContainer>
+
+            </AssetsHeldContainer>
         </PortfolioGraphDiv>
     )
 }
@@ -18,8 +23,28 @@ export default PortfolioGraph
 
 
 const PortfolioGraphDiv = styled.div`
-background-color: green;
+border: 1px solid black;
 height: 400px;
-width: 750px;
+width: 800px;
 margin: 0 auto;
+display:flex;
+`
+
+const TotalValueContainer = styled.div`
+max-height: 400px;
+max-width: 400x;
+width: 400px;
+height: 400px;
+background-color: red;
+position: relative;
+`
+
+
+const AssetsHeldContainer = styled.div`
+max-height: 400px;
+max-width: 400x;
+width: 400px;
+height: 400px;
+background-color: green;
+position: relative;
 `

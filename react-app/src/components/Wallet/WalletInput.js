@@ -27,12 +27,14 @@ opacity:0.65;
 display: flex;
 align-items: center;
 justify-content: space-between;
+
 `
 
 const WalletNameDiv = styled.div`
 :hover{
-        opacity:1;
-        text-decoration: underline;
+        opacity: 1;
+		text-decoration: underline;
+		color: white;
 }
 `
 

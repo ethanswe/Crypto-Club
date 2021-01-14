@@ -15,6 +15,10 @@ import { getWallet } from '../../services/wallet'
 import { makePurchase, makeSale } from '../../services/transaction';
 import AddToList from '../../imgs/addToList.png';
 import { makeList } from '../../services/list';
+import PositiveArrow from '../../imgs/greenUpArrow.png';
+import NegativeArrow from '../../imgs/redDownArrow.png';
+
+
 
 const cryptoIcons = {
     'eth': Ethereum,
@@ -142,17 +146,19 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                 <Text>
                             {(change > 0) ? 
                                 <>
-                                    24H Change: 
+                                    24H Change:
                                     <PositiveDailyChange>
                                         ${change}
                                     </PositiveDailyChange>
+                                    <PositiveArrowImg />
                                 </>
                                 : 
                                 <>
-                                    24H Change: 
+                                    24H Change:
                                     <NegativeDailyChange>
                                         ${change}
                                     </NegativeDailyChange>
+                                    <NegativeArrowImg /> 
                                 </>
                         }
                 </Text>
@@ -299,4 +305,18 @@ const CoinWrapper = styled.div`
 const TextDiv = styled.div`
 position: relative;
 
+`
+
+const NegativeArrowImg = styled.div`
+background-image: url(${NegativeArrow});
+width: 15px;
+height: 15px;
+background-size: cover;
+`
+
+const PositiveArrowImg = styled.div`
+background-image: url(${PositiveArrow});
+width: 15px;
+height: 15px;
+background-size: cover;
 `

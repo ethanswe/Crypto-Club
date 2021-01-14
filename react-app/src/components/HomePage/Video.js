@@ -29,7 +29,7 @@ export default Video;
 const VideoDiv = styled.div`
 max-width: 1920px;
 max-height: 1050px;
-position: relative;
+position: absolute;
 background-image: cover;
 z-index: -10;
 `

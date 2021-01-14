@@ -5,6 +5,7 @@ import { PortfolioNavigation } from '../PortfolioNavigation/PortfolioNavigation'
 import  PortfolioGraph  from './PortfolioGraph';
 import WatchList from '../WatchList/WatchList';
 
+
 const PortfolioPage = ({ authenticated, setAuthenticated, user, wallet, setWallet }) => {
     const { wallet_id } = useParams();
     const fetchWallet = async () => {

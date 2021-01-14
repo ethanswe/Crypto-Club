@@ -27,4 +27,7 @@ def get_wallet(wallet_id=None):
         wallet = Wallet.query.filter_by(user_id = current_user.id).first()
     else:
         wallet = Wallet.query.get(wallet_id)
-    return wallet.to_dict()
+    if (wallet is None):
+        return {}
+    else:
+        return wallet.to_dict()

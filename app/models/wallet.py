@@ -8,6 +8,7 @@ class Wallet(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(40), nullable=False)
   balance = db.Column(db.Integer, nullable=False)
+  startingBalance = db.Column(db.Integer, nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
   transactions = db.relationship('Transaction', lazy=True)  # DONE
@@ -17,6 +18,7 @@ class Wallet(db.Model):
         "id": self.id,
         "user_id": self.user_id,
         "balance": self.balance,
+        "startingBalance": self.startingBalance,
         "name": self.name,
         "transactions": [ tx.to_dict() for tx in self.transactions ],
     }

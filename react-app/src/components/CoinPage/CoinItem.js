@@ -14,7 +14,7 @@ import Waves from '../../imgs/waves.png';
 import { getWallet } from '../../services/wallet'
 import { makePurchase, makeSale } from '../../services/transaction';
 import AddToList from '../../imgs/whiteList.png';
-import { makeList } from '../../services/list';
+import { addCoinToList } from '../../services/list';
 import PositiveArrow from '../../imgs/greenUpArrow.png';
 import NegativeArrow from '../../imgs/redDownArrow.png';
 
@@ -77,7 +77,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
 
     const addToList = async (e) => {
         e.preventDefault();
-        const addedCrypto = await makeList({ symbol, user_id })
+        const addedCrypto = await addCoinToList({ symbol, user_id })
         console.log(addedCrypto);
         if (!addedCrypto.error) {
             return alert('Successfully added to your list! ')

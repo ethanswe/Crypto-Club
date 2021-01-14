@@ -22,7 +22,7 @@ const PortfolioPage = ({ authenticated, setAuthenticated, user, wallet, setWalle
         <PortfolioNavigation user={user} authenticated={authenticated} setAuthenticated={setAuthenticated} wallet={wallet}/>
             {/* {wallet.name} */}
             <PortfolioGraph />
-            <WatchList />
+            <WatchList user={user}/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User
+from app.models import User, Coin, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -26,3 +26,13 @@ def get_wallets(user_id):
     user = User.query.get(user_id)
     return { "wallets": [ w.to_dict() for w in user.wallets ] }
 
+@user_routes.route('/<int:user_id>/list/coins', methods=['POST'])
+@login_required
+def create_list_coin(user_id):
+    data = request.json
+    coin = Coin.query.filter_by(symbol=data['symbol'].upper()).one()
+    user = User.query.get(user_id)
+    user.list.coins.append(coin)
+    db.session.add(user)
+    db.session.commit()
+    return "Added!"

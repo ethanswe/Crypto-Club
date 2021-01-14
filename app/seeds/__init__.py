@@ -12,9 +12,9 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     # seed_users()
-    # seed_coins()
+    seed_coins()
     # seed_lists()
-    seed_transactions()
+    # seed_transactions()
     # seed_wallets()
     # Add other seed functions here
 

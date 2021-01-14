@@ -1,5 +1,5 @@
 from .db import db
-from .list import association_table
+# from .list import association_table
 class Coin(db.Model):
   __tablename__ = 'coins'
 
@@ -9,10 +9,13 @@ class Coin(db.Model):
 
   transactions = db.relationship(
       'Transaction', back_populates="coin", lazy=True)  # DONE
-  lists = db.relationship('List', secondary=association_table, lazy=True)
+  # lists = db.relationship('List', secondary=association_table, lazy=True)
+  # lists = db.relationship('List', secondary='association', lazy=True)
+
   def to_dict(self):
     return {
         "id": self.id,
         "name": self.name,
         "symbol": self.symbol,
     }
+

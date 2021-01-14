@@ -61,6 +61,12 @@ def upgrade():
         sa.ForeignKeyConstraint(['wallet_id'], ['wallets.id']),
         sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('association',
+        sa.Column('list_id', sa.Integer(), nullable=False),
+        sa.Column('coin_id', sa.Integer(), nullable=False),
+        sa.ForeignKeyConstraint(['list_id'], ['lists.id']),
+        sa.ForeignKeyConstraint(['coin_id'], ['coins.id']),
+    )
     # ### end Alembic commands ###qqqqqqqqq
 
 
@@ -71,4 +77,5 @@ def downgrade():
     op.drop_table('lists')
     op.drop_table('users')
     op.drop_table('coins')
+    op.drop_table('association')
     # ### end Alembic commands ###

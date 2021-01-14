@@ -36,3 +36,11 @@ def create_list_coin(user_id):
     db.session.add(user)
     db.session.commit()
     return "Added!"
+
+
+@user_routes.route('/<int:user_id>/list', methods=['GET'])
+@login_required
+def get_list(user_id):
+    user = User.query.get(user_id)
+    coins = [ coin.to_dict() for coin in user.list.coins ]   
+    return { "coins": coins }

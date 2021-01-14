@@ -10,3 +10,13 @@ export const addCoinToList = async ({ symbol, user_id }) => {
   });
   return await response.json();
 };
+
+
+export const getList = async ({ user_id }) => {
+      const response = await fetch(`/api/users/${user_id}/list`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return await response.json();
+};

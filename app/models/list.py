@@ -9,10 +9,7 @@ class List(db.Model):
   __tablename__ = 'lists'
 
   id = db.Column(db.Integer, primary_key=True)
-#   coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False) # TODO
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-
-  # coins = db.relationship('Coin', secondary=association_table, lazy=True) # DONE
   coins = db.relationship('Coin', secondary='association', lazy=True) # DONE
 
   user = db.relationship('User', back_populates='list', lazy=True)  # DONE

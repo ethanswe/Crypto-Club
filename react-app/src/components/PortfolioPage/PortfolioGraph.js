@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // import CanvasJS from 'canvasjs';
 // import CanvasJSReact from "./canvasjs.react";
 // var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import Balance from './Balance';
 
 const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
 
@@ -13,7 +14,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             </TotalValueContainer>
 
             <AssetsHeldContainer>
-
+                <Balance wallet={wallet}/>
             </AssetsHeldContainer>
         </PortfolioGraphDiv>
     )

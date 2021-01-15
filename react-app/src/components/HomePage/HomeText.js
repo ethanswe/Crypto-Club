@@ -4,9 +4,9 @@ import SignUpButton from './SignupButton';
 
 const HomeText = () => {
     return (
-        <Container>
+        <Container>  
             <Header>Finiancial Freedom Is Measured In Binary Code: Bitcoin.</Header>    
-            <h2>We believe that the future history of financial instutions will include Blockchain technology and Bitcoin. What are you waiting for? Be a part of history: Trade now.</h2>
+            <IntroText>We believe that the future history of financial instutions will include Blockchain technology and Bitcoin. What are you waiting for? Be a part of history: Trade now with Crypto Club.</IntroText>
             <SignUpButton />
         </Container>
     )
@@ -29,7 +29,9 @@ font-family: 'Cinzel', serif;
 
 
 const IntroText = styled.h2`
-
+color: white;
+font-size: 20px;
+font-family: 'Cinzel', serif;
 `
 
 const Container = styled.div`
@@ -38,6 +40,7 @@ padding: 1rem;
 padding-left: 250px;
 padding-top: 150px;
 width: 500px;
+height: 355px;
 h1{
     color: white;
     font-size: 1.5rem;

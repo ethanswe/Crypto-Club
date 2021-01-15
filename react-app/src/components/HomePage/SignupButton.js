@@ -16,13 +16,13 @@ export default SignupButton
 
 const Button = styled.button`
   border-color: black;
-  background-color: black;
   position: relative;
   overflow: hidden;
   z-index: 1;
   transition: color 150ms ease-in-out;
   text-decoration: none;
   background: #222;
+  opacity: 0.3;
   height: 40px;
   min-width: 80px;
   border: none;
@@ -38,6 +38,7 @@ const Button = styled.button`
     display: block;
     top: 0;
     left: 50%;
+    opacity: 1;
     transform: translateX(-50%);
     width: 0;
     height: 100%;
@@ -48,6 +49,7 @@ const Button = styled.button`
   
   &:hover {
     color: #fff;
+    opacity: 1;
     &:after {
       width: 110%;
     }

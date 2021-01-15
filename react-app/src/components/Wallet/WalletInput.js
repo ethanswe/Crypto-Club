@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PlusIcon from '../../imgs/plus.png';
 import { getWallets } from '../../services/wallet';
 import  Card  from './DeleteWallet';
-import Particles from 'react-particles-js';
+import Background from '../Background/Background';
 import Ethereum from '../../imgs/ethereum.png'
 import Litecoin from '../../imgs/litecoin.png'
 import SVG from '../../imgs/bitcoin-coin.svg'
@@ -61,62 +61,7 @@ const WalletInput = ({ user }) => {
         const handleClick = () => history.push(`/wallet/${wallet.id}`)
         return (
             <>
-                            <Particles
-                className="particles"
-    params={{
-	    "particles": {
-	        "number": {
-	            "value": 8,
-	            "density": {
-	                "enable": true,
-	                "value_area": 800
-	            }
-	        },
-	        "line_linked": {
-	            "enable": false
-	        },
-	        "move": {
-	            "speed": 1,
-	            "out_mode": "out"
-	        },
-	        "shape": {
-	            "type": [
-	                "image",
-	            ],
-	            "image": [
-	                {
-	                    "src": SVG,
-	                    "height": 20,
-	                    "width": 23
-	                },
-	                {
-	                    "src": Ethereum,
-	                    "height": 20,
-	                    "width": 20
-	                },
-	                {
-	                    "src": Litecoin,
-	                    "height": 20,
-	                    "width": 20
-	                }
-	            ]
-	        },
-	        "color": {
-	            "value": "#CCC"
-	        },
-	        "size": {
-	            "value": 30,
-	            "random": false,
-	            "anim": {
-	                "enable": true,
-	                "speed": 4,
-	                "size_min": 10,
-	                "sync": false
-	            }
-	        }
-	    },
-	    "retina_detect": false
-	}} />
+                <Background />
                 <Div key={wallet.id} >
                     <WalletNameDiv onClick={handleClick}>
                         {wallet.name}

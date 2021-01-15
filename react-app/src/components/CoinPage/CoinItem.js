@@ -19,7 +19,6 @@ import PositiveArrow from '../../imgs/greenUpArrow.png';
 import NegativeArrow from '../../imgs/redDownArrow.png';
 
 
-
 const cryptoIcons = {
     'eth': Ethereum,
     'grt': Graph,
@@ -73,7 +72,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     }
 
     const onBuySubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         let type = (quantity * price) * -1;
         const purchase = await makePurchase({type, price, quantity, symbol, wallet_id})
         console.log(purchase);
@@ -85,7 +84,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
 
     }
     const onSellSubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         let type = (quantity * price);
         const sell = await makeSale({type, price, quantity, symbol, wallet_id})
         console.log(sell);
@@ -151,11 +150,11 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                             Your Current Coin Balance: {amount ? amount : 0}
                         </Text>
                         <Text>
-                            <PlusIcon onClick={buyState}/>
-                            <MinusIcon onClick={sellState} />
-                            <StyledListDiv>
-                                <ListIcon onClick={addToList}/>
-                            </StyledListDiv>
+                                <StyledListDiv>
+                                    <ListIcon onClick={addToList}/>
+                                </StyledListDiv>
+                                <PlusIcon onClick={buyState}/>
+                                <MinusIcon onClick={sellState} />
                             </Text>
                             <Text>
                                 {buyForm ? 
@@ -207,7 +206,7 @@ export default CoinItem;
 const Container = styled.div`
 width: 350px;
 height: 275px;
-background-color: gray;
+background-color: #111111;
 color: white;
 border-radius: 25px;
 margin: 5px;
@@ -240,6 +239,7 @@ const PlusIcon = styled.div`
 background-image: url(${PlusIconImg});
 width: 30px;
 height: 30px;
+margin-left: 35px;
 background-size: cover;
 /* background-color: white; */
 :hover{
@@ -251,6 +251,7 @@ background-image: url(${MinusIconImg});
 width: 25px;
 height: 25px;
 background-size: cover;
+margin-left: 35px;
 /* background-color: white; */
 :hover{
     opacity: 0.5;
@@ -259,7 +260,7 @@ background-size: cover;
 
 const TestIcon = styled.div`
 background-image: url(${props => props.image});
-width: 50px;
+width: 53px;
 height: 50px;
 background-size: cover;
 /* background-color: white; */
@@ -314,3 +315,4 @@ const StyledListDiv = styled.div`
 /* display: flex; */
 margin-left: 5px;
 `
+

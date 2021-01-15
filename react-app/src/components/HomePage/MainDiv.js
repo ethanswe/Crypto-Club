@@ -57,6 +57,7 @@ font-size: 15px;
 
 const BottomDiv = styled.div`
 background-color: black;
+position: absolute;
 width: 100vw;
 height: 250px;
 display: flex;

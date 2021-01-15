@@ -20,14 +20,14 @@ import NegativeArrow from '../../imgs/redDownArrow.png';
 
 
 const cryptoIcons = {
-    'eth': Ethereum,
-    'grt': Graph,
-    'link': Chainlink,
-    'waves': Waves,
-    'ltc': Litecoin,
-    'btc': Bitcoin,
-    'xmr': Monero,
-    'bch': BitcoinCash
+    'ETH': Ethereum,
+    'GRT': Graph,
+    'LINK': Chainlink,
+    'WAVES': Waves,
+    'LTC': Litecoin,
+    'BTC': Bitcoin,
+    'XMR': Monero,
+    'BCH': BitcoinCash
 };
 
 

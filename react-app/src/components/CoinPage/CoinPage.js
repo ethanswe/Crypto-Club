@@ -4,7 +4,7 @@ import CoinItem  from './CoinItem';
 import { PortfolioNavigation } from '../PortfolioNavigation/PortfolioNavigation';
 import styled from 'styled-components';
 import Background from '../Background/Background';
-const CRYPTO_SYMBOLS = ['eth', 'bch', 'link', 'btc', 'ltc', 'xmr', 'grt', 'waves'];
+import { CRYPTO_SYMBOLS } from '../util';
 
 const CoinPage = ({ user, wallet }) => {
     const [coins, setCoins] = useState([]);

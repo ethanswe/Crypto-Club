@@ -15,7 +15,7 @@ export const newWallet = async ({name, balance, user_id}) => {
 
 // /api/wallet/42
 export const getWallets = async ({ user_id }) => {
-  const response = await fetch(`api/users/${user_id}/wallets`, {
+  const response = await fetch(`/api/users/${user_id}/wallets`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

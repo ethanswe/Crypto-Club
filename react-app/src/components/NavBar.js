@@ -73,18 +73,18 @@ const Buttons = styled.button`
   border-color: black;
   margin: 2px;
   margin-right: 2px;
-  background-color: black;
+  /* background-color: black; */
   position: relative;
   overflow: hidden;
   z-index: 1;
   transition: color 150ms ease-in-out;
   text-decoration: none;
-  background: #222;
+  /* background: #222; */
   height: 28px;
   min-width: 80px;
   border: none;
   border-radius: 10px;
-  color: #eee;
+  color: black;
   font-size: 15px;
   position: relative;
   transition: 1s;
@@ -105,6 +105,7 @@ const Buttons = styled.button`
   
   &:hover {
     color: #fff;
+    background: black;
     &:after {
       width: 110%;
     }

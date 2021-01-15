@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Balance from './Balance';
 import TotalValue from './TotalValue';
 
+
 const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
 
     return (
@@ -13,7 +14,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             <TotalValueContainer>
                 <TotalValue wallet={wallet}/>
             </TotalValueContainer>
-
+            
             <AssetsHeldContainer>
                 <Balance wallet={wallet}/>
             </AssetsHeldContainer>

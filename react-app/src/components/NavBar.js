@@ -6,7 +6,7 @@ import Logo from '../imgs/logo.jpg';
 
 const Nav = styled.nav`
 display: flex;
-justify-content: flex-end;
+justify-content: space-between;
 align-items: center;
 flex-direction: row;
 text-decoration: none;

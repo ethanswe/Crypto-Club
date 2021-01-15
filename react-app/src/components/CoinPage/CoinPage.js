@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { getCoins } from '../../services/coin';
 import CoinItem  from './CoinItem';
-
+import { PortfolioNavigation } from '../PortfolioNavigation/PortfolioNavigation';
+import styled from 'styled-components';
+import Background from '../Background/Background';
 const CRYPTO_SYMBOLS = ['eth', 'bch', 'link', 'btc', 'ltc', 'xmr', 'grt', 'waves'];
 
 const CoinPage = ({ user, wallet }) => {
@@ -46,11 +48,22 @@ const CoinPage = ({ user, wallet }) => {
     });
     
     return (
+        <>
+            <Background />
         <div>
-            {coinItems}
+            <PortfolioNavigation />
         </div>
+        <CoinItemDiv>
+            {coinItems} 
+            </CoinItemDiv>
+        </>
     )
 };
 
 
 export default CoinPage
+
+
+const CoinItemDiv = styled.div`
+margin-top: 125px;
+`

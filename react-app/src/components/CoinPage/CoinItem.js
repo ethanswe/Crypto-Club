@@ -19,7 +19,6 @@ import PositiveArrow from '../../imgs/greenUpArrow.png';
 import NegativeArrow from '../../imgs/redDownArrow.png';
 
 
-
 const cryptoIcons = {
     'eth': Ethereum,
     'grt': Graph,
@@ -41,23 +40,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const price = coin.ask;
     const user_id = user.id;
     const change = (coin.ask - coin.open).toFixed(2)
-    // This is to show the daily change, if it's positive, the daily change will have green text, if it's negative it will have red text
-    // const change = () => {
-    //     let dailyChange = ((bid + ask) / 2) - open;
-    //     if (dailyChange > 0) {
-    //         return (
-    //             <PositiveDailyChange>
-    //                 {dailyChange}
-    //             </PositiveDailyChange>
-    //         )
-    //     } else {
-    //         return (
-    //             <NegativeDailyChange>
-    //                 {dailyChange}
-    //             </NegativeDailyChange>
-    //         )
-    //     }
-    // }
+    const changePercent = parseFloat(((coin.ask - coin.open) / coin.open)).toFixed(3);
 
     const buyState = () => {
         if (buyForm === false) {
@@ -89,7 +72,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     }
 
     const onBuySubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         let type = (quantity * price) * -1;
         const purchase = await makePurchase({type, price, quantity, symbol, wallet_id})
         console.log(purchase);
@@ -101,7 +84,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
 
     }
     const onSellSubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         let type = (quantity * price);
         const sell = await makeSale({type, price, quantity, symbol, wallet_id})
         console.log(sell);
@@ -149,7 +132,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                                         <>
                                             24H Change:
                                             <PositiveDailyChange>
-                                                ${change}
+                                                ${change} / {changePercent}%
                                             </PositiveDailyChange>
                                             <PositiveArrowImg />
                                         </>
@@ -157,7 +140,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                                         <>
                                             24H Change:
                                             <NegativeDailyChange>
-                                                ${change}
+                                                ${change} / {changePercent}%
                                             </NegativeDailyChange>
                                             <NegativeArrowImg /> 
                                         </>
@@ -167,11 +150,11 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                             Your Current Coin Balance: {amount ? amount : 0}
                         </Text>
                         <Text>
-                            <PlusIcon onClick={buyState}/>
-                            <MinusIcon onClick={sellState} />
-                            <StyledListDiv>
-                                <ListIcon onClick={addToList}/>
-                            </StyledListDiv>
+                                <StyledListDiv>
+                                    <ListIcon onClick={addToList}/>
+                                </StyledListDiv>
+                                <PlusIcon onClick={buyState}/>
+                                <MinusIcon onClick={sellState} />
                             </Text>
                             <Text>
                                 {buyForm ? 
@@ -223,7 +206,7 @@ export default CoinItem;
 const Container = styled.div`
 width: 350px;
 height: 275px;
-background-color: gray;
+background-color: #111111;
 color: white;
 border-radius: 25px;
 margin: 5px;
@@ -242,12 +225,12 @@ margin: 0 auto;
 const MainContainer = styled.div`
 max-width: 1200px;
 max-height: 1000px;
-background-color: black;
+/* background-color: black; */
 margin: 0 auto;
-
-/* align-items: space-around; */
-flex-direction: column;
-flex-wrap: wrap;
+display: inline flex;
+margin: 20px;
+margin-left: 100px;
+/* justify-content: space-around; */
 `
 
 
@@ -256,6 +239,7 @@ const PlusIcon = styled.div`
 background-image: url(${PlusIconImg});
 width: 30px;
 height: 30px;
+margin-left: 35px;
 background-size: cover;
 /* background-color: white; */
 :hover{
@@ -267,6 +251,7 @@ background-image: url(${MinusIconImg});
 width: 25px;
 height: 25px;
 background-size: cover;
+margin-left: 35px;
 /* background-color: white; */
 :hover{
     opacity: 0.5;
@@ -275,7 +260,7 @@ background-size: cover;
 
 const TestIcon = styled.div`
 background-image: url(${props => props.image});
-width: 50px;
+width: 53px;
 height: 50px;
 background-size: cover;
 /* background-color: white; */
@@ -330,3 +315,4 @@ const StyledListDiv = styled.div`
 /* display: flex; */
 margin-left: 5px;
 `
+

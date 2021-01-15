@@ -33,6 +33,7 @@ export default WatchList
 
 const WatchListDiv = styled.div`
 border: 1px solid black;
+background-color: white;
 width: 600px;
 height: 400px;
 margin: 0 auto;

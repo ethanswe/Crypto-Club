@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { PortfolioNavigation } from '../PortfolioNavigation/PortfolioNavigation';
 import  PortfolioGraph  from './PortfolioGraph';
 import WatchList from '../WatchList/WatchList';
-
+import Background from '../Background/Background';
 
 const PortfolioPage = ({ authenticated, setAuthenticated, user, wallet, setWallet }) => {
     const { wallet_id } = useParams();
@@ -19,6 +19,7 @@ const PortfolioPage = ({ authenticated, setAuthenticated, user, wallet, setWalle
     
     return (
         <div>
+            <Background />
         <PortfolioNavigation user={user} authenticated={authenticated} setAuthenticated={setAuthenticated} wallet={wallet}/>
             {/* {wallet.name} */}
             <PortfolioGraph wallet={wallet} user={user}/>

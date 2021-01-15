@@ -8,6 +8,7 @@ import Ethereum from '../../imgs/ethereum.png'
 import Litecoin from '../../imgs/litecoin.png'
 import SVG from '../../imgs/bitcoin-coin.svg'
 import newWallet from '../../services/wallet';
+import Background from '../Background/Background';
 
 const Container = styled.div`
 width: 1200px;
@@ -53,62 +54,7 @@ const onNewWallet = async (e) => {
 
     return (
         <>
-            <Particles
-                className="particles"
-    params={{
-	    "particles": {
-	        "number": {
-	            "value": 8,
-	            "density": {
-	                "enable": true,
-	                "value_area": 800
-	            }
-	        },
-	        "line_linked": {
-	            "enable": false
-	        },
-	        "move": {
-	            "speed": 1,
-	            "out_mode": "out"
-	        },
-	        "shape": {
-	            "type": [
-	                "image",
-	            ],
-	            "image": [
-	                {
-	                    "src": SVG,
-	                    "height": 20,
-	                    "width": 23
-	                },
-	                {
-	                    "src": Ethereum,
-	                    "height": 20,
-	                    "width": 20
-	                },
-	                {
-	                    "src": Litecoin,
-	                    "height": 20,
-	                    "width": 20
-	                }
-	            ]
-	        },
-	        "color": {
-	            "value": "#CCC"
-	        },
-	        "size": {
-	            "value": 30,
-	            "random": false,
-	            "anim": {
-	                "enable": true,
-	                "speed": 4,
-	                "size_min": 10,
-	                "sync": false
-	            }
-	        }
-	    },
-	    "retina_detect": false
-	}} />
+        <Background />
         <Container>
             <Header>
                  Please Create Your New Wallet:

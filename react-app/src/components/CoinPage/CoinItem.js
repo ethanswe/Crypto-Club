@@ -41,23 +41,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const price = coin.ask;
     const user_id = user.id;
     const change = (coin.ask - coin.open).toFixed(2)
-    // This is to show the daily change, if it's positive, the daily change will have green text, if it's negative it will have red text
-    // const change = () => {
-    //     let dailyChange = ((bid + ask) / 2) - open;
-    //     if (dailyChange > 0) {
-    //         return (
-    //             <PositiveDailyChange>
-    //                 {dailyChange}
-    //             </PositiveDailyChange>
-    //         )
-    //     } else {
-    //         return (
-    //             <NegativeDailyChange>
-    //                 {dailyChange}
-    //             </NegativeDailyChange>
-    //         )
-    //     }
-    // }
+    const changePercent = parseFloat(((coin.ask - coin.open) / coin.open)).toFixed(3);
 
     const buyState = () => {
         if (buyForm === false) {
@@ -149,7 +133,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                                         <>
                                             24H Change:
                                             <PositiveDailyChange>
-                                                ${change}
+                                                ${change} / {changePercent}%
                                             </PositiveDailyChange>
                                             <PositiveArrowImg />
                                         </>
@@ -157,7 +141,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
                                         <>
                                             24H Change:
                                             <NegativeDailyChange>
-                                                ${change}
+                                                ${change} / {changePercent}%
                                             </NegativeDailyChange>
                                             <NegativeArrowImg /> 
                                         </>

@@ -17,7 +17,7 @@ import AddToList from '../../imgs/whiteList.png';
 import { addCoinToList } from '../../services/list';
 import PositiveArrow from '../../imgs/greenUpArrow.png';
 import NegativeArrow from '../../imgs/redDownArrow.png';
-
+import { calculateQuantities } from '../util';
 
 const cryptoIcons = {
     'ETH': Ethereum,
@@ -41,6 +41,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const user_id = user.id;
     const change = (coin.ask - coin.open).toFixed(2)
     const changePercent = parseFloat(((coin.ask - coin.open) / coin.open)).toFixed(3);
+    const ownedQuantity = calculateQuantities(wallet.transactions);
 
     const buyState = () => {
         if (buyForm === false) {
@@ -85,6 +86,9 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     }
     const onSellSubmit = async (e) => {
         // e.preventDefault();
+        if (ownedQuantity[symbol] < quantity) {
+            return alert('You Do Not Have Enough To Sell')
+        }
         let type = (quantity * price);
         const sell = await makeSale({type, price, quantity, symbol, wallet_id})
         console.log(sell);

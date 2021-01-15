@@ -26,3 +26,15 @@ def post_transaction():
     db.session.add(wallet)
     db.session.commit()
     return transaction.to_dict()
+
+
+# @transaction_routes.route('/get-transactions', methods=['GET'])
+# @login_required
+# def get_transactions(wallet_id):
+#     transactions = Transaction.query.get(wallet_id)
+
+# define GET route to get all transactions associated with a wallet
+# Pass in the current wallet_id to pull all transactions
+# list comprehension
+
+

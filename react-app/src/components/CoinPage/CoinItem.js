@@ -226,12 +226,12 @@ margin: 0 auto;
 const MainContainer = styled.div`
 max-width: 1200px;
 max-height: 1000px;
-background-color: black;
+/* background-color: black; */
 margin: 0 auto;
-
-/* align-items: space-around; */
-flex-direction: column;
-flex-wrap: wrap;
+display: inline flex;
+margin: 20px;
+margin-left: 100px;
+/* justify-content: space-around; */
 `
 
 

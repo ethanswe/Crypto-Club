@@ -13,7 +13,8 @@ def post_wallet():
     wallet = Wallet(
         user_id=data['user_id'],
         name=data['name'],
-        balance=data['balance'])
+        balance=data['balance'],
+        startingBalance=data['balance'])
     db.session.add(wallet)
     db.session.commit()
     return wallet.to_dict()

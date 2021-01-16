@@ -38,7 +38,8 @@ max-height: 400px;
 max-width: 400x;
 width: 400px;
 height: 400px;
-background-color: red;
+/* background-color: red; */
+background-color: white;
 position: relative;
 `
 
@@ -48,6 +49,7 @@ max-height: 400px;
 max-width: 400x;
 width: 400px;
 height: 400px;
-background-color: green;
+background-color: white;
+border-left: 1px solid black;
 position: relative;
 `

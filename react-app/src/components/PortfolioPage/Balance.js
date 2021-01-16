@@ -22,7 +22,7 @@ justify-content: center;
 `
 
 const BalanceDiv = styled.div`
-color: lightgreen;
+color: green;
 font-size: 15px;
 border-bottom: 1px solid black;
 margin: 0 auto;

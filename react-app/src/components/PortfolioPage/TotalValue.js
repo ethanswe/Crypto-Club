@@ -7,7 +7,7 @@ import { calculateQuantities, CRYPTO_SYMBOLS } from '../util';
 
 const TotalValue = ({ wallet }) => {
     const [coinValues, setCoinValues] = useState({})
-    const profitLoss = (wallet.startingBalance - wallet.balance)
+
     const quantities = calculateQuantities(wallet.transactions);
     // {eth: 2}
     const fetchCoins = async () => {
@@ -31,22 +31,21 @@ const TotalValue = ({ wallet }) => {
         let value = coinValues[symbol] * quantities[symbol]
         totalValue += value;
     }
-    console.log(totalValue)
+    const profitLoss = (wallet.startingBalance - (wallet.balance + totalValue))
     return (
         <div>
             <Header>Your P/L:</Header>
-            {totalValue.toFixed(2)}
             <div>
                 {(profitLoss > 0) ? 
                     <>
                         <PositivePL>
-                            ${profitLoss}
+                            ${profitLoss.toFixed(2)}
                         </PositivePL>
                     </>
                     :
                     <>
                         <NegativePL>
-                            ${profitLoss}
+                            ${profitLoss.toFixed(2)}
                         </NegativePL>
                     </>
             
@@ -60,7 +59,7 @@ const TotalValue = ({ wallet }) => {
 export default TotalValue
 
 const PositivePL = styled.div`
-color: lightgreen;
+color: green;
 font-size: 15px;
 border-bottom: 1px solid black;
 margin: 0 auto;

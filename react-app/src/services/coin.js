@@ -1,5 +1,5 @@
 export const getCoins = async ( symbols ) => {
-  const response = await fetch(`api/coin/${symbols}`, {
+  const response = await fetch(`/api/coin/${symbols}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

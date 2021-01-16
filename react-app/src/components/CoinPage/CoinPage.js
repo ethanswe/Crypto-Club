@@ -4,31 +4,13 @@ import CoinItem  from './CoinItem';
 import { PortfolioNavigation } from '../PortfolioNavigation/PortfolioNavigation';
 import styled from 'styled-components';
 import Background from '../Background/Background';
-const CRYPTO_SYMBOLS = ['eth', 'bch', 'link', 'btc', 'ltc', 'xmr', 'grt', 'waves'];
+import { CRYPTO_SYMBOLS, calculateQuantities } from '../util';
 
 const CoinPage = ({ user, wallet }) => {
     const [coins, setCoins] = useState([]);
-    const amount = {};
-    wallet.transactions.forEach(tx => {
-        if (wallet.transactions === undefined) {
-            amount[tx.symbol] = 0;
-        }
-        if (!(tx.symbol in amount)) {
-            amount[tx.symbol] = 0;
-        }
 
-        if (amount[tx.symbol] === undefined) {
-            amount[tx.symbol] = 0;
-        }
+    const amount = calculateQuantities(wallet.transactions);
 
-        if (tx.type < 0) {
-            amount[tx.symbol] += tx.quantity
-            
-        } else {
-            amount[tx.symbol] -= tx.quantity
-        }
-    });
-    console.log(amount);
     const fetchCoins = async () => {
         const data = await getCoins(CRYPTO_SYMBOLS);
         console.log(data)

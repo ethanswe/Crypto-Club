@@ -6,7 +6,7 @@ from app.models import db, Coin
 
 def seed_coins():
 
-    bitcoin = Coin(name='Bitcoin', symbol='XBT')
+    bitcoin = Coin(name='Bitcoin', symbol='BTC')
     ethereum = Coin(name='Ethereum', symbol='ETH')
     bitcoincash = Coin(name='BitcoinCash', symbol='BCH')
     chainlink = Coin(name='Chainlink', symbol='LINK')

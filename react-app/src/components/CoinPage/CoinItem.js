@@ -17,17 +17,17 @@ import AddToList from '../../imgs/whiteList.png';
 import { addCoinToList } from '../../services/list';
 import PositiveArrow from '../../imgs/greenUpArrow.png';
 import NegativeArrow from '../../imgs/redDownArrow.png';
-
+import { calculateQuantities } from '../util';
 
 const cryptoIcons = {
-    'eth': Ethereum,
-    'grt': Graph,
-    'link': Chainlink,
-    'waves': Waves,
-    'ltc': Litecoin,
-    'btc': Bitcoin,
-    'xmr': Monero,
-    'bch': BitcoinCash
+    'ETH': Ethereum,
+    'GRT': Graph,
+    'LINK': Chainlink,
+    'WAVES': Waves,
+    'LTC': Litecoin,
+    'BTC': Bitcoin,
+    'XMR': Monero,
+    'BCH': BitcoinCash
 };
 
 
@@ -41,6 +41,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const user_id = user.id;
     const change = (coin.ask - coin.open).toFixed(2)
     const changePercent = parseFloat(((coin.ask - coin.open) / coin.open)).toFixed(3);
+    const ownedQuantity = calculateQuantities(wallet.transactions);
 
     const buyState = () => {
         if (buyForm === false) {
@@ -73,6 +74,9 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
 
     const onBuySubmit = async (e) => {
         // e.preventDefault();
+        if (wallet.balance < (quantity * price)) {
+            return alert('You Do Not Have Enough Buying Power')
+        }
         let type = (quantity * price) * -1;
         const purchase = await makePurchase({type, price, quantity, symbol, wallet_id})
         console.log(purchase);
@@ -85,6 +89,9 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     }
     const onSellSubmit = async (e) => {
         // e.preventDefault();
+        if (ownedQuantity[symbol] < quantity) {
+            return alert('You Do Not Have Enough To Sell')
+        }
         let type = (quantity * price);
         const sell = await makeSale({type, price, quantity, symbol, wallet_id})
         console.log(sell);

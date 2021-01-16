@@ -9,14 +9,14 @@ coin_routes = Blueprint('coins', __name__)
 BASE_URL = "https://api.kraken.com/0/public/Ticker?pair="
 
 crypto_symbol = {
-    'bch': 'BCHUSD',
-    'grt': 'GRTUSD',
-    'link': 'LINKUSD',
-    'waves': 'WAVESUSD',
-    'eth': 'XETHZUSD',
-    'ltc': 'XLTCZUSD',
-    'btc': 'XXBTZUSD',
-    'xmr': 'XXMRZUSD'
+    'BCH': 'BCHUSD',
+    'GRT': 'GRTUSD',
+    'LINK': 'LINKUSD',
+    'WAVES': 'WAVESUSD',
+    'ETH': 'XETHZUSD',
+    'LTC': 'XLTCZUSD',
+    'BTC': 'XXBTZUSD',
+    'XMR': 'XXMRZUSD'
 }
 
 def derive_coins(data, symbols):

@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import Photo from './Photo';
 import SideInput from './SideInput';
 
-const SignupPage = ({ authenticated, setAuthenticated}) => {
+const SignupPage = ({ authenticated, setAuthenticated, setUser}) => {
     return (
         <Container>
             <Wrapper>
-                <SideInput authenticated={authenticated} setAuthenticated={setAuthenticated} />
+                <SideInput authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser}/>
                 <Photo />
             </Wrapper>
         </Container>

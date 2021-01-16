@@ -1,11 +1,41 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components';
+import { getCoins } from '../../services/coin';
+import { calculateQuantities, CRYPTO_SYMBOLS } from '../util';
+
+
 
 const TotalValue = ({ wallet }) => {
+    const [coinValues, setCoinValues] = useState({})
     const profitLoss = (wallet.startingBalance - wallet.balance)
+    const quantities = calculateQuantities(wallet.transactions);
+    // {eth: 2}
+    const fetchCoins = async () => {
+        const data = await getCoins(CRYPTO_SYMBOLS)
+        const fetchedCoinValues = {}
+        for (let i = 0; i < data.coins.length; i++){
+            let coin = data.coins[i]
+            let value = (coin.ask);
+            let symbol = CRYPTO_SYMBOLS[i]
+            fetchedCoinValues[symbol] = value;
+        }
+        setCoinValues(fetchedCoinValues);
+    }
+    useEffect(() => {
+        fetchCoins(); 
+    }, []);
+
+    let totalValue = 0;
+    for (let symbol in coinValues) {
+        symbol = symbol.toUpperCase();
+        let value = coinValues[symbol] * quantities[symbol]
+        totalValue += value;
+    }
+    console.log(totalValue)
     return (
         <div>
             <Header>Your P/L:</Header>
+            {totalValue.toFixed(2)}
             <div>
                 {(profitLoss > 0) ? 
                     <>
@@ -24,7 +54,8 @@ const TotalValue = ({ wallet }) => {
             </div>
         </div>
     )
-}
+};
+
 
 export default TotalValue
 

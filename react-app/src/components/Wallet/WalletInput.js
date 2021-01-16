@@ -60,15 +60,15 @@ const WalletInput = ({ user }) => {
     const walletItems = wallets.map((wallet) => {
         const handleClick = () => history.push(`/wallet/${wallet.id}`)
         return (
-            <>
+            <div key={wallet.id}>
                 <Background />
-                <Div key={wallet.id} >
+                <Div>
                     <WalletNameDiv onClick={handleClick}>
                         {wallet.name}
                     </WalletNameDiv>    
                     <Card />
                 </Div>
-            </>
+            </div>
         )
     });
 

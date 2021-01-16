@@ -30,7 +30,7 @@ font-size: 25px;
 margin-bottom: 30px;
 `
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -42,6 +42,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     if (password === repeatPassword) {
       const user = await signUp(firstName, lastName, email, password);
       if (!user.errors) {
+        setUser(user);
         setAuthenticated(true);
       }
     }

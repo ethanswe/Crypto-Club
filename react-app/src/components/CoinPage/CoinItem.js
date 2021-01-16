@@ -74,6 +74,9 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
 
     const onBuySubmit = async (e) => {
         // e.preventDefault();
+        if (wallet.balance < (quantity * price)) {
+            return alert('You Do Not Have Enough Buying Power')
+        }
         let type = (quantity * price) * -1;
         const purchase = await makePurchase({type, price, quantity, symbol, wallet_id})
         console.log(purchase);

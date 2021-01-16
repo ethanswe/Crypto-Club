@@ -5,9 +5,9 @@ class Transaction(db.Model):
   __tablename__ = 'transactions'
 
   id = db.Column(db.Integer, primary_key=True)
-  type = db.Column(db.Integer, nullable=False)
-  price = db.Column(db.Integer, nullable=False)
-  quantity = db.Column(db.Integer, nullable=False)
+  type = db.Column(db.Float, nullable=False)
+  price = db.Column(db.Float, nullable=False)
+  quantity = db.Column(db.Float, nullable=False)
   date = db.Column(db.DateTime, default=datetime.utcnow)
   coin_id = db.Column(db.Integer, db.ForeignKey('coins.id'), nullable=False)
   wallet_id = db.Column(db.Integer, db.ForeignKey('wallets.id'), nullable=False)

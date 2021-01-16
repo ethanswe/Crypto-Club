@@ -13,10 +13,10 @@ flex-direction: column;
 align-items: center;
 `
 
-const SideInput = ({ authenticated, setAuthenticated }) => {
+const SideInput = ({ authenticated, setAuthenticated, setUser }) => {
     return (
         <Container>
-            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser}/>
         </Container>
     )
 }

@@ -8,9 +8,6 @@ const Nav = styled.nav`
 display: flex;
 justify-content: space-between;
 align-items: center;
-flex-direction: row;
-text-decoration: none;
-/* margin: 0 auto; */
 max-height: 60px;
 top: 0;
 background-color: black;
@@ -26,9 +23,10 @@ width: 75px;
 height: 60px;
 max-width: 75px;
 max-height: 60px;
-position: relative;
+/* position: absolute; */
 /* margin: 0 auto; */
 `
+
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
   let location = useLocation();
@@ -41,7 +39,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
       <>
       <NavLink to="/" exact={true} activeClassName="active">
         <LogoNav />
-      </NavLink>
+            </NavLink>
             <NavLink to="/login" exact={true} activeClassName="active">
               <Buttons>
                 Login
@@ -52,7 +50,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 Sign Up
               </Buttons>
           </NavLink>
-          <LogoutButton authenticated={authenticated} setAuthenticated={setAuthenticated} />
+              <LogoutButton authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </>
         : ""}
       {currentPage === '/wallet' ?

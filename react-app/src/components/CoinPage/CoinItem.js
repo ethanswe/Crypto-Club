@@ -43,6 +43,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const changePercent = parseFloat(((coin.ask - coin.open) / coin.open)).toFixed(3);
     const ownedQuantity = calculateQuantities(wallet.transactions);
 
+
     const buyState = () => {
         if (buyForm === false) {
             setBuyForm(true)
@@ -73,7 +74,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     }
 
     const onBuySubmit = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         if (wallet.balance < (quantity * price)) {
             return alert('You Do Not Have Enough Buying Power')
         }
@@ -88,7 +89,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
 
     }
     const onSellSubmit = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         if (ownedQuantity[symbol] < quantity) {
             return alert('You Do Not Have Enough To Sell')
         }

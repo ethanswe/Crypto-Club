@@ -6,7 +6,7 @@ const Balance = ({ wallet }) => {
     return (
         <div>
             <Header> Available Cash: </Header>
-            <BalanceDiv>${balance}</BalanceDiv>
+            <BalanceDiv>${balance.toFixed(2)}</BalanceDiv>
         </div>
     )
 }

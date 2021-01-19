@@ -31,7 +31,7 @@ const TotalValue = ({ wallet }) => {
         let value = coinValues[symbol] * quantities[symbol]
         totalValue += value;
     }
-    const profitLoss = (wallet.startingBalance - (wallet.balance + totalValue))
+    const profitLoss = ((wallet.balance + totalValue) - wallet.startingBalance)
     return (
         <div>
             <Header>Your P/L:</Header>

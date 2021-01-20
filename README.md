@@ -4,7 +4,7 @@
 * Crypto Club is a "paper trading" cryptocurrency exchange. It allows users to create as many wallets as they'd like as well as selecting the paper balance they'd like in each wallet. The portfolio page and coin page reflect 8 cryptocurrencies in real time pricing thanks to the Kraken REST API. 
 
 **Live Demonstration**
-* https://crypto-club-aa.herokuapp.com/login
+* https://crypto-club-aa.herokuapp.com/
 
 **MVP**
 * User sign up, sign on, and authentication 

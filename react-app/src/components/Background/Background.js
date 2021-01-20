@@ -47,7 +47,7 @@ const Background = () => {
 	                {
 	                    "src": BitcoinCash,
 	                    "height": 20,
-	                    "width": 20
+	                    "width": 30
 	                },
 	                {
 	                    "src": Chainlink,
@@ -57,7 +57,7 @@ const Background = () => {
 	                {
 	                    "src": Monero,
 	                    "height": 50,
-	                    "width": 150
+	                    "width": 160
 	                },
 	                {
 	                    "src": Waves,

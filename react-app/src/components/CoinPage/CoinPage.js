@@ -47,5 +47,5 @@ export default CoinPage
 
 
 const CoinItemDiv = styled.div`
-margin-top: 125px;
+margin-top: 100px;
 `

@@ -57,9 +57,10 @@ font-size: 15px;
 
 const BottomDiv = styled.div`
 background-color: black;
+display: inline-flex;
 position: absolute;
 width: 100vw;
-height: 250px;
+height: 24.5vh;
 display: flex;
 margin-top: 160px;
 justify-content: center;

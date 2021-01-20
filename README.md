@@ -1,98 +1,51 @@
-# Flask React Project
+## Crypto Club 
 
-This is the backend for the Flask React project.
+**Description**
+* Crypto Club is a "paper trading" cryptocurrency exchange. It allows users to create as many wallets as they'd like as well as selecting the paper balance they'd like in each wallet. The portfolio page and coin page reflect 8 cryptocurrencies in real time pricing thanks to the Kraken REST API. 
 
-## Getting started
+**Live Demonstration**
+* https://crypto-club-aa.herokuapp.com/login
 
-1. Clone this repository (only this branch)
+**MVP**
+* User sign up, sign on, and authentication 
+* Allow users to create a wallet
+* Allow users to view their portfolio page with Profit/Loss, Current Asset's Held, and Available Cash Balance
+* Display all 8 cryptocurrencies with market information from the Kraken API
+* Allow users to buy/sell coins
+* Allow users to add cryptocurrencies to their watch list on the portfolio page
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
 
-2. Install dependencies
+**Bonus Goals**
+* Create a swap functionality that allows users to exchange their current coin for a different coin without having to sell their current asset and buy a new one.
+* Edit/Delete functionality on wallets 
+* Edit/Delete functionality on watch list 
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+## Technologies
+ - JavaScript
+ - Python 3
+ - Flask
+ - FlaskForms
+ - SQLAlchemy
+ - Alembic
+ - React
+ - HTML/CSS
+ - Kraken API
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+## Feature List
+ ### User CRUD
+  - Signup/login/logout
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+ ### Wallet CRUD
+  - Users can create a wallet with a custom balance in USD. 
 
-   ```bash
-   pipenv shell
-   ```
+ ### Transaction CRUD
+  - Users can create a buy/sell transaction.
 
-   ```bash
-   flask db upgrade
-   ```
+ ### Watch List CRUD
+  - Users can add individual cryptocurrencies to their watch list
 
-   ```bash
-   flask seed all
-   ```
+ ### Portfolio Page
+  - Every wallet has a portfolio page.
+  - Portfolio page displays Profit/Loss by making a GET request to the Python backend to get the coin names and quantity of each coin held by a wallet. It will then calculate the current market price of all of the coins held by the wallet against the starting balance of the wallet and the available cash on hand. 
+  - Portfolio page will also display the current assets held and a history of all transactions a wallet has made. 
 
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
-
-   ```bash
-   heroku login
-   ```
-
-5. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit

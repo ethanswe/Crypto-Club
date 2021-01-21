@@ -5,14 +5,20 @@ import { login } from "../../services/auth";
 
 const Container = styled.div`
 min-width: 960px;
-padding: 0 2rem;
+/* padding: 0 2rem; */
 justify-content: space-evenly;
 background-color: white;
 height: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
-
+min-width: 750px;
+@media (max-width: 600px){
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 `
 
 const SideInput = ({ authenticated, setAuthenticated, setUser, user }) => {

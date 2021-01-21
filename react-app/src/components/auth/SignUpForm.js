@@ -23,6 +23,7 @@ width: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-left: 200px;
 `
 
 const Header = styled.h1`
@@ -46,7 +47,7 @@ const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
         setAuthenticated(true);
       }
     }
-  };
+  }; 
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
@@ -74,7 +75,7 @@ const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
   return (
     <>
     <WelcomeDiv>Welcome to Crypto Club</WelcomeDiv>
-    <form onSubmit={onSignUp}>
+    <Form onSubmit={onSignUp}>
       <div>
         <label>First Name</label>
         <Input
@@ -122,7 +123,7 @@ const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
         ></Input>
       </div>
       <Button type="submit">Sign Up</Button>
-      </form>
+      </Form>
     </>
   );
 };
@@ -174,4 +175,7 @@ const WelcomeDiv = styled.div`
 position: absolute;
 margin-top: -500px;
 font-size: 25px;
+margin-left: 250px;
+width: 300px;
 `
+

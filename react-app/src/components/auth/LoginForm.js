@@ -13,6 +13,7 @@ background-image: url(${LoginBackground});
 width: 100%;
 height: 100%;
 background-position: center;
+/* display: flex; */
 `
 
 const ImgContainer = styled.div`
@@ -48,6 +49,7 @@ align-items: center;
 const Header = styled.h1`
 font-size: 25px;
 margin-bottom: 30px;
+
 `
 
 const Button = styled.button`

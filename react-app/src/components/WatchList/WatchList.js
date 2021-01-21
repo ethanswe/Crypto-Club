@@ -4,22 +4,20 @@ import { getList } from '../../services/list';
 
 const WatchList = ({ user }) => {
     const [watchList, setWatchList] = useState({})
-
     console.log(watchList)
+
     const fetchList = async () => {
        const data = await getList({ user_id: user.id });
         setWatchList(data);
     };
-
+    console.log(watchList);
     useEffect(() => {
         fetchList({ user_id: user.id });
     }, [])
 
-
-    // let watchListItems = watchList.map((coin, idx) => {
-    //     console.log(coin)
-    // })
-
+    // for (let coins in watchList) {
+    //     console.log(coins)
+    // }
 
     return (
         <WatchListDiv>

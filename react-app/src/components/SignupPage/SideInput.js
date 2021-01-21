@@ -11,6 +11,8 @@ height: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
+/* max-width: 600px; */
+/* margin-left: 150px; */
 `
 
 const SideInput = ({ authenticated, setAuthenticated, setUser }) => {

@@ -21,8 +21,8 @@ function App() {
   const [user, setUser] = useState(null);
   const history = useHistory();
   const [ wallet, setWallet ] = useState(null)
-  console.log(authenticated);
-  console.log(user);
+  // console.log(authenticated);
+  // console.log(user);
 
 
     const fetchWallet = async () => {
@@ -72,8 +72,8 @@ function App() {
       <ProtectedRoute path="/new-wallet" exact={true} authenticated={authenticated}>
         <NewWallet user={user} setUser={setUser}/>
       </ProtectedRoute>
-      <ProtectedRoute path="/coins" exact={true} authenticated={authenticated}>
-        {wallet ? <CoinPage user={user} setUser={setUser} wallet={wallet} /> : "Loading" }
+      <ProtectedRoute path="/wallet/:wallet_id/coins" exact={true} authenticated={authenticated}>
+        {wallet ? <CoinPage user={user} setUser={setUser} wallet={wallet} setWallet={setWallet}/> : "Loading" }
       </ProtectedRoute>
       <ProtectedRoute  exact={true} authenticated={authenticated} path="/wallet/:wallet_id">
         <PortfolioPage user={user} wallet={wallet} setWallet={setWallet}/>

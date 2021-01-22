@@ -18,7 +18,7 @@ import { addCoinToList } from '../../services/list';
 import PositiveArrow from '../../imgs/greenUpArrow.png';
 import NegativeArrow from '../../imgs/redDownArrow.png';
 import { calculateQuantities } from '../util';
-
+// Default export and safe it to new variable makeSale makePurchase
 const cryptoIcons = {
     'ETH': Ethereum,
     'GRT': Graph,

@@ -9,28 +9,33 @@ export const PortfolioNavigation = ({ authenticated, setAuthenticated }) => {
     return (
         <NavBar>
             <LogoutButton authenticated={authenticated} setAuthenticated={setAuthenticated} />
-            <NavLink to="/wallet" exact={true} activeClassName="active">
+            <NavLink to={`/wallet/${wallet_id}`} exact={true} activeClassName="active">
                 <Buttons>
-                    Wallets
-                </Buttons>
+                    Portfolio
+                </Buttons>  
             </NavLink>
             <NavLink to={`/wallet/${wallet_id}/coins`} exact={true} activeClassName="active">
                 <Buttons>
                     Coins
                 </Buttons>  
             </NavLink>
-            <NavLink to='/swap' exact={true} activeClassName="active">
+            <NavLink to="/wallet" exact={true} activeClassName="active">
+                <Buttons>
+                    Wallets
+                </Buttons>
+            </NavLink>
+            {/* <NavLink to='/swap' exact={true} activeClassName="active">
                 <Buttons>
                     Swap
                 </Buttons>
-            </NavLink>
+            </NavLink> */}
         </NavBar>
     )
 }
 
 const NavBar = styled.div`
 display: flex;
-justify-content: space-between;
+justify-content: flex-end;
 align-items: center;
 flex-direction: row;
 text-decoration: none;

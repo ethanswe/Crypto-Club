@@ -8,7 +8,7 @@ import { calculateQuantities } from '../util/index';
 const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
     const coinQuantities = (calculateQuantities(wallet.transactions));
     let doughnutData = [];
-    
+
     for (let symbol in coinQuantities) {
         const qty = coinQuantities[symbol];
         const doughnutEntry = { angle: qty, label: symbol }
@@ -16,20 +16,35 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
     }
     const transactionItems = wallet.transactions.map((transaction) => {
         return (
-            <div key={transaction.id}>
-                <div>
+            <TransactionItemDiv key={transaction.id}>
+                <TransactionInfoDiv>
+                    Date: 
+                    {transaction.date}
+                </TransactionInfoDiv>
+                <TransactionInfoDiv>
+                    Coin: 
                     {transaction.symbol}
-                </div>
-                <div>
+                </TransactionInfoDiv>
+                <TransactionInfoDiv>
+                    Qty:
                     {transaction.quantity}
-                </div>
-            </div>
+                </TransactionInfoDiv>
+                <TransactionInfoDiv>
+                    Price:
+                    ${transaction.price.toFixed(2)}
+                </TransactionInfoDiv>
+                <TransactionInfoDiv>
+                    Total Cost:
+                    ${(transaction.type).toFixed(2)}
+                </TransactionInfoDiv>
+            </TransactionItemDiv>
         )
     })
     return (
         <PortfolioGraphDiv>
             <TotalValueContainer>
                 <TotalValue wallet={wallet} />
+                {(doughnutData.length === 0) ? null : 
                 <RadialChart
                     data={doughnutData}
                     width={300}
@@ -41,7 +56,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
 
             
                 />
-
+                }
             </TotalValueContainer>
             
             <AssetsHeldContainer>
@@ -90,5 +105,20 @@ position: relative;
 const TransactionItemsList = styled.div`
 max-height: 366px;
 max-width: 400x;
+height: 366px;
+width: 400px;
 overflow-y: scroll;
+
+`
+
+const TransactionItemDiv = styled.div`
+display: inline-block;
+padding: 10px;
+height: 80px;
+width: 400px;
+border-bottom: 1px solid black;
+`
+
+const TransactionInfoDiv = styled.div`
+/* padding-right: 2px; */
 `

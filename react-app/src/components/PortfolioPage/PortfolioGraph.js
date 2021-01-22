@@ -8,16 +8,30 @@ import TotalValue from './TotalValue';
 
 
 const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
+    console.log(wallet)
 
+    const transactionItems = wallet.transactions.map((transaction) => {
+        return (
+            <div key={transaction.id}>
+                <div>
+                    {transaction.symbol}
+                </div>
+                <div>
+                    {transaction.quantity}
+                </div>
+            </div>
+        )
+    })
     return (
         <PortfolioGraphDiv>
             <TotalValueContainer>
-                <TotalValue wallet={wallet}/>
+                <TotalValue wallet={wallet} />
+                <h1>HELLO</h1>
             </TotalValueContainer>
             
             <AssetsHeldContainer>
                 <Balance wallet={wallet} />
-                <h1>Hello</h1>
+                {transactionItems}
             </AssetsHeldContainer>
         </PortfolioGraphDiv>
     )

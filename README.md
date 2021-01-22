@@ -46,6 +46,6 @@
 
  ### Portfolio Page
   - Every wallet has a portfolio page.
-  - Portfolio page displays Profit/Loss by making a GET request to the Python backend to get the coin names and quantity of each coin held by a wallet. It will then calculate the current market price of all of the coins held by the wallet against the starting balance of the wallet and the available cash on hand. 
+  - Portfolio page displays Profit/Loss by making a request to the Python backend to get the coin names and quantity of each coin held by a wallet. It will then calculate the current market price of all of the coins held by the wallet against the starting balance of the wallet and the available cash on hand. 
   - Portfolio page will also display the current assets held and a history of all transactions a wallet has made. 
 

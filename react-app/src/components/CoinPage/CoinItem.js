@@ -63,7 +63,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
     const addToList = async (e) => {
         e.preventDefault();
         const addedCrypto = await addCoinToList({ symbol, user_id })
-        console.log(addedCrypto);
+        // console.log(addedCrypto);
         if (!addedCrypto.error) {
             return alert('Successfully added to your list! ')
         }
@@ -80,7 +80,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
         }
         let type = (quantity * price) * -1;
         const purchase = await makePurchase({type, price, quantity, symbol, wallet_id})
-        console.log(purchase);
+        // console.log(purchase);
         if (!purchase.error) {
             setBuyForm(false);
             setQuantity(0);
@@ -95,13 +95,13 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
         }
         let type = (quantity * price);
         const sell = await makeSale({type, price, quantity, symbol, wallet_id})
-        console.log(sell);
+        // console.log(sell);
         if (!sell.error) {
             setSellForm(false);
             setQuantity(0);
+            // set state on parent or self
             return alert('Your Order Has Been Submitted')
         }
-
     }
 
     const updateAmount = (e) => {

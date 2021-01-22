@@ -25,7 +25,7 @@ const WatchList = ({ user }) => {
         fetchCoins({ user_id: user.id });
     }, [])
 
-    console.log(coins);
+    // console.log(coins);
     const coinItems = coins.map((coin, idx) => {
         return (
             <div key={idx}>

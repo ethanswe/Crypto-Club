@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components'
 export const PortfolioNavigation = ({ authenticated, setAuthenticated }) => {
     const { wallet_id } = useParams();
+    console.log(wallet_id)
     return (
         <NavBar>
             <LogoutButton authenticated={authenticated} setAuthenticated={setAuthenticated} />
@@ -13,7 +14,7 @@ export const PortfolioNavigation = ({ authenticated, setAuthenticated }) => {
                     Wallets
                 </Buttons>
             </NavLink>
-            <NavLink to='/coins' exact={true} activeClassName="active">
+            <NavLink to={`/wallet/${wallet_id}/coins`} exact={true} activeClassName="active">
                 <Buttons>
                     Coins
                 </Buttons>  

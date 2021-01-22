@@ -16,7 +16,11 @@ const PortfolioPage = ({ authenticated, setAuthenticated, user, wallet, setWalle
     useEffect(() => {
         fetchWallet();
     }, []);
-    
+
+    if (!wallet) {
+        return <h3>loading</h3>;
+    }
+    console.log(wallet);
     return (
         <div>
             <Background />

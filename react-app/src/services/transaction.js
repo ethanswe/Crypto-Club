@@ -16,7 +16,7 @@ export const makePurchase = async ({type, price, quantity, symbol, wallet_id}) =
 };
 
 
-
+// TODO Dry up code by makeSale = makePurchase w/ same arguments 
 export const makeSale = async ({type, price, quantity, symbol, wallet_id}) => {
   const response = await fetch("/api/transaction/create", {
     method: "POST",

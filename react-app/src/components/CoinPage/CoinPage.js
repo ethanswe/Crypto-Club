@@ -16,6 +16,7 @@ const CoinPage = ({ user, wallet }) => {
         console.log(data)
         setCoins(data.coins);
     };
+    console.log(coins);
     
     useEffect(() => {
         fetchCoins();
@@ -31,13 +32,13 @@ const CoinPage = ({ user, wallet }) => {
     
     return (
         <>
-            <Background />
+        <Background />
         <div>
             <PortfolioNavigation />
         </div>
         <CoinItemDiv>
             {coinItems} 
-            </CoinItemDiv>
+        </CoinItemDiv>
         </>
     )
 };

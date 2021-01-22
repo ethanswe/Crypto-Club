@@ -1,27 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getList } from '../../services/list';
+import { getCoins } from '../../services/coin';
 
 const WatchList = ({ user }) => {
-    const [watchList, setWatchList] = useState({})
-    console.log(watchList)
+    const [coins, setCoins] = useState([])
 
-    const fetchList = async () => {
-       const data = await getList({ user_id: user.id });
-        setWatchList(data);
+    const fetchCoins = async () => {
+        const data = await getList({ user_id: user.id });
+        const symbols = data.coins.map((coin) => coin.symbol);
+        const response = await getCoins(symbols);
+        const coinData = response.coins.map((coin, idx) => {
+            const newCoin = { ...coin };
+            newCoin.symbol = symbols[idx];
+            newCoin.name = data.coins[idx].name;
+            return newCoin
+        });
+        setCoins(coinData)
+        // console.log(coinData)
     };
-    console.log(watchList);
+
+
     useEffect(() => {
-        fetchList({ user_id: user.id });
+        fetchCoins({ user_id: user.id });
     }, [])
 
-    // for (let coins in watchList) {
-    //     console.log(coins)
-    // }
+    console.log(coins);
+    const coinItems = coins.map((coin, idx) => {
+        return (
+            <div key={idx}>
+                {coin.symbol}
+                {coin.ask}
+                {coin.name}
+            </div>
+        )
+    })
 
     return (
         <WatchListDiv>
             <Header>Crypto Watch List:</Header>
+            {coinItems}
         </WatchListDiv>
     )
 }

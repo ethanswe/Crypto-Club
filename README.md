@@ -7,7 +7,7 @@
 * https://crypto-club-aa.herokuapp.com/
 
 **MVP**
-* User sign up, sign on, and authentication 
+* User authentication 
 * Allow users to create a wallet
 * Allow users to view their portfolio page with Profit/Loss, Current Asset's Held, and Available Cash Balance
 * Display all 8 cryptocurrencies with market information from the Kraken API

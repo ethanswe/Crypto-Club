@@ -46,7 +46,9 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             
             <AssetsHeldContainer>
                 <Balance wallet={wallet} />
-                {transactionItems}
+                <TransactionItemsList>
+                    {transactionItems}
+                </TransactionItemsList>
             </AssetsHeldContainer>
         </PortfolioGraphDiv>
     )
@@ -82,4 +84,11 @@ height: 400px;
 background-color: white;
 border-left: 1px solid black;
 position: relative;
+`
+
+
+const TransactionItemsList = styled.div`
+max-height: 366px;
+max-width: 400x;
+overflow-y: scroll;
 `

@@ -16,7 +16,8 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             </TotalValueContainer>
             
             <AssetsHeldContainer>
-                <Balance wallet={wallet}/>
+                <Balance wallet={wallet} />
+                <h1>Hello</h1>
             </AssetsHeldContainer>
         </PortfolioGraphDiv>
     )

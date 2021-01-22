@@ -11,8 +11,7 @@ import { getWallet } from '../../services/wallet';
 const CoinPage = ({ user, wallet, setWallet }) => {
     const [coins, setCoins] = useState([]);
     const { wallet_id } = useParams();
-    console.log(wallet);
-    console.log(wallet_id);
+
     const amount = calculateQuantities(wallet.transactions);
 
     const fetchCoins = async () => {
@@ -33,9 +32,16 @@ const CoinPage = ({ user, wallet, setWallet }) => {
     let coinItems = coins.map((coin, idx) => {
         let symbol = CRYPTO_SYMBOLS[idx];
 
-        return (
-            <CoinItem key={idx} wallet={wallet} symbol={symbol} coin={coin} user={user} amount={amount[symbol.toUpperCase()]}/>
-        );
+        return <CoinItem 
+             key={idx} 
+             wallet={wallet}
+             symbol={symbol} 
+             coin={coin} 
+             user={user} 
+             fetchWallet={fetchWallet}
+             amount={amount[symbol.toUpperCase()]}
+            />;
+        ;
     });
     
     return (

@@ -31,7 +31,7 @@ const cryptoIcons = {
 };
 
 
-const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
+const CoinItem = ({ coin, user, symbol, amount, wallet, fetchWallet }) => {
     const [buyForm, setBuyForm] = useState(false);
     const [sellForm, setSellForm] = useState(false);
     const {bid, ask, volume, high, low, open} = coin;
@@ -69,9 +69,6 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
         }
     }
 
-    const fetchWallet = async () => {
-        const data = await getWallet({ wallet_id })
-    }
 
     const onBuySubmit = async (e) => {
         e.preventDefault();
@@ -84,6 +81,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
         if (!purchase.error) {
             setBuyForm(false);
             setQuantity(0);
+            fetchWallet();
             return alert('Your Order Has Been Submitted')
         }
 
@@ -100,6 +98,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet }) => {
             setSellForm(false);
             setQuantity(0);
             // set state on parent or self
+            fetchWallet();
             return alert('Your Order Has Been Submitted')
         }
     }

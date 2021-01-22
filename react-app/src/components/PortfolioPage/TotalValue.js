@@ -36,7 +36,7 @@ const TotalValue = ({ wallet }) => {
         <div>
             <Header>Your P/L:</Header>
             <div>
-                {(profitLoss > 0) ? 
+                {(profitLoss >= 0) ?
                     <>
                         <PositivePL>
                             ${profitLoss.toFixed(2)}
@@ -48,8 +48,7 @@ const TotalValue = ({ wallet }) => {
                             ${profitLoss.toFixed(2)}
                         </NegativePL>
                     </>
-            
-            }
+                }
             </div>
         </div>
     )

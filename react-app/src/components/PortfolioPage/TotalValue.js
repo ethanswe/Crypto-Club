@@ -45,7 +45,7 @@ const TotalValue = ({ wallet }) => {
                     :
                     <>
                         <NegativePL>
-                            ${profitLoss.toFixed(2)}
+                            ${profitLoss.toFixed(2)} / ${(totalValue + wallet.balance).toFixed(2)}
                         </NegativePL>
                     </>
                 }

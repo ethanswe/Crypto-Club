@@ -7,7 +7,6 @@ import { calculateQuantities, CRYPTO_SYMBOLS } from '../util';
 
 const TotalValue = ({ wallet }) => {
     const [coinValues, setCoinValues] = useState({})
-
     const quantities = calculateQuantities(wallet.transactions);
     // {eth: 2}
     const fetchCoins = async () => {
@@ -24,28 +23,29 @@ const TotalValue = ({ wallet }) => {
     useEffect(() => {
         fetchCoins(); 
     }, []);
-
+    
     let totalValue = 0;
     for (let symbol in coinValues) {
         symbol = symbol.toUpperCase();
         let value = coinValues[symbol] * quantities[symbol]
         totalValue += value;
     }
+
     const profitLoss = ((wallet.balance + totalValue) - wallet.startingBalance)
     return (
         <div>
-            <Header>Your P/L:</Header>
+            <Header>Your P/L / Total Value:</Header>
             <div>
                 {(profitLoss >= 0) ?
                     <>
                         <PositivePL>
-                            ${profitLoss.toFixed(2)}
+                            ${profitLoss.toFixed(2)} / ${(totalValue + wallet.balance).toFixed(2)}
                         </PositivePL>
                     </>
                     :
                     <>
                         <NegativePL>
-                            ${profitLoss.toFixed(2)}
+                            ${profitLoss.toFixed(2)} / ${(totalValue + wallet.balance).toFixed(2)}
                         </NegativePL>
                     </>
                 }

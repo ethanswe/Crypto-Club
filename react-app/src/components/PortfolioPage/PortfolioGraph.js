@@ -44,11 +44,12 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
         <PortfolioGraphDiv>
             <TotalValueContainer>
                 <TotalValue wallet={wallet} />
+                <ChartContainer>
                 {(doughnutData.length === 0) ? null : 
                 <RadialChart
                     data={doughnutData}
-                    width={300}
-                    height={300}
+                    width={330}
+                    height={330}
                     showLabels={true}
                     innerRadius={100}
                     radius={150}
@@ -56,7 +57,8 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
 
             
                 />
-                }
+                    }
+            </ChartContainer>
             </TotalValueContainer>
             
             <AssetsHeldContainer>
@@ -121,4 +123,9 @@ border-bottom: 1px solid black;
 
 const TransactionInfoDiv = styled.div`
 /* padding-right: 2px; */
+`
+
+const ChartContainer = styled.div`
+margin-left: 30px;
+margin-top: 15px;
 `

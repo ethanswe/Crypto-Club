@@ -19,3 +19,26 @@ export const calculateQuantities = (transactions) => {
     return quantities;
 };
 
+export const formatMoney = (amount, signed=false) => {
+    let sign = ''
+    if (amount > 0) {
+        sign = '+';
+    } else if (amount < 0) {
+        sign = '-';
+    }
+    sign = signed ? sign : '';
+    const str = String(Math.abs(amount));
+    const [ dollars, cents ] = str.split('.');
+    const formattedCents = cents.slice(0, 2);
+    let formattedDollars = '';
+    const reversedDollars = dollars.split('').reverse().join('');
+    for (let i = 0; i < reversedDollars.length; i++){
+        if (i % 3 === 0) {
+            formattedDollars =reversedDollars[i]  + ',' + formattedDollars;
+        } else {
+            formattedDollars = reversedDollars[i] + formattedDollars;
+        }
+    }
+    formattedDollars = formattedDollars[0] === ',' ? formattedDollars.slice(1) : formattedDollars;
+    return '$' + sign + formattedDollars.slice(0, -1) + '.' + formattedCents;
+};

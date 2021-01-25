@@ -39,7 +39,7 @@ const WatchList = ({ user }) => {
     return (
         <WatchListDiv>
             <Header>Crypto Watch List:</Header>
-            {coinItems}
+            {coinItems.length ? coinItems : <h3>Please Add A Coin To Your WatchList</h3>}
         </WatchListDiv>
     )
 }

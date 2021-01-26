@@ -108,6 +108,9 @@ const LoginForm = ({ authenticated, setAuthenticated, user, setUser }) => {
     }
   };
 
+  const demoUser = (e) => {
+    console.log('working')
+  }
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -149,7 +152,10 @@ const LoginForm = ({ authenticated, setAuthenticated, user, setUser }) => {
           value={password}
           onChange={updatePassword}
         />
-        <Button type="submit">Log In</Button>
+          <Button type="submit">Log In</Button>
+          <DemoUserButton>
+            <Button onClick={demoUser}>Log In With Demo User</Button>
+          </DemoUserButton>
       </div>
       </Form>
       </>
@@ -157,3 +163,7 @@ const LoginForm = ({ authenticated, setAuthenticated, user, setUser }) => {
 };
 
 export default LoginForm;
+
+const DemoUserButton = styled.div`
+margin-top: 10px;
+`

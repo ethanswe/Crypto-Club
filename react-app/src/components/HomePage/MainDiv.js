@@ -6,7 +6,6 @@ import Video from './Video';
 
 const MainDiv = () => {
     const onClick = (e) => {
-        e.preventDefault();
         return <Redirect to='https://github.com/ethanswe/Crypto-Club' />
     }
     return (
@@ -17,7 +16,6 @@ const MainDiv = () => {
                     DISCLAIMER: THIS PROJECT IS FOR DEMONSTRATION PURPOSES ONLY. PLEASE DO NOT TAKE THE DATA INTO CONSIDERATION FOR REAL-LIFE TRADING.
                         <a href='https://github.com/ethanswe/Crypto-Club' target="_blank">
             <GithubLogo onClick={onClick} />
-                        <GithubText>GitHub</GithubText>
                 </a>
                 </Disclaimer>
             </BottomDiv>

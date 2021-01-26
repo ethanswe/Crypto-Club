@@ -40,6 +40,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
       <NavLink to="/" exact={true} activeClassName="active">
         <LogoNav />
             </NavLink>
+            <NavContainer>
             <NavLink to="/login" exact={true} activeClassName="active">
               <Buttons>
                 Login
@@ -49,7 +50,8 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
               <Buttons>
                 Sign Up
               </Buttons>
-          </NavLink>
+              </NavLink>
+            </NavContainer>
               <LogoutButton authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </>
         : ""}
@@ -108,4 +110,8 @@ const Buttons = styled.button`
       width: 110%;
     }
   }
+`
+
+const NavContainer = styled.div`
+
 `

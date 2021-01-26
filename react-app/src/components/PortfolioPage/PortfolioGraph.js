@@ -4,16 +4,21 @@ import { RadialChart } from 'react-vis';
 import Balance from './Balance';
 import TotalValue from './TotalValue';
 import { calculateQuantities } from '../util/index';
+import { formatMoney } from '../util/index';
 
 const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
     const coinQuantities = (calculateQuantities(wallet.transactions));
     let doughnutData = [];
-
+    let totalQty = 0;
+    
     for (let symbol in coinQuantities) {
         const qty = coinQuantities[symbol];
-        const doughnutEntry = { angle: qty, label: symbol }
+        totalQty += qty;
+        const label = qty === 0 ? '' : symbol; 
+        const doughnutEntry = { angle: qty, label }
         doughnutData.push(doughnutEntry);
     }
+    
     const transactionItems = wallet.transactions.map((transaction) => {
         return (
             <TransactionItemDiv key={transaction.id}>
@@ -31,11 +36,10 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
                 </TransactionInfoDiv>
                 <TransactionInfoDiv>
                     Price:
-                    ${transaction.price.toFixed(2)}
+                    {formatMoney(transaction.price)}
                 </TransactionInfoDiv>
                 <TransactionInfoDiv>
-                    Total Cost:
-                    ${(transaction.type).toFixed(2)}
+                    {formatMoney(transaction.type, true)}
                 </TransactionInfoDiv>
             </TransactionItemDiv>
         )
@@ -45,7 +49,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             <TotalValueContainer>
                 <TotalValue wallet={wallet} />
                 <ChartContainer>
-                {(doughnutData.length === 0) ? null : 
+                {(totalQty === 0) ? <h3>Please Make A Trade To Render Your Graph</h3> : 
                 <RadialChart
                     data={doughnutData}
                     width={330}
@@ -53,9 +57,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
                     showLabels={true}
                     innerRadius={100}
                     radius={150}
-                    padding={20}
-
-            
+                    padding={20}            
                 />
                     }
             </ChartContainer>

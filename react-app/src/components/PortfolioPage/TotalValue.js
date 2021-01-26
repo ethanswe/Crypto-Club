@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import styled from 'styled-components';
 import { getCoins } from '../../services/coin';
 import { calculateQuantities, CRYPTO_SYMBOLS } from '../util';
+import { formatMoney } from '../util/index';
+
 
 
 
@@ -39,13 +41,13 @@ const TotalValue = ({ wallet }) => {
                 {(profitLoss >= 0) ?
                     <>
                         <PositivePL>
-                            ${profitLoss.toFixed(2)} / ${(totalValue + wallet.balance).toFixed(2)}
+                            {formatMoney(profitLoss, true)} / {formatMoney((totalValue + wallet.balance))}
                         </PositivePL>
                     </>
                     :
                     <>
                         <NegativePL>
-                            ${profitLoss.toFixed(2)} / ${(totalValue + wallet.balance).toFixed(2)}
+                            {formatMoney(profitLoss, true)} / {formatMoney((totalValue + wallet.balance))}
                         </NegativePL>
                     </>
                 }

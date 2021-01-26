@@ -29,6 +29,6 @@ def get_wallet(wallet_id=None):
     else:
         wallet = Wallet.query.get(wallet_id)
     if (wallet is None):
-        return {"transactions": []}
+        return {"transactions": [], "balance": 0}
     else:
         return wallet.to_dict()

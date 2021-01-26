@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-
+import { formatMoney } from '../util/index';
 const Balance = ({ wallet }) => {
     const balance = wallet.balance;
     return (
         <div>
             <Header> Available Cash: </Header>
-            <BalanceDiv>${balance.toFixed(2)}</BalanceDiv>
+            <BalanceDiv>{formatMoney(balance)}</BalanceDiv>
         </div>
     )
 }

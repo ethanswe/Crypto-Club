@@ -8,12 +8,16 @@ import Background from '../Background/Background';
 import Ethereum from '../../imgs/ethereum.png'
 import Litecoin from '../../imgs/litecoin.png'
 import SVG from '../../imgs/bitcoin-coin.svg'
+
+
 const Container = styled.div`
 width: 1200px;
 height: 400px;
 margin: 0 auto;
 border-radius: 20px;
 background-color: #191c28;
+overflow-y: scroll;
+max-height: 400px;
 `
 
 const Div = styled.div`
@@ -27,7 +31,6 @@ opacity:0.65;
 display: flex;
 align-items: center;
 justify-content: space-between;
-
 `
 
 const WalletNameDiv = styled.div`

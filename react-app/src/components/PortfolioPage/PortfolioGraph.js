@@ -49,7 +49,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             <TotalValueContainer>
                 <TotalValue wallet={wallet} />
                 <ChartContainer>
-                {(totalQty === 0) ? <h3>Please Make A Trade To Render Your Graph</h3> : 
+                {(totalQty === 0) ? <TemporaryGraphText>Please Hold An Asset To Render Your Holdings Graph</TemporaryGraphText> : 
                 <RadialChart
                     data={doughnutData}
                     width={330}
@@ -112,7 +112,7 @@ max-width: 400x;
 height: 366px;
 width: 400px;
 overflow-y: scroll;
-
+overflow-x: hidden;
 `
 
 const TransactionItemDiv = styled.div`
@@ -130,4 +130,11 @@ const TransactionInfoDiv = styled.div`
 const ChartContainer = styled.div`
 margin-left: 30px;
 margin-top: 15px;
+`
+
+const TemporaryGraphText = styled.h3`
+margin: 0 auto;
+display: flex;
+justify-content: center;
+align-items: center;
 `

@@ -59,6 +59,8 @@ background-color: white;
 width: 600px;
 height: 400px;
 margin: 0 auto;
+max-height: 400px;
+overflow-y: scroll;
 `
 
 const Header = styled.h1`

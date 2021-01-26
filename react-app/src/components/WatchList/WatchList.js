@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getList } from '../../services/list';
 import { getCoins } from '../../services/coin';
-
+import { formatMoney } from '../util/index';
 const WatchList = ({ user }) => {
     const [coins, setCoins] = useState([])
 
@@ -28,11 +28,17 @@ const WatchList = ({ user }) => {
     // console.log(coins);
     const coinItems = coins.map((coin, idx) => {
         return (
-            <div key={idx}>
-                {coin.symbol}
-                {coin.ask}
-                {coin.name}
-            </div>
+            <WatchlistContainer key={idx}>
+                <Name>
+                    Name: {coin.name}
+                </Name>
+                <Symbol>
+                    Symbol: {coin.symbol}
+                </Symbol>
+                <Ask>
+                    Current Ask: {formatMoney(coin.ask)}
+                </Ask>
+            </WatchlistContainer>
         )
     })
 
@@ -66,4 +72,24 @@ border-bottom: 1px solid black;
 /* background-color: black; */
 max-width: 400px;
 font-family: 'Cinzel', serif;
+`
+
+const Ask = styled.div`
+margin-left: 10px;
+margin-top: 10px;
+`
+
+const Symbol = styled.div`
+margin-left: 10px;
+margin-top: 10px;
+`
+
+const Name = styled.div`
+margin-left: 10px;
+margin-top: 10px;
+`
+
+const WatchlistContainer = styled.div`
+border-bottom: 1px solid black;
+
 `

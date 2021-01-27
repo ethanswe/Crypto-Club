@@ -2,30 +2,45 @@ import React, { useState }from 'react';
 import { useHistory } from "react-router-dom";
 import MenuDrop from '../../imgs/menuDrop.png';
 import styled from 'styled-components';
+import { updateWallet } from '../../services/wallet';
+import Balance from '../PortfolioPage/Balance';
 
 
 const WalletItem = ({ wallet }) => {
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
-  
+  const [updating, setUpdating] = useState(false);
+  const [newName, setNewName] = useState(wallet.name);
+
   const handleDropdownClick = (e) => setShowMenu(!showMenu);
   const handleClick = () => history.push(`/wallet/${wallet.id}`);
-  
-  return (
-    <>
-    <Div>
-        <WalletNameDiv onClick={handleClick}>
+  const handleNameChange = (e) => {
+    setNewName(e.target.value);
+  }
+  const handleSubmit = async (e) => {
+    await updateWallet({ wallet_id: wallet.id, name: newName, balance: wallet.balance })
+    setUpdating(false);
+  }
+  const nameDiv = <WalletNameDiv onClick={handleClick}>
           {wallet.name}
-        </WalletNameDiv>
+  </WalletNameDiv>
+  
+  const nameForm = <form onSubmit={handleSubmit}>
+    <input value={newName} onChange={handleNameChange} type="text" />
+    <button>Update</button>
+    </form>
+
+  return (
+    <Div>
+      {updating ? nameForm : nameDiv}
       <DropDown onClick={handleDropdownClick} />
       <ConditionalShow showing={showMenu}>
         <div>
-          <button>Edit</button>
+          <button onClick={(() => setUpdating(true))}>Edit</button>
           <button>Delete</button>
         </div>
         </ConditionalShow>
-      </Div>
-    </>
+    </Div>
   )
 };
 

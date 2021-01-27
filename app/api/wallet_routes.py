@@ -21,7 +21,7 @@ def post_wallet():
 
 @wallet_routes.route('/<int:wallet_id>/update', methods=['PUT'])
 @login_required
-def update_wallet():
+def update_wallet(wallet_id):
     data = request.json
     wallet = Wallet.query.get(wallet_id)
     wallet.name = data['name']

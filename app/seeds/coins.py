@@ -33,5 +33,5 @@ def seed_coins():
 
 
 def undo_coins():
-    db.session.execute('TRUNCATE coins;')
+    db.session.execute('TRUNCATE coins CASCADE;')
     db.session.commit()

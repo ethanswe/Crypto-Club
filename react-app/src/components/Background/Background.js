@@ -79,7 +79,7 @@ const Background = () => {
 	            "random": false,
 	            "anim": {
 	                "enable": true,
-	                "speed": 4,
+	                "speed": 2,
 	                "size_min": 10,
 	                "sync": false
 	            }

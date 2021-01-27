@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from 'styled-components';
 import PlusIcon from '../../imgs/plus.png';
 import { getWallets } from '../../services/wallet';
-import  Card  from './DeleteWallet';
+import  WalletItem  from './WalletItem';
 import Background from '../Background/Background';
 import Ethereum from '../../imgs/ethereum.png'
 import Litecoin from '../../imgs/litecoin.png'
@@ -20,26 +20,6 @@ overflow-y: scroll;
 max-height: 400px;
 `
 
-const Div = styled.div`
-/* background-color: white; */
-font-size: 20px;
-color: white;
-margin-left: 5px;
-/* margin-bottom: 25px; */
-/* width: 400px; */
-opacity:0.65;
-display: flex;
-align-items: center;
-justify-content: space-between;
-`
-
-const WalletNameDiv = styled.div`
-:hover{
-        opacity: 1;
-		text-decoration: underline;
-		color: white;
-}
-`
 
 const WalletInput = ({ user }) => {
     const history = useHistory();
@@ -59,24 +39,12 @@ const WalletInput = ({ user }) => {
         fetchWallets();
     }, []);
 
-    const walletItems = wallets.map((wallet) => {
-        const handleClick = () => history.push(`/wallet/${wallet.id}`)
-        return (
-            <div key={wallet.id}>
-                <Background />
-                <Div>
-                    <WalletNameDiv onClick={handleClick}>
-                        {wallet.name}
-                    </WalletNameDiv>    
-                    <Card />
-                </Div>
-            </div>
-        )
-    });
-
+    const walletItems = wallets.map((wallet) => <WalletItem wallet={wallet} key={wallet.id}/>);
+    
     return (        
     <>
-        <Container>
+            <Container>
+                <Background />
             <Header>
                 Please Choose Your Wallet:
                 <Icon onClick={onClick} />
@@ -84,7 +52,7 @@ const WalletInput = ({ user }) => {
                 {walletItems}
         </Container>
 
-            </>
+    </>
     )
 }
 

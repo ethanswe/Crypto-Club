@@ -39,3 +39,26 @@ export const getWallet = async ({ wallet_id }) => {
   });
   return await response.json();
 };
+
+
+export const updateWallet = async ({ wallet_id, name, balance }) => {
+  const response = await fetch(`/api/wallet/${wallet_id}/update`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      balance,
+    }),
+  });
+  return await response.json();
+};
+
+
+export const deleteWallet = async ({ wallet_id }) => {
+  const response = await fetch(`/api/wallet/${wallet_id}/delete`, {
+    method: "DELETE"
+  });
+  return await response.json();
+}

@@ -27,7 +27,11 @@ export const formatMoney = (amount, signed=false) => {
         sign = '-';
     }
     sign = signed ? sign : '';
-    const str = String(Math.abs(amount));
+    let str = String(Math.abs(amount));
+    if (!str.includes('.')) {
+        str += '.00';
+    }
+
     const [ dollars, cents ] = str.split('.');
     const formattedCents = cents.slice(0, 2);
     let formattedDollars = '';

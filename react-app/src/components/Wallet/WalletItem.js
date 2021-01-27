@@ -12,7 +12,12 @@ const WalletItem = ({ wallet }) => {
   const [updating, setUpdating] = useState(false);
   const [newName, setNewName] = useState(wallet.name);
 
-  const handleDropdownClick = (e) => setShowMenu(!showMenu);
+  const handleDropdownClick = (e) => {
+    if (showMenu) {
+      setUpdating(false); 
+    }
+    setShowMenu(!showMenu);
+  }
   const handleClick = () => history.push(`/wallet/${wallet.id}`);
   const handleNameChange = (e) => {
     setNewName(e.target.value);

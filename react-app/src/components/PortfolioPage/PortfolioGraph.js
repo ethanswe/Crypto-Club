@@ -44,6 +44,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             </TransactionItemDiv>
         )
     })
+    console.log(transactionItems)
     return (
         <PortfolioGraphDiv>
             <TotalValueContainer>
@@ -66,7 +67,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             <AssetsHeldContainer>
                 <Balance wallet={wallet} />
                 <TransactionItemsList>
-                    {transactionItems}
+                    {transactionItems.length ? transactionItems : <EmptyTransactions>Your Transaction History Looks Empty...</EmptyTransactions>}
                 </TransactionItemsList>
             </AssetsHeldContainer>
         </PortfolioGraphDiv>
@@ -134,6 +135,12 @@ margin-top: 15px;
 
 const TemporaryGraphText = styled.h3`
 margin: 0 auto;
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+const EmptyTransactions = styled.h3`
 display: flex;
 justify-content: center;
 align-items: center;

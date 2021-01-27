@@ -5,7 +5,6 @@ import { getCoins } from '../../services/coin';
 import { formatMoney } from '../util/index';
 const WatchList = ({ user }) => {
     const [coins, setCoins] = useState([])
-
     const fetchCoins = async () => {
         const data = await getList({ user_id: user.id });
         const symbols = data.coins.map((coin) => coin.symbol);
@@ -25,8 +24,9 @@ const WatchList = ({ user }) => {
         fetchCoins({ user_id: user.id });
     }, [])
 
-    // console.log(coins);
+    console.log(coins);
     const coinItems = coins.map((coin, idx) => {
+        const change = (coin.ask - coin.open)
         return (
             <WatchlistContainer key={idx}>
                 <Name>
@@ -36,7 +36,16 @@ const WatchList = ({ user }) => {
                     Symbol: {coin.symbol}
                 </Symbol>
                 <Ask>
-                    Current Ask: {formatMoney(coin.ask)}
+
+                    {(change >= 0) ? 
+                        <PositiveChange>
+                            Price: {formatMoney(coin.ask)}
+                    </PositiveChange>
+                        : 
+                        <NegativeChange>
+                        {formatMoney(coin.ask)}
+                </NegativeChange>
+                }
                 </Ask>
             </WatchlistContainer>
         )
@@ -45,7 +54,7 @@ const WatchList = ({ user }) => {
     return (
         <WatchListDiv>
             <Header>Crypto Watch List:</Header>
-            {coinItems.length ? coinItems : <h3>Please Add A Coin To Your WatchList</h3>}
+            {coinItems.length ? coinItems : <NewWatchlistText>Please Add A Coin To Your WatchList</NewWatchlistText>}
         </WatchListDiv>
     )
 }
@@ -73,7 +82,7 @@ margin: 0 auto;
 border-bottom: 1px solid black;
 /* background-color: black; */
 max-width: 400px;
-font-family: 'Cinzel', serif;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
 const Ask = styled.div`
@@ -94,4 +103,17 @@ margin-top: 10px;
 const WatchlistContainer = styled.div`
 border-bottom: 1px solid black;
 
+`
+
+const NewWatchlistText = styled.h3`
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+const PositiveChange = styled.div`
+color: green;
+`
+const NegativeChange = styled.div`
+color: red;
 `

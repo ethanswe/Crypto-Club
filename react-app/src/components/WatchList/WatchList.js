@@ -25,7 +25,7 @@ const WatchList = ({ user }) => {
         fetchCoins({ user_id: user.id });
     }, [])
 
-    // console.log(coins);
+    console.log(coins);
     const coinItems = coins.map((coin, idx) => {
         return (
             <WatchlistContainer key={idx}>
@@ -36,7 +36,13 @@ const WatchList = ({ user }) => {
                     Symbol: {coin.symbol}
                 </Symbol>
                 <Ask>
+                    Open: {formatMoney(coin.open)}
+                </Ask>
+                <Ask>
                     Current Ask: {formatMoney(coin.ask)}
+                </Ask>
+                <Ask>
+                    24H Change: {formatMoney((coin.ask-coin.open))}
                 </Ask>
             </WatchlistContainer>
         )
@@ -45,7 +51,7 @@ const WatchList = ({ user }) => {
     return (
         <WatchListDiv>
             <Header>Crypto Watch List:</Header>
-            {coinItems.length ? coinItems : <h3>Please Add A Coin To Your WatchList</h3>}
+            {coinItems.length ? coinItems : <NewWatchlistText>Please Add A Coin To Your WatchList</NewWatchlistText>}
         </WatchListDiv>
     )
 }
@@ -73,7 +79,7 @@ margin: 0 auto;
 border-bottom: 1px solid black;
 /* background-color: black; */
 max-width: 400px;
-font-family: 'Cinzel', serif;
+font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 `
 
 const Ask = styled.div`
@@ -94,4 +100,10 @@ margin-top: 10px;
 const WatchlistContainer = styled.div`
 border-bottom: 1px solid black;
 
+`
+
+const NewWatchlistText = styled.h3`
+display: flex;
+justify-content: center;
+align-items: center;
 `

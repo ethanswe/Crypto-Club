@@ -19,7 +19,16 @@ def post_wallet():
     db.session.commit()
     return wallet.to_dict()
 
-# @wallet_routes.route('')
+@wallet_routes.route('/<int:wallet_id>/update', methods=['PUT'])
+@login_required
+def update_wallet():
+    data = request.json
+    wallet = Wallet.query.get(wallet_id)
+    wallet.name = data['name']
+    wallet.balance = data['balance']
+    db.session.add(wallet)
+    db.session.commit()
+    return wallet.to_dict()
 
 @wallet_routes.route('/', methods=['GET'])
 @wallet_routes.route('/<int:wallet_id>', methods=['GET'])

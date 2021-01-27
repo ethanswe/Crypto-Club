@@ -96,7 +96,7 @@ const LoginForm = ({ authenticated, setAuthenticated, user, setUser }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // console.log(user)
+ 
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(email, password);
@@ -108,9 +108,17 @@ const LoginForm = ({ authenticated, setAuthenticated, user, setUser }) => {
     }
   };
 
-  const demoUser = (e) => {
-    console.log('working')
-  }
+  const demoUser = async (e) => {
+    e.preventDefault();
+    const user = await login('demo@aa.io', 'password');
+    if (!user.errors) {
+      setUser(user);
+      setAuthenticated(true);
+    } else {
+      setErrors(user.errors);
+    }
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };

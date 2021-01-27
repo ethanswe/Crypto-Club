@@ -54,3 +54,11 @@ export const updateWallet = async ({ wallet_id, name, balance }) => {
   });
   return await response.json();
 };
+
+
+export const deleteWallet = async ({ wallet_id }) => {
+  const response = await fetch(`/api/wallet/${wallet_id}/delete`, {
+    method: "DELETE"
+  });
+  return await response.json();
+}

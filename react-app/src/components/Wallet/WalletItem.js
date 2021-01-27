@@ -2,7 +2,7 @@ import React, { useState }from 'react';
 import { useHistory } from "react-router-dom";
 import MenuDrop from '../../imgs/menuDrop.png';
 import styled from 'styled-components';
-import { updateWallet } from '../../services/wallet';
+import { updateWallet, deleteWallet } from '../../services/wallet';
 import Balance from '../PortfolioPage/Balance';
 
 
@@ -26,6 +26,11 @@ const WalletItem = ({ wallet }) => {
     await updateWallet({ wallet_id: wallet.id, name: newName, balance: wallet.balance })
     setUpdating(false);
   }
+  const handleDelete = async (e) => {
+    await deleteWallet({ wallet_id: wallet.id })
+    window.location.reload()
+  }
+  console.log(history)
   const nameDiv = <WalletNameDiv onClick={handleClick}>
           {wallet.name}
   </WalletNameDiv>
@@ -42,7 +47,7 @@ const WalletItem = ({ wallet }) => {
       <ConditionalShow showing={showMenu}>
         <div>
           <button onClick={(() => setUpdating(true))}>Edit</button>
-          <button>Delete</button>
+          <button onClick={handleDelete}>Delete</button>
         </div>
         </ConditionalShow>
     </Div>

@@ -15,7 +15,7 @@ const MainDiv = () => {
                 <Disclaimer>
                     DISCLAIMER: THIS PROJECT IS FOR DEMONSTRATION PURPOSES ONLY. PLEASE DO NOT TAKE THE DATA INTO CONSIDERATION FOR REAL-LIFE TRADING.
                         <a href='https://github.com/ethanswe/Crypto-Club' target="_blank">
-            <GithubLogo onClick={onClick} />
+                <GithubLogo onClick={onClick} />
                 </a>
                 </Disclaimer>
             </BottomDiv>
@@ -45,12 +45,6 @@ margin-top: 10px;
 :hover {
     opacity: 0.5;
 }
-`
-
-const GithubText = styled.div`
-display: flex;
-justify-content: center;
-font-size: 15px;
 `
 
 const BottomDiv = styled.div`

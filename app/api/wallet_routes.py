@@ -30,6 +30,15 @@ def update_wallet(wallet_id):
     db.session.commit()
     return wallet.to_dict()
 
+
+@wallet_routes.route('/<int:wallet_id>/delete', methods=['DELETE'])
+@login_required
+def delete_wallet(wallet_id):
+    wallet = Wallet.query.get(wallet_id)
+    db.session.delete(wallet)
+    db.session.commit()
+    return { "message": 'Deleted!'}
+
 @wallet_routes.route('/', methods=['GET'])
 @wallet_routes.route('/<int:wallet_id>', methods=['GET'])
 def get_wallet(wallet_id=None):
@@ -41,3 +50,6 @@ def get_wallet(wallet_id=None):
         return {"transactions": [], "balance": 0}
     else:
         return wallet.to_dict()
+
+
+

@@ -7,9 +7,8 @@ const Video = () => {
 
     return (
         <>
-        <VideoDiv className='player-wrapper'>
+        <VideoDiv>
             <ReactPlayer
-            className='react-player fixed-bottom'
             url= {HomepageVideo}
             width='100%'
             height='100%'

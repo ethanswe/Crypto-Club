@@ -102,7 +102,8 @@ margin-top: 10px;
 
 const WatchlistContainer = styled.div`
 border-bottom: 1px solid black;
-
+width: 600px;
+font-size: 16px;
 `
 
 const NewWatchlistText = styled.h3`

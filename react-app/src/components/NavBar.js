@@ -15,6 +15,8 @@ background-color: black;
 const Container = styled.div`
 background-color: black;
 max-height: 60px;
+width: 100vw;
+
 `
 const LogoNav = styled.img.attrs({
     src: `${Logo}`
@@ -72,7 +74,7 @@ export default NavBar;
 const Buttons = styled.button`
   border-color: black;
   margin: 2px;
-  margin-right: 2px;
+  margin-right: 25px;
   /* background-color: black; */
   position: relative;
   overflow: hidden;

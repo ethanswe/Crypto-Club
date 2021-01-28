@@ -54,7 +54,7 @@ position: absolute;
 width: 100vw;
 height: 24.5vh;
 display: flex;
-/* margin-top: 160px; */
+margin-top: 160px;
 justify-content: center;
 `
 

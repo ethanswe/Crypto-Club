@@ -30,7 +30,7 @@ const WalletItem = ({ wallet }) => {
     await deleteWallet({ wallet_id: wallet.id })
     window.location.reload()
   }
-  console.log(history)
+
   const nameDiv = <WalletNameDiv onClick={handleClick}>
           {wallet.name}
   </WalletNameDiv>

@@ -23,7 +23,7 @@ justify-content: center;
 align-items: center;
 /* background-color: black; */
 max-width: 300px;
-font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
 
@@ -31,7 +31,7 @@ font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 const IntroText = styled.h2`
 color: white;
 font-size: 20px;
-font-family: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
 const Container = styled.div`

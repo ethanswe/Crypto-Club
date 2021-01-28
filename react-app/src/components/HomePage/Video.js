@@ -29,4 +29,5 @@ const VideoDiv = styled.div`
 position: absolute;
 background-image: cover;
 z-index: -10;
+margin-bottom: 20px;
 `

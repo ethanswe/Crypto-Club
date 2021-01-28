@@ -31,7 +31,12 @@ const Disclaimer = styled.div`
 font-size: 20px;
 color: white;
 margin: 0 auto;
-margin-top: 50px;
+@media(min-width: 1700px){
+    margin-top: 50px;
+}
+display: inline-block;
+/* justify-content: center;
+align-items: center; */
 `
 
 
@@ -56,4 +61,10 @@ height: 24.5vh;
 display: flex;
 margin-top: 160px;
 justify-content: center;
+@media(max-width: 1450px){
+    margin-top: 80px;
+}
+@media(min-width: 1700px){
+    margin-top: 160px;
+}
 `

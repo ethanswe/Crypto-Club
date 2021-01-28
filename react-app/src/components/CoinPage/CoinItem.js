@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import PlusIconImg from '../../imgs/plus.png';
 import MinusIconImg from '../../imgs/minus.png';
@@ -11,7 +10,6 @@ import Graph from '../../imgs/graph.png';
 import Litecoin from '../../imgs/litecoin.png';
 import Monero from '../../imgs/monero.png';
 import Waves from '../../imgs/waves.png';
-import { getWallet } from '../../services/wallet'
 import { makePurchase, makeSale } from '../../services/transaction';
 import AddToList from '../../imgs/whiteList.png';
 import { addCoinToList } from '../../services/list';

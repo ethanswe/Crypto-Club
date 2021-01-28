@@ -44,7 +44,7 @@ const PortfolioGraph = ({ coin, user, symbol, amount, wallet }) => {
             </TransactionItemDiv>
         )
     })
-    console.log(transactionItems)
+    // console.log(transactionItems)
     return (
         <PortfolioGraphDiv>
             <TotalValueContainer>

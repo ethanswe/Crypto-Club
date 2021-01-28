@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Redirect, Route, useHistory } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm";
+import { BrowserRouter, Route } from "react-router-dom";
 import SignUpForm from "./components/SignupPage/SignupPage";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import { authenticate } from "./services/auth";
 import LoginPage from './components/LoginPage/LoginPage';
 import WalletPage from './components/Wallet/WalletPage';
@@ -19,10 +16,9 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState(null);
-  const history = useHistory();
+
   const [ wallet, setWallet ] = useState(null)
-  // console.log(authenticated);
-  // console.log(user);
+
 
 
     const fetchWallet = async () => {

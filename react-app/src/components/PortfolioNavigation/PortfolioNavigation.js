@@ -1,11 +1,11 @@
 import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components'
 export const PortfolioNavigation = ({ authenticated, setAuthenticated }) => {
     const { wallet_id } = useParams();
-    console.log(wallet_id)
+    // console.log(wallet_id)
     return (
         <NavBar>
             <LogoutButton authenticated={authenticated} setAuthenticated={setAuthenticated} />

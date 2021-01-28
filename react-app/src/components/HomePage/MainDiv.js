@@ -57,28 +57,3 @@ display: flex;
 margin-top: 160px;
 justify-content: center;
 `
-
-
-
-
-
-    // return (
-    //     <>
-    //         <Video>
-                
-    //                     </Video>
-    //         <MainContainer>
-    //             <Wrapper>
-    //                 <InnerWrapper>
-    //                     <LeftSide>
-    //                         <HomeText />
-    //                     </LeftSide>
-    //                     <VideoWrapper>
-    //                     </VideoWrapper>
-
-    //             </InnerWrapper>
-    //         </Wrapper>
-    //     </MainContainer>
-    //     <BottomDiv />    
-    //     </>
-    // )

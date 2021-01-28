@@ -16,7 +16,8 @@ import { addCoinToList } from '../../services/list';
 import PositiveArrow from '../../imgs/greenUpArrow.png';
 import NegativeArrow from '../../imgs/redDownArrow.png';
 import { calculateQuantities } from '../util';
-// Default export and safe it to new variable makeSale makePurchase
+import { formatMoney } from '../util/index';
+// Default export and save it to new variable makeSale makePurchase
 const cryptoIcons = {
     'ETH': Ethereum,
     'GRT': Graph,
@@ -118,26 +119,26 @@ const CoinItem = ({ coin, user, symbol, amount, wallet, fetchWallet }) => {
                             {symbol.toUpperCase()}
                         </Text>
                         <Text>
-                                Ask: ${ask}
+                                Ask: {formatMoney(ask)}
                         </Text>
                         <Text>
-                                Bid: ${bid}
+                                Bid: {formatMoney(bid)}
                         </Text>
                         <Text>
                                 24H Volume: {volume}
                         </Text>
                         <Text>
-                                24H High: ${high}
+                                24H High: {formatMoney(high)}
                         </Text>
                         <Text>
-                                24H Low: ${low}
+                                24H Low: {formatMoney(low)}
                         </Text>
                         <Text>
                                     {(change > 0) ? 
                                         <>
                                             24H Change:
                                             <PositiveDailyChange>
-                                                ${change} / {changePercent}%
+                                                {formatMoney(change)} / {changePercent}%
                                             </PositiveDailyChange>
                                             <PositiveArrowImg />
                                         </>
@@ -145,7 +146,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet, fetchWallet }) => {
                                         <>
                                             24H Change:
                                             <NegativeDailyChange>
-                                                ${change} / {changePercent}%
+                                                {formatMoney(change)} / {changePercent}%
                                             </NegativeDailyChange>
                                             <NegativeArrowImg /> 
                                         </>

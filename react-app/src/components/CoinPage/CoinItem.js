@@ -39,7 +39,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet, fetchWallet }) => {
     const price = coin.ask;
     const user_id = user.id;
     const change = (coin.ask - coin.open).toFixed(2)
-    const changePercent = parseFloat(((coin.ask - coin.open) / coin.open)).toFixed(3);
+    const changePercent = parseFloat(((coin.ask - coin.open) / coin.open)).toFixed(2);
     const ownedQuantity = calculateQuantities(wallet.transactions);
 
 
@@ -62,9 +62,8 @@ const CoinItem = ({ coin, user, symbol, amount, wallet, fetchWallet }) => {
     const addToList = async (e) => {
         e.preventDefault();
         const addedCrypto = await addCoinToList({ symbol, user_id })
-        // console.log(addedCrypto);
         if (!addedCrypto.error) {
-            return alert('Successfully added to your list! ')
+            return alert('Successfully added to your list!')
         }
     }
 
@@ -176,7 +175,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet, fetchWallet }) => {
                                                 placeholder={'Purchase Amount'}
                                             />
 
-                                            <button>Purchase</button>
+                                            <Button>Purchase</Button>
                                     </form>
                                 </div>
                                 : null}
@@ -194,7 +193,7 @@ const CoinItem = ({ coin, user, symbol, amount, wallet, fetchWallet }) => {
                                                 type="number"
                                                 placeholder={'Sale Amount'}
                                             />
-                                            <button>Sell</button>
+                                            <Button>Sell</Button>
                                         </form>
                                 </div>
                             : null }
@@ -322,3 +321,47 @@ const StyledListDiv = styled.div`
 margin-left: 5px;
 `
 
+
+
+const Button = styled.button`
+  border-color: black;
+  margin: 2px;
+  margin-right: 25px;
+  /* background-color: black; */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms ease-in-out;
+  text-decoration: none;
+  /* background: #222; */
+  height: 20px;
+  min-width: 80px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: 15px;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+  }
+  
+  &:hover {
+    color: #fff;
+    background: black;
+    &:after {
+      width: 110%;
+    }
+  }
+`

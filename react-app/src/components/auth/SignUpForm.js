@@ -26,10 +26,7 @@ align-items: center;
 margin-left: 200px;
 `
 
-const Header = styled.h1`
-font-size: 25px;
-margin-bottom: 30px;
-`
+
 
 const SignUpForm = ({authenticated, setAuthenticated, setUser}) => {
   const [email, setEmail] = useState("");

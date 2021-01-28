@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { getWallet } from '../../services/wallet'
 import { useParams } from 'react-router-dom';
 import { PortfolioNavigation } from '../PortfolioNavigation/PortfolioNavigation';
@@ -20,7 +20,7 @@ const PortfolioPage = ({ authenticated, setAuthenticated, user, wallet, setWalle
     if (!wallet) {
         return <h3>loading</h3>;
     }
-    console.log(wallet);
+    // console.log(wallet);
     return (
         <div>
             <Background />

@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
-import Particles from 'react-particles-js';
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styled from 'styled-components';
-import PlusIcon from '../../imgs/plus.png';
-import Bitcoin from '../../imgs/bitcoin.png'
-import Ethereum from '../../imgs/ethereum.png'
-import Litecoin from '../../imgs/litecoin.png'
-import SVG from '../../imgs/bitcoin-coin.svg'
 import newWallet from '../../services/wallet';
 import Background from '../Background/Background';
 

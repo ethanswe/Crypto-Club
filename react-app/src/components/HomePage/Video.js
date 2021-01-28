@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React from "react"; 
 import ReactPlayer from "react-player";
 import HomepageVideo from '../../video/mainHomepageVid.mp4';
 import styled from 'styled-components';

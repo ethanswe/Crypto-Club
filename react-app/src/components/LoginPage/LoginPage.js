@@ -41,13 +41,13 @@ const LoginPage = ({ authenticated, setAuthenticated, setUser, user }) => {
     }
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  // const updateEmail = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
+  // const updatePassword = (e) => {
+  //   setPassword(e.target.value);
+  // };
 
   if (authenticated) {
     return <Redirect to="/wallet" />;

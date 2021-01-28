@@ -10,12 +10,11 @@ const HomePage = ({ authenticated }) => {
     return <Redirect to='/wallet' />
   }
     return (
-        <div>
+        <HomePageContainer>
             <HomePageDiv>
-
-            <MainDiv />
+                <MainDiv />
             </HomePageDiv>
-        </div>
+        </HomePageContainer>
     )
 }
 
@@ -28,4 +27,11 @@ z-index: -15;
 width: 100vw;
 height: 100vh;
 position: absolute;
+overflow-x: hidden;
+overflow-y: hidden;
+`
+
+const HomePageContainer = styled.div`
+overflow-x: hidden;
+overflow-y: hidden;
 `

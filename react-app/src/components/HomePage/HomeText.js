@@ -41,6 +41,8 @@ padding-left: 250px;
 padding-top: 150px;
 width: 500px;
 height: 355px;
+display: inline-block;
+
 h1{
     color: white;
     font-size: 1.5rem;

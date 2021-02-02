@@ -46,8 +46,8 @@ const WalletItem = ({ wallet }) => {
       <DropDown onClick={handleDropdownClick} />
       <ConditionalShow showing={showMenu}>
         <div>
-          <button onClick={(() => setUpdating(true))}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+          <Button onClick={(() => setUpdating(true))}>Edit</Button>
+          <Button onClick={handleDelete}>Delete</Button>
         </div>
         </ConditionalShow>
     </Div>
@@ -90,4 +90,47 @@ opacity:0.65;
 display: flex;
 align-items: center;
 justify-content: space-between;
+`
+
+const Button = styled.button`
+  border-color: black;
+  margin: 2px;
+  margin-right: 25px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms ease-in-out;
+  text-decoration: none;
+  /* background: #222; */
+  height: 20px;
+  min-width: 80px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: 15px;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+  }
+  
+  &:hover {
+    color: #fff;
+    background: black;
+    &:after {
+      width: 110%;
+    }
+  }
 `
